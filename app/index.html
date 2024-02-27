@@ -49,11 +49,23 @@
         .nav {
             position: sticky;
             top: 0;
-            backdrop-filter: blur(50px);
-            background: linear-gradient(rgba(149, 0, 255, 0.388), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%);
             width: 100%;
             height: 100px;
             z-index: 10;
+        }
+        .nav span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* backdrop-filter: blur(50px); */
+            border-radius: 0 0 80px 80px;
+            background: linear-gradient(rgba(0, 0, 0, 1), rgba(136, 0, 255, 0.8) 100%);
+            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.6),
+                        0 0 20px 20px rgba(0, 0, 0, 0.6) inset;
+            /* opacity: 0; */
+            transform: translateY(-100%);
+            z-index: -1;
+            transition: 0.1s ease-in-out;
         }
         .homePage {
             width: 100%;
@@ -68,10 +80,10 @@
         }
         .homePage  .logo2 {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            top: -45px;
-            left: 40px;
+            width: 170px;
+            height: 170px;
+            top: -35px;
+            left: 50px;
             z-index: 3;
         }
         .homePage .footerCopy {
@@ -148,18 +160,20 @@
         }
         .homePage .nav-link {
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             text-decoration: none;
             height: 50px;
             margin: 10px;
             cursor: pointer;
-            border-bottom: #b700ff 1px solid;
+            /* border-bottom: #b700ff 1px solid; */
             border-radius: 100px;
             padding: 10px 20px;
+            border-bottom: #b700ff00 3px solid;
+            border-top: #b700ff00 1px solid;
+            border-bottom: #b700ff00 0px solid;
         }
         .homePage .nav-link:hover {
-
             border-bottom: #b700ff 3px solid;
             border-top: #b700ff 1px solid;
             border-bottom: #b700ff 0px solid;
@@ -309,7 +323,7 @@
             align-items: center;
             padding: 40px;
             margin: 150px 0;
-            border: #f00 1px solid;
+            /* border: #f00 1px solid; */
         }
         #Developers .title {
             position: absolute;
@@ -356,14 +370,138 @@
             color: rgba(255, 255, 255, 0.651);
         }
         #Developers .devTeam {
+            position: relative;
+            width: 100%;
+            /* min-height: 600px; */
             display: flex;
             justify-content: space-around;
             align-items: center;
-            gap: 100px;
+            /* gap: 100px; */
             padding: 40px;
+            border: #f00 1px solid;
+            /* transform: translateY(-50%) rotateX(70deg); */
+            /* background-color: red; */
+        }
+        #Developers .devTeam .container {
+            perspective: 1000px;
+            position: relative;
+            top: 0;
+            width: fit-content;
+            height: fit-content;
+            border: #f00 1px solid;
+        }
+        #Developers .devTeam .dev {
+            position: relative;
+            top: 0;
+            transform-style: preserve-3d;
+            /* min-height: 600px; */
+            /* width: 300px;
+            height: 300px; */
             /* border: #f00 1px solid; */
         }
 
+        #Developers  .devTeam  .dev img {
+            position: absolute;
+            /* border: #f00 1px solid; */
+        }
+        #Developers  .devTeam  .dev img:nth-of-type(1) {
+            position: relative;
+            border: #f00 1px solid;
+            /* perspective: 1000px; */
+        }
+        #Developers  .devTeam  .dev img:nth-of-type(2) {
+            position: absolute;
+            border: #f00 1px solid;
+            left: 50%;
+            top: 5%;
+            /* perspective: 1500px; */
+            transform: translateX(-50%) translateY(-5%);
+            
+        }
+        #Developers  .devTeam  .dev img:nth-of-type(3) {
+            position: absolute;
+            border: #f00 1px solid;
+            left: 50%;
+            top: calc(5% + 12px);
+            /* perspective: 1500px; */
+            
+            transform: translateX(-50%) translateY(-5%);
+            
+        }
+        #Developers  .devTeam  .dev .name {
+            position: absolute;
+            top: 46%;
+            font-size: 20px;
+            font-weight: lighter;
+            text-align: center;
+            /* padding: 40px; */
+            width: 100%;
+            /* perspective: 2000px; */
+            border: rgb(255, 0, 0) 1px solid;
+        }
+
+        #Developers  .devTeam  .dev .name h1 {
+            /* font-size: 20px;
+            font-weight: lighter;
+            text-align: center; */
+            color: rgb(255, 255, 255);
+        }
+        #Developers  .devTeam  .dev .name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 60%;
+            height: 1px;
+            /* border-radius: 50%; */
+            background: #C0B7E8;
+            transform: translateX(-50%);
+        }
+        #Developers  .devTeam  .dev .social {
+            position: absolute;
+            /* bottom: 0; */
+            top: 70%;
+            /* left: 50%; */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            transform-style: preserve-3d;
+            /* perspective: 2500px; */
+            /* transform: rotateY(70deg); */
+            border: #f00 1px solid;
+        }
+        #Developers  .devTeam  .dev .social img {
+            width: 40px;
+            height: 40px;
+            /* border: #f00 1px solid; */
+        }
+        #Developers  .devTeam  .dev .devTitle {
+            position: absolute;
+            bottom: 7%;
+            left: 50%;
+            /* width: 100px; */
+            /* height: 100px; */
+            transform: translateX(-50%);
+            /* perspective: 3000px; */
+            border: #f00 1px solid;
+        }
+        #Developers  .devTeam  .dev:hover img:nth-of-type(1) {
+            transform: rotateX(40deg);
+            transition: 1s;
+        }
+        #Developers  .devTeam  .dev:hover img:nth-of-type(2) {
+            transform:  translateX(-50%) translateY(5%) translateZ(-100px) rotateX(40deg) skewX(10deg);
+            fill: #000000;
+            background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.98));
+            transition: 1s;
+            border-radius: 50%;
+        }
+        #Developers  .devTeam  .dev:hover img:nth-of-type(3) {
+            transform:  translateX(-50%) translateY(-15%) translateZ(-50px);
+            transition: 1.5s;
+        }
 
         @media screen and (max-width: 1300px) {
             .homePage .nav-link {
@@ -393,6 +531,7 @@
 <body>
     <div class="homePage">
         <div class="nav">
+            <span></span>
             <img src="assets/logo2.svg" alt="logo" class="logo2">
             <nav class="navbar">
                 <div class="d-flex">
@@ -462,14 +601,84 @@
                 <img src="assets/images/arrow2.svg" alt="logo" class="logo8">
             </div>
             <div class="devTeam">
-                <div class="dev">
-                    <img src="assets/images/abdo.png" alt="logo" class="logo9">
+                <div class="container">
+                    <div class="dev">
+                        <img src="assets/images/devCard/bg.svg" alt="logo" class="devA1">
+                        <img src="assets/images/devCard/bg2.svg" alt="logo" class="devA2">
+                        <img src="assets/images/devCard/avatar1.svg" alt="logo" class="devA3">
+                        <div class="name">
+                            <h1>Ayoub</h1>
+                            <h1>Amajane</h1>
+                        </div>
+                        <div class="social">
+                            <a href="">
+                                <img src="assets/images/devCard/twitter.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/linkedin.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/instagram.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/github.svg" alt="social">
+                            </a>
+                        </div>
+                        <img src="assets/images/devCard/title.svg" alt="logo" class="devTitle">
+                    </div>
                 </div>
-                <div class="dev">
-                    <img src="assets/images/ayoub.png" alt="logo" class="logo10">
+                <div class="container">
+                
+                    <div class="dev">
+                        <img src="assets/images/devCard/bg.svg" alt="logo" class="devB1">
+                        <img src="assets/images/devCard/bg2.svg" alt="logo" class="devB2">
+                        <img src="assets/images/devCard/avatar2.svg" alt="logo" class="devB3">
+                        <div class="name">
+                            <h1>Abdellah El</h1>
+                            <h1>bekkali</h1>
+                        </div>
+                        <div class="social">
+                            <a href="">
+                                <img src="assets/images/devCard/twitter.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/linkedin.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/instagram.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/github.svg" alt="social">
+                            </a>
+                        </div>
+                        <img src="assets/images/devCard/title.svg" alt="logo" class="devTitle">
+                    </div>
                 </div>
-                <div class="dev">
-                    <img src="assets/images/hicham.png" alt="logo" class="logo11">
+                <div class="container">
+                    <div class="dev">
+                        <img src="assets/images/devCard/bg.svg" alt="logo" class="devC1">
+                        <img src="assets/images/devCard/bg2.svg" alt="logo" class="devC2">
+                        <img src="assets/images/devCard/avatar3.svg" alt="logo" class="devC3">
+                        <div class="name">
+                            <h1>Hicham El</h1>
+                            <h1>Mefeddel</h1>
+                        </div>
+                        <div class="social">
+                            <a href="">
+                                <img src="assets/images/devCard/twitter.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/linkedin.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/instagram.svg" alt="social">
+                            </a>
+                            <a href="">
+                                <img src="assets/images/devCard/github.svg" alt="social">
+                            </a>
+                        </div>
+                        <img src="assets/images/devCard/title.svg" alt="logo" class="devTitle">
+                    </div>
                 </div>
             </div>
             <div class="info">
@@ -544,6 +753,7 @@
             const logo7 = document.querySelector('.logo7');
             const logo3 = document.querySelector('.logo3');
             const logo4 = document.querySelector('.logo4');
+            const nav = document.querySelector('.nav span');
             const infoHomePage = document.querySelector('.infoHomePage');
             if (isInViewport(title1)) {
                 logo6.style.transform = 'translate(0)';
@@ -564,6 +774,11 @@
                 logo3.style.transition = 'opacity 5s';
                 logo4.style.transform = 'translate(0)';
                 logo4.style.transition = 'transform 0.4s';
+            }
+            if (window.scrollY > 100) {
+                nav.style.transform = 'translateY(0)';
+            } else {
+                nav.style.transform = 'translateY(-100%)';
             }
         }, false);
     </script>
