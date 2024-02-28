@@ -361,7 +361,7 @@
             text-align: center;
             padding: 40px;
             width: 100%;
-            /* border: #f00 1px solid; */
+            /* border: rgb(0, 255, 13) 1px solid; */
         }
         #Developers .info p {
             font-size: 20px;
@@ -378,7 +378,7 @@
             align-items: center;
             /* gap: 100px; */
             padding: 40px;
-            border: #f00 1px solid;
+            /* border: rgb(255, 247, 0) 1px solid; */
             /* transform: translateY(-50%) rotateX(70deg); */
             /* background-color: red; */
         }
@@ -388,7 +388,7 @@
             top: 0;
             width: fit-content;
             height: fit-content;
-            border: #f00 1px solid;
+            /* border: rgb(255, 255, 255) 1px solid; */
         }
         #Developers .devTeam .dev {
             position: relative;
@@ -397,30 +397,33 @@
             /* min-height: 600px; */
             /* width: 300px;
             height: 300px; */
-            /* border: #f00 1px solid; */
+            /* border: rgb(212, 0, 255) 1px solid; */
         }
 
         #Developers  .devTeam  .dev img {
             position: absolute;
-            /* border: #f00 1px solid; */
+            /* border: rgb(0, 17, 255) 1px solid; */
         }
         #Developers  .devTeam  .dev img:nth-of-type(1) {
             position: relative;
-            border: #f00 1px solid;
+            /* border: rgb(0, 170, 255) 1px solid; */
             /* perspective: 1000px; */
         }
         #Developers  .devTeam  .dev img:nth-of-type(2) {
             position: absolute;
-            border: #f00 1px solid;
+            border: none;
             left: 50%;
             top: 5%;
             /* perspective: 1500px; */
-            transform: translateX(-50%) translateY(-5%);
+            background: #00000082;
+            box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
             
+            border-radius: 50%;
+            transform: translateX(-50%) translateY(-5%);
         }
         #Developers  .devTeam  .dev img:nth-of-type(3) {
             position: absolute;
-            border: #f00 1px solid;
+            /* border: rgb(31, 168, 0) 1px solid; */
             left: 50%;
             top: calc(5% + 12px);
             /* perspective: 1500px; */
@@ -437,7 +440,7 @@
             /* padding: 40px; */
             width: 100%;
             /* perspective: 2000px; */
-            border: rgb(255, 0, 0) 1px solid;
+            /* border: rgb(229, 255, 0) 1px solid; */
         }
 
         #Developers  .devTeam  .dev .name h1 {
@@ -445,8 +448,17 @@
             font-weight: lighter;
             text-align: center; */
             color: rgb(255, 255, 255);
+            text-shadow: 0 0 10px rgb(0, 0, 0);
         }
-        #Developers  .devTeam  .dev .name::after {
+        #Developers  .devTeam  .dev .name:nth-of-type(2) h1 {
+            /* font-size: 20px;
+            font-weight: lighter;
+            text-align: center; */
+            color: rgba(255, 255, 255, 0);
+            text-shadow: 0 10px 10px rgb(0, 0, 0);
+        }
+        
+        #Developers  .devTeam  .dev .name:nth-of-type(1)::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -470,12 +482,25 @@
             transform-style: preserve-3d;
             /* perspective: 2500px; */
             /* transform: rotateY(70deg); */
-            border: #f00 1px solid;
+            /* border: rgb(255, 132, 0) 1px solid; */
         }
+
         #Developers  .devTeam  .dev .social img {
             width: 40px;
-            height: 40px;
-            /* border: #f00 1px solid; */
+            height: 50px;
+            /* border: rgb(255, 255, 255) 1px solid; */
+        }
+        #Developers  .devTeam  .dev .social a:hover {
+            position: relative;
+            transform:  scale(1.2) translateZ(20px) rotateX(-15deg) ;
+            transition: 0.5s;
+            /* height: 50px; */
+            /* border: rgb(255, 255, 255) 1px solid; */
+        }
+        #Developers  .devTeam  .dev .social a:active {
+            position: relative;
+            transform:  rotateX(70deg) scale(1.2) translateZ(-10px) ;
+            transition: 0s;
         }
         #Developers  .devTeam  .dev .devTitle {
             position: absolute;
@@ -484,15 +509,16 @@
             /* width: 100px; */
             /* height: 100px; */
             transform: translateX(-50%);
+            border-radius: 50px;
             /* perspective: 3000px; */
-            border: #f00 1px solid;
+            /* border: #f00 1px solid; */
         }
-        #Developers  .devTeam  .dev:hover img:nth-of-type(1) {
+        /* #Developers  .devTeam  .dev:hover img:nth-of-type(1) {
             transform: rotateX(40deg);
             transition: 1s;
         }
         #Developers  .devTeam  .dev:hover img:nth-of-type(2) {
-            transform:  translateX(-50%) translateY(5%) translateZ(-100px) rotateX(40deg) skewX(10deg);
+            transform:  translateX(-50%) translateY(5%) translateZ(-100px) rotateX(40deg) skew(-50deg);
             fill: #000000;
             background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.98));
             transition: 1s;
@@ -501,7 +527,7 @@
         #Developers  .devTeam  .dev:hover img:nth-of-type(3) {
             transform:  translateX(-50%) translateY(-15%) translateZ(-50px);
             transition: 1.5s;
-        }
+        } */
 
         @media screen and (max-width: 1300px) {
             .homePage .nav-link {
@@ -610,6 +636,10 @@
                             <h1>Ayoub</h1>
                             <h1>Amajane</h1>
                         </div>
+                        <div class="name">
+                            <h1>Ayoub</h1>
+                            <h1>Amajane</h1>
+                        </div>
                         <div class="social">
                             <a href="">
                                 <img src="assets/images/devCard/twitter.svg" alt="social">
@@ -637,6 +667,10 @@
                             <h1>Abdellah El</h1>
                             <h1>bekkali</h1>
                         </div>
+                        <div class="name">
+                            <h1>Abdellah El</h1>
+                            <h1>bekkali</h1>
+                        </div>
                         <div class="social">
                             <a href="">
                                 <img src="assets/images/devCard/twitter.svg" alt="social">
@@ -659,6 +693,10 @@
                         <img src="assets/images/devCard/bg.svg" alt="logo" class="devC1">
                         <img src="assets/images/devCard/bg2.svg" alt="logo" class="devC2">
                         <img src="assets/images/devCard/avatar3.svg" alt="logo" class="devC3">
+                        <div class="name">
+                            <h1>Hicham El</h1>
+                            <h1>Mefeddel</h1>
+                        </div>
                         <div class="name">
                             <h1>Hicham El</h1>
                             <h1>Mefeddel</h1>
@@ -781,6 +819,83 @@
                 nav.style.transform = 'translateY(-100%)';
             }
         }, false);
+
+        const dev = document.querySelectorAll('#Developers  .devTeam  .dev');
+        dev.forEach((el) => {
+            el.children[0].style.transition = '0.7s ease-out';
+            el.children[1].style.transition = '0.7s ease-out';
+            el.children[2].style.transition = '0.7s ease-out';
+            el.children[3].style.transition = '0.7s ease-out';
+            el.children[4].style.transition = '0.7s ease-out';
+            el.children[4].children[0].style.transition = '0.7s ease-out';
+            el.children[4].children[1].style.transition = '0.7s ease-out';
+            el.children[5].style.transition = '0.7s ease-out';
+            el.children[6].style.transition = '0.7s ease-out';
+
+            el.children[0].style.transform = 'rotateX(0deg)';
+            el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(0px) rotateX(0deg) scaleX(0.8) scaleY(0.8)';
+            el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px)';
+            el.children[3].style.transform = 'translateY(0) translateZ(20px)';
+            el.children[4].style.transform = 'translateY(0) translateZ(10px)';
+            el.children[5].style.transform = 'translateY(0%) translateZ(100px)';
+            el.children[6].style.transform = 'translateY(25px) translateZ(1px) translateX(-50%)';
+            el.children[6].style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.3)';
+            
+            el.addEventListener('mouseover', (e) => {
+                // const X = e.clientX - el.getBoundingClientRect().left;
+                // const Y = e.clientY - el.getBoundingClientRect().top;
+                // const dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
+                // const dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
+
+                el.children[0].style.transform = `rotateX(50deg)`;
+                el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.8) scaleY(0.3)';
+                el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
+                el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                el.children[5].style.transform = 'translateY(-60px) translateZ(130px) rotateX(-15deg) scale(1.2)';
+                el.children[6].style.transform = 'translateZ(270px) rotateX(50deg) translateX(-50%) translateY(-105px)';
+                el.children[6].style.boxShadow = '0 0 0 10px rgba(0, 0, 0, 0.3)';
+                // el.children[6].style.transform = 'translateZ(280px) rotateX(50deg) translateX(-50%) translateY(-120px) scale(1.2)';
+                // el.children[5].style.transition = '0.6s ease-in';
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                
+                let X = e.clientX - el.getBoundingClientRect().left;
+                let Y = e.clientY - el.getBoundingClientRect().top;
+                let dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
+                let dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
+
+                el.children[0].style.transform = `rotateX(50deg)`;
+                el.children[1].style.transform = `translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(${0.8 - Math.abs(dx * 0.005)}) scaleY(0.3) skewY(${-dx * 0.2}deg)`;
+                el.children[2].style.transform = `translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg) rotateY(${dx / 1.9}deg)`;
+                el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                el.children[5].style.transform = 'translateY(-60px) translateZ(130px) rotateX(-15deg) scale(1.2)';
+                el.children[6].style.transform = 'translateZ(270px) rotateX(50deg) translateX(-50%) translateY(-105px)';
+                el.children[6].style.boxShadow = '0 0 0 10px rgba(0, 0, 0, 0.3)';
+                // el.children[6].style.transform = 'translateZ(280px) rotateX(50deg) translateX(-50%) translateY(-120px) scale(1.2)';
+                // el.children[5].style.transition = '0.6s ease-in';
+            });
+            el.addEventListener('mouseout', (e) => {
+                el.children[0].style.transform = 'rotateX(0deg)';
+                el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(40px) rotateX(0deg) scaleX(0.8) scaleY(0.8)';
+                el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px)';
+                el.children[3].style.transform = 'translateY(0) translateZ(20px)';
+                el.children[4].style.transform = 'translateY(0) translateZ(10px)';
+                el.children[4].children[0].style.textShadow = '0 10px 10px #000';
+                el.children[4].children[1].style.textShadow = '0 10px 10px #000';
+
+                el.children[5].style.transform = 'translateY(0) translateZ(60px)';
+                el.children[6].style.transform = 'translateY(25px) translateZ(1px) translateX(-50%)';
+                el.children[6].style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.3)';
+                // el.children[5].style.transition = '1s';
+            });
+        });
     </script>
     <script src="js/utils/backgroundBody.js"></script>
 </body>
