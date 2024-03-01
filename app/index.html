@@ -13,6 +13,9 @@
             font-family: 'Robot';
             src: url("../assets/fonts/fobot/Sdglitchrobotdemo-GOPdO.ttf");
         }
+        /* * {
+            border: 1px solid wheat;
+        } */
         body {
             height: 100vh;
             width: 100vw;
@@ -57,13 +60,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            /* backdrop-filter: blur(50px); */
-            border-radius: 0 0 80px 80px;
-            background: linear-gradient(rgba(0, 0, 0, 1), rgba(136, 0, 255, 0.8) 100%);
+            background: linear-gradient(rgb(22, 0, 62), #000000f3 70%, #0000004d 100%);
             box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.6),
-                        0 0 20px 20px rgba(0, 0, 0, 0.6) inset;
-            /* opacity: 0; */
-            transform: translateY(-100%);
+                        0 0px 20px 0px rgba(0, 0, 0, 0.6) inset;
             z-index: -1;
             transition: 0.1s ease-in-out;
         }
@@ -71,13 +70,13 @@
             width: 100%;
             min-height: 200%;
             height: fit-content;
-            /* padding: 40px; */
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(5px);
             background: #0000008c;
             display: block;
             position: relative;
             padding-bottom: 20px;
         }
+
         .homePage  .logo2 {
             position: absolute;
             width: 170px;
@@ -100,62 +99,45 @@
             font-size: 50px;
             font-weight: bold;
             text-align: center;
-            /* position: relative; */
-            /* top: 350px;
-            left: 50px; */
         }
+
         .homePage .titleHomePage2 {
             top: 420px;
         }
-        /* .homePage .logo3 { */
-            /* position: relative; */
-            /* width: 200px;
-            height: 200px; */
-            /* top:300px;
-            right:100px;
-            z-index: -1; */
-        /* } */
+    
         .homePage .infoHomePage {
             color: white;
             font-size: 20px;
             font-weight: lighter;
             text-align: center;
-            /* position: relative; */
-            /* top: 500px;
-            left: 50px; */
-            /* width: 200%; */
-            /* border: #000000 1px solid; */
             padding: 0px;
             justify-content: left;
             text-align: left;
         }
         .homePage .logo4 {
-            /* position: relative; */
             width: 200px;
             height: 200px;
-            /* top: 600px;
-            left: 50px; */
             transform: translateX(-150%);            
             z-index: 1;
         }
         .homePage .logo5 {
             position: relative;
-            /* top: 650px; */
-            left: 50px;
+            left: 0px;
+            height: 100px;
+            margin-top: 55px;
             z-index: -5;
         }
         .homePage .navbar {
             position: absolute;
             top: 0;
             right: 0;
-            width: fit-content;
+            width: 100%;
             height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             z-index: 3;
-            /* border: #ffffff 1px solid; */
             
         }
         .homePage .nav-link {
@@ -166,7 +148,6 @@
             height: 50px;
             margin: 10px;
             cursor: pointer;
-            /* border-bottom: #b700ff 1px solid; */
             border-radius: 100px;
             padding: 10px 20px;
             border-bottom: #b700ff00 3px solid;
@@ -174,22 +155,25 @@
             border-bottom: #b700ff00 0px solid;
         }
         .homePage .nav-link:hover {
-            border-bottom: #b700ff 3px solid;
-            border-top: #b700ff 1px solid;
-            border-bottom: #b700ff 0px solid;
+            border-top: rgba(255, 255, 255, 0.618) 3px solid !important;
+            transform: scale(1.1) rotateX(-15deg);
+            transition: 0s;
+            text-shadow: 0 0 10px rgb(255, 255, 255);
         }
+
         .homePage .sign {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             justify-content: end;
-            align-items: center;
-            width: 400px;
-            gap: 20px;
+            align-items: right;
+            width: fit-content;
+
         }
 
         .homePage .submit3 {
-            /* background-color: #5c21c3;
-            color: white; */
-            /* padding: 10px 20px; */
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -218,7 +202,26 @@
             justify-content: center;
             align-items: end;
             padding: 100px 40px;
-            /* border: #f00 1px solid; */
+            overflow-x: hidden;
+        }
+        #About a.startSign {
+            position: relative;
+            display: flex;
+            width: fit-content;
+            overflow-y: hidden;
+            width: fit-content;
+            left: -40px;
+            height: 60px;
+            width: 280px;
+            margin-top: 80px;
+
+        }
+        #About .logo4 {
+            position: relative;
+            top: -125%;
+            left: 60px;
+
+            z-index: 1;
         }
         .homePage .bigTitle {
             display: flex;
@@ -226,12 +229,6 @@
             justify-content: center;
         }
         .homePage .logo3 {
-            /* width: 500px;
-            height: 500px; */
-            /* display: flex;
-            justify-content: center;
-            align-items: center; */
-            /* padding: 40px; */
             opacity: 0;
         }
         .homePage .bigTitle .titleHomePage1, .homePage .bigTitle .titleHomePage2 {
@@ -239,12 +236,8 @@
             font-size: 10px;
             min-width: 300px;
             width: 60%;
-            /* font-weight: bold; */
             text-align: center;
             padding: 10px;
-            /* position: relative; */
-            /* top: 350px;
-            left: 50px; */
         }
 
         #Features {
@@ -257,7 +250,7 @@
             align-items: center;
             padding: 40px;
             margin: 150px 0;
-            /* border: #f00 1px solid; */
+            overflow-x: hidden;
         }
         .homePage .game img, .homePage .tournament img {
             width: 500px;
@@ -267,7 +260,6 @@
             align-items: center;
             padding: 40px;
             z-index: -1;
-            /* border: #f00 1px solid; */
         }
         .homePage .game .logo6{
             transform: translate(-100%);
@@ -285,7 +277,6 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
-            /* border: #f00 1px solid; */
         }
         .homePage .tournament {
             display: flex;
@@ -293,16 +284,13 @@
             justify-content: center;
             align-items: center;
             padding: 40px;
-            /* border: #f00 1px solid; */
         }
         .homePage .game .title, .homePage .tournament .title {
             color: rgba(192, 158, 255, 0.741);
             font-size: 30px;
             text-align: center;
-            /* padding: 40px; */
             font-family: 'Robot';
             width: 40%;
-            /* border: #f00 1px solid; */
         }
         .homePage .game .infoHomePage, .homePage .tournament .infoHomePage {
             color: white;
@@ -310,20 +298,19 @@
             font-weight: lighter;
             text-align: center;
             padding: 40px;
-            /* width: 100%; */
-            /* border: #f00 1px solid; */
         }
         #Developers {
             position: relative;
             width: 100%;
             min-height: 70vh;
+            height: fit-content;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 40px;
             margin: 150px 0;
-            /* border: #f00 1px solid; */
+            overflow-x: hidden;
         }
         #Developers .title {
             position: absolute;
@@ -334,7 +321,6 @@
             text-align: left;
             padding: 40px;
             width: 40%;
-            /* border: #f00 1px solid; */
         }
         #Developers .title p:nth-of-type(1) {
             font-family: 'Robot';
@@ -350,10 +336,9 @@
             width: 100px;
             height: 100px;
             z-index: -1;
-            /* border: #f00 1px solid; */
         }
         #Developers .info {
-            position: absolute;
+            position: relative;
             bottom: 0;
             color: white;
             font-size: 20px;
@@ -361,7 +346,6 @@
             text-align: center;
             padding: 40px;
             width: 100%;
-            /* border: rgb(0, 255, 13) 1px solid; */
         }
         #Developers .info p {
             font-size: 20px;
@@ -372,15 +356,10 @@
         #Developers .devTeam {
             position: relative;
             width: 100%;
-            /* min-height: 600px; */
             display: flex;
             justify-content: space-around;
             align-items: center;
-            /* gap: 100px; */
             padding: 40px;
-            /* border: rgb(255, 247, 0) 1px solid; */
-            /* transform: translateY(-50%) rotateX(70deg); */
-            /* background-color: red; */
         }
         #Developers .devTeam .container {
             perspective: 1000px;
@@ -388,48 +367,43 @@
             top: 0;
             width: fit-content;
             height: fit-content;
-            /* border: rgb(255, 255, 255) 1px solid; */
         }
         #Developers .devTeam .dev {
             position: relative;
             top: 0;
             transform-style: preserve-3d;
-            /* min-height: 600px; */
-            /* width: 300px;
-            height: 300px; */
-            /* border: rgb(212, 0, 255) 1px solid; */
         }
 
         #Developers  .devTeam  .dev img {
             position: absolute;
-            /* border: rgb(0, 17, 255) 1px solid; */
         }
         #Developers  .devTeam  .dev img:nth-of-type(1) {
             position: relative;
-            /* border: rgb(0, 170, 255) 1px solid; */
-            /* perspective: 1000px; */
         }
+        #Developers  .devTeam  .dev img.devA1, #Developers  .devTeam  .dev img.devB1, #Developers  .devTeam  .dev img.devC1 {
+            background: linear-gradient(#d2c8ff 0%, #c0b7e860 50%, #c0b7e800 100%);
+            box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                        0 10px 20px 1px #00000060 inset,
+                        0 10px 40px 10px #05050560 inset;
+            border: rgba(167, 167, 167, 0.268) 4px solid inset;
+            border-radius: 50px;
+            background-size: 100% 200%;
+        }
+
         #Developers  .devTeam  .dev img:nth-of-type(2) {
             position: absolute;
-            border: none;
             left: 50%;
             top: 5%;
-            /* perspective: 1500px; */
             background: #00000082;
             box-shadow: 0 0 20px 30px rgba(0, 0, 0, 0.5);
-            
             border-radius: 50%;
             transform: translateX(-50%) translateY(-5%);
         }
         #Developers  .devTeam  .dev img:nth-of-type(3) {
             position: absolute;
-            /* border: rgb(31, 168, 0) 1px solid; */
             left: 50%;
-            top: calc(5% + 12px);
-            /* perspective: 1500px; */
-            
+            top: calc(5% + 12px);            
             transform: translateX(-50%) translateY(-5%);
-            
         }
         #Developers  .devTeam  .dev .name {
             position: absolute;
@@ -437,23 +411,14 @@
             font-size: 20px;
             font-weight: lighter;
             text-align: center;
-            /* padding: 40px; */
             width: 100%;
-            /* perspective: 2000px; */
-            /* border: rgb(229, 255, 0) 1px solid; */
         }
 
         #Developers  .devTeam  .dev .name h1 {
-            /* font-size: 20px;
-            font-weight: lighter;
-            text-align: center; */
             color: rgb(255, 255, 255);
             text-shadow: 0 0 10px rgb(0, 0, 0);
         }
         #Developers  .devTeam  .dev .name:nth-of-type(2) h1 {
-            /* font-size: 20px;
-            font-weight: lighter;
-            text-align: center; */
             color: rgba(255, 255, 255, 0);
             text-shadow: 0 10px 10px rgb(0, 0, 0);
         }
@@ -465,75 +430,195 @@
             left: 50%;
             width: 60%;
             height: 1px;
-            /* border-radius: 50%; */
             background: #C0B7E8;
             transform: translateX(-50%);
         }
         #Developers  .devTeam  .dev .social {
             position: absolute;
-            /* bottom: 0; */
             top: 70%;
-            /* left: 50%; */
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
             transform-style: preserve-3d;
-            /* perspective: 2500px; */
-            /* transform: rotateY(70deg); */
-            /* border: rgb(255, 132, 0) 1px solid; */
         }
 
         #Developers  .devTeam  .dev .social img {
             width: 40px;
             height: 50px;
-            /* border: rgb(255, 255, 255) 1px solid; */
         }
+
         #Developers  .devTeam  .dev .social a:hover {
             position: relative;
-            transform:  scale(1.2) translateZ(20px) rotateX(-15deg) ;
+            transform:  translateY(30px) translateZ(40px) rotateX(-55deg) scale(1.1);
             transition: 0.5s;
-            /* height: 50px; */
-            /* border: rgb(255, 255, 255) 1px solid; */
         }
         #Developers  .devTeam  .dev .social a:active {
             position: relative;
-            transform:  rotateX(70deg) scale(1.2) translateZ(-10px) ;
+            transform:  translateY(0) translateZ(-5px) rotateX(0);
             transition: 0s;
         }
         #Developers  .devTeam  .dev .devTitle {
             position: absolute;
             bottom: 7%;
             left: 50%;
-            /* width: 100px; */
-            /* height: 100px; */
             transform: translateX(-50%);
             border-radius: 50px;
-            /* perspective: 3000px; */
-            /* border: #f00 1px solid; */
+            box-shadow: 0 0 20px 10px rgba(67, 64, 69, 0.744);
+            border: rgb(120, 120, 120) 1px solid;
         }
-        /* #Developers  .devTeam  .dev:hover img:nth-of-type(1) {
-            transform: rotateX(40deg);
-            transition: 1s;
+        #Contact {
+            position: relative;
+            overflow-x: hidden;
+            perspective: 1000px;
+            padding: 40px 100px;
+            padding-bottom: 250px;
         }
-        #Developers  .devTeam  .dev:hover img:nth-of-type(2) {
-            transform:  translateX(-50%) translateY(5%) translateZ(-100px) rotateX(40deg) skew(-50deg);
-            fill: #000000;
-            background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.98));
-            transition: 1s;
+        #Contact .contactWrapper .contact {
+            position: relative;
+            transform-style: preserve-3d;
+            width: fit-content;
+        }
+
+        #Contact .contactWrapper h1 {
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            padding: 40px;
+        }
+        #Contact .contactWrapper h6 {
+            color: white;
+            font-size: 36px;
+            font-weight: lighter;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        #Contact .contactWrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            padding: 40px;
+            background: radial-gradient(#593e92, #000000); 
+            border-radius: 100px;
+            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.319),
+            0 0 20px 0px rgba(0, 0, 0, 0.142) inset;
+        }
+
+        #Contact .contactWrapper span#line, #Contact .contactWrapper span#line2 {
+            position: relative;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 0;
+            transform: translateX(-50%);
             border-radius: 50%;
         }
-        #Developers  .devTeam  .dev:hover img:nth-of-type(3) {
-            transform:  translateX(-50%) translateY(-15%) translateZ(-50px);
-            transition: 1.5s;
-        } */
+        #Contact .contactWrapper span#line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 500px;
+            height: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, #46464600, #ffffff 50%, #46464600);
+            box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.326);
+        }
 
-        @media screen and (max-width: 1300px) {
+        #Contact .contactWrapper form {
+            position: relative;
+            width: 100%;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 50px;
+            transform-style: preserve-3d;            
+        }
+        
+        #Contact .contactWrapper form input, #Contact .contactWrapper form textarea {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            background: #00000000;
+            color: white;
+            font-size: 20px;
+            font-weight: lighter;
+            border-top: #ffffff6b 1px solid;
+            border-bottom: #0000008b 1px solid;
+            background: linear-gradient(#00000000, #00000062);
+            box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.319),
+                        0 10px 20px 0px rgba(0, 0, 0, 0.142) inset;
+        }
+        #Contact .contactWrapper form input:nth-child(5) {
+            grid-column: span 2;
+        }
+        #Contact .contactWrapper form textarea {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: 100px;
+            border-radius: 25px;
+            min-height: 50px;
+        }
+        #Contact .contactWrapper form div {
+            grid-column: span 2;
+            height: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+        #Contact .contactWrapper form button {
+            position: relative;
+            display: flex;
+            width: 200px;
+            height: 50px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #8176af7c, #c0b7e860);
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.319),
+                        0 10px 20px 0px rgba(0, 0, 0, 0.142) inset;
+            margin: 0px;
+        }
+
+        #Contact .contactWrapper form button img {
+            width: 45px;
+            height: 45px;
+            padding: 0 0;
+        }
+
+        #Contact .contactWrapper form button:hover {
+            background: #bc93ff;
+            transform: scale(1.1);
+            backdrop-filter: blur(1px);
+        }
+
+        @media screen and (max-width: 1080px) {
             .homePage .nav-link {
                 display: none;
             }
         }
+
         @media screen and (max-width: 1100px) {
             #About {
                 flex-direction: column;
@@ -550,8 +635,39 @@
             .homePage .tournament {
                 flex-direction: column-reverse;
             }
-            
+            #Developers .devTeam {
+                flex-direction: column;
+            }
+            #Developers .devTeam .container {
+                margin: 20px 0;
+            }
+            #Contact .contactWrapper {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #Contact .contactWrapper form  {
+                position: relative;
+                left: 50%;
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                transform: translateX(-50%);
+            }
+            #Contact .contactWrapper span#line::after {
+                width: 200px;
+            }
+            #Contact .contactWrapper h1 {
+                font-size: 30px;
+            }
+            #Contact .contactWrapper form input, #Contact .contactWrapper form textarea {
+                min-width: 250px;
+            }
         }
+
+
     </style>
 </head>
 <body>
@@ -560,7 +676,7 @@
             <span></span>
             <img src="assets/logo2.svg" alt="logo" class="logo2">
             <nav class="navbar">
-                <div class="d-flex">
+                <div class="d-flex ">
                     <a href="#About" class="nav-link">About</a>
                     <a href="#Features" class="nav-link">Features</a>
                     <a href="#Developers" class="nav-link">Developers</a>
@@ -568,9 +684,6 @@
                     <div class="sign">
                         <a class="submit3" onclick="window.location.href = 'http:/\/127.0.0.1:5500/app/auth.html';" >
                             <img src="assets/images/signup.svg" alt="logo">
-                        </a>
-                        <a class="submit3" onclick="window.location.href = 'http:/\/127.0.0.1:5500/app/auth.html';" > 
-                            <img src="assets/images/signin.svg" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -589,8 +702,10 @@
                     strategic duels, and a journey that will test your skills and determination.
                     Are you prepared to embark on this extraordinary quest for ping pong glory?
                 </p>
-                <img src="assets/images/startbutton.svg" alt="logo" class="logo4">
-                <img src="assets/images/arrow-small-right.svg" alt="logo" class="logo5">
+                <div class="d-flex">
+                    <a class="startSign" onclick="window.location.href = 'http:/\/127.0.0.1:5500/app/auth.html';" ><img src="assets/images/startbutton.svg" alt="logo" class="logo4"></a>
+                    <img src="assets/images/arrow-small-right.svg" alt="logo" class="logo5">
+                </div>
             </div>
             <img src="assets/images/img1.svg" alt="logo" class="logo3">
         </section>
@@ -629,6 +744,7 @@
             <div class="devTeam">
                 <div class="container">
                     <div class="dev">
+                        
                         <img src="assets/images/devCard/bg.svg" alt="logo" class="devA1">
                         <img src="assets/images/devCard/bg2.svg" alt="logo" class="devA2">
                         <img src="assets/images/devCard/avatar1.svg" alt="logo" class="devA3">
@@ -728,21 +844,28 @@
                 </p>
             </div>
         </section>
-        <section id="Developers">
-            <div>
-                <img src="assets/images/title/Developers.svg" alt="logo" class="titleHomePage1">
-                <img src="assets/images/title/Meet The Team.svg" alt="logo" class="titleHomePage2">
-            </div>
-            <div>
-                <p class="infoHomePage">
-                    We are a team of passionate developers who are dedicated to creating the ultimate ping pong experience.
-                    we are committed to providing the best ping pong experience for our users.
-                    we are constantly working on improving our game and adding new features.
-                    we are always open to feedback and suggestions from our users.
-                </p>
+        <section id="Contact">
+            <div class="contactWrapper">
+                <div class="contact">
+                    <h1>IF YOU HAVE SOMETHING TO SAY</h1>
+                    <span id="line"></span>
+                    <h6>Let Us Know</h6>
+                    <span id="line2"></span>
+                    <form action="">
+                        <input type="text" placeholder="First Name" class="field1">
+                        <input type="text" placeholder="Last Name" class="field2">
+                        <input type="email" placeholder="Email" class="field3">
+                        <input type="number" placeholder="Phone" class="field4">
+                        <input type="text" placeholder="Subject" class="field5">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Tell Us Something..." class="textarea"></textarea>
+                        <div><button class="submitForm">Send To <img src="assets/logo.svg" alt="logo"></button></div>
+                    </form>
+                </div>
+                
             </div>
         </section>
         <h1 class="footerCopy">2023 © PONG LANDING PAGE - BY ABDELLAH. AYOUB. HICHAM - ALL RIGHTS RESERVED </h1>
+        
     </div>
 
 
@@ -783,15 +906,14 @@
                 logo4.style.transform = 'translate(0)';
                 logo4.style.transition = 'transform 0.4s';
             }
-        });
-        window.addEventListener('scroll', function (event) {
+            
+            window.addEventListener('scroll', function (event) {
             const title1 = document.querySelector('.game .title');
             const title2 = document.querySelector('.tournament .title');
             const logo6 = document.querySelector('.logo6');
             const logo7 = document.querySelector('.logo7');
             const logo3 = document.querySelector('.logo3');
             const logo4 = document.querySelector('.logo4');
-            const nav = document.querySelector('.nav span');
             const infoHomePage = document.querySelector('.infoHomePage');
             if (isInViewport(title1)) {
                 logo6.style.transform = 'translate(0)';
@@ -800,7 +922,6 @@
             if (isInViewport(title2)) {
                 logo7.style.transform = 'translate(0)';
                 logo7.style.opacity = 1;
-                console.log(title2.getBoundingClientRect().top , window.innerHeight / 2);
                 if (title2.getBoundingClientRect().top < window.innerHeight / 2) {
                     title2.children[1].style.transform = `translateX(1000px)`;
                 } else {
@@ -813,87 +934,210 @@
                 logo4.style.transform = 'translate(0)';
                 logo4.style.transition = 'transform 0.4s';
             }
-            if (window.scrollY > 100) {
-                nav.style.transform = 'translateY(0)';
-            } else {
-                nav.style.transform = 'translateY(-100%)';
-            }
-        }, false);
 
-        const dev = document.querySelectorAll('#Developers  .devTeam  .dev');
-        dev.forEach((el) => {
-            el.children[0].style.transition = '0.7s ease-out';
-            el.children[1].style.transition = '0.7s ease-out';
-            el.children[2].style.transition = '0.7s ease-out';
-            el.children[3].style.transition = '0.7s ease-out';
-            el.children[4].style.transition = '0.7s ease-out';
-            el.children[4].children[0].style.transition = '0.7s ease-out';
-            el.children[4].children[1].style.transition = '0.7s ease-out';
-            el.children[5].style.transition = '0.7s ease-out';
-            el.children[6].style.transition = '0.7s ease-out';
+            if (window.innerWidth < 1100) {
+                const dev = document.querySelectorAll('#Developers  .devTeam  .dev');
+                dev.forEach((el) => {
+                    if (el.getBoundingClientRect().top < window.innerHeight / 2 && el.getBoundingClientRect().bottom > window.innerHeight / 2) {
+                        el.children[0].style.transform = `rotateX(50deg)`;
+                        el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                            0 7px 20px 1px #000000ff inset,
+                                                            0 7px 40px 10px #05050560 inset`;
+                        el.children[0].style.backgroundPosition = '0% 70%';
+                        el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.7) scaleY(0.2)';
+                        el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
+                        el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                        el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                        el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                        el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                        el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
+                        el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
+                        el.children[6].style.filter = '';
+                        el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                    } else {
+                        el.children[0].style.transform = 'rotateX(0deg)';
+                        el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                        0 10px 20px 1px #00000060 inset,
+                                                        0 10px 40px 10px #05050560 inset`;
+                        el.children[0].style.backgroundPosition = '0% 100%';
+                        el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(40px) rotateX(0deg) scaleX(0.7) scaleY(0.7)';
+                        el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px) scale(0.9)';
+                        el.children[3].style.transform = 'translateY(0) translateZ(20px)';
+                        el.children[4].style.transform = 'translateY(0) translateZ(10px)';
+                        el.children[4].children[0].style.textShadow = '0 10px 10px #000';
+                        el.children[4].children[1].style.textShadow = '0 10px 10px #000';
 
-            el.children[0].style.transform = 'rotateX(0deg)';
-            el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(0px) rotateX(0deg) scaleX(0.8) scaleY(0.8)';
-            el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px)';
-            el.children[3].style.transform = 'translateY(0) translateZ(20px)';
-            el.children[4].style.transform = 'translateY(0) translateZ(10px)';
-            el.children[5].style.transform = 'translateY(0%) translateZ(100px)';
-            el.children[6].style.transform = 'translateY(25px) translateZ(1px) translateX(-50%)';
-            el.children[6].style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.3)';
-            
-            el.addEventListener('mouseover', (e) => {
-                // const X = e.clientX - el.getBoundingClientRect().left;
-                // const Y = e.clientY - el.getBoundingClientRect().top;
-                // const dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
-                // const dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
+                        el.children[5].style.transform = 'translateY(5px) translateZ(100px) scale(1.1)';
+                        el.children[6].style.transform = 'translateY(25px) translateZ(-1px) translateX(-50%)';
+                        el.children[6].style.boxShadow = '0 0 20px 10px rgba(67, 64, 69, 0.744)';
+                        el.children[6].style.filter = 'blur(0px) saturate(100%) brightness(55%) contrast(100%) invert(0%) sepia(0%)';
+                    }
+                });}
+            }, false);
 
-                el.children[0].style.transform = `rotateX(50deg)`;
-                el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.8) scaleY(0.3)';
-                el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
-                el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
-                el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
-                el.children[4].children[0].style.textShadow = '0 10px 20px #000';
-                el.children[4].children[1].style.textShadow = '0 10px 11px #000';
-                el.children[5].style.transform = 'translateY(-60px) translateZ(130px) rotateX(-15deg) scale(1.2)';
-                el.children[6].style.transform = 'translateZ(270px) rotateX(50deg) translateX(-50%) translateY(-105px)';
-                el.children[6].style.boxShadow = '0 0 0 10px rgba(0, 0, 0, 0.3)';
-                // el.children[6].style.transform = 'translateZ(280px) rotateX(50deg) translateX(-50%) translateY(-120px) scale(1.2)';
-                // el.children[5].style.transition = '0.6s ease-in';
-            });
+            const dev = document.querySelectorAll('#Developers  .devTeam  .dev');
+            dev.forEach((el) => {
+                setTimeout(() => {
+                    el.children[0].style.transition = '0.5s ease-out';
+                    el.children[1].style.transition = '0.5s ease-out';
+                    el.children[2].style.transition = '0.5s ease-out';
+                    el.children[3].style.transition = '0.5s ease-out';
+                    el.children[4].style.transition = '0.5s ease-out';
+                    el.children[4].children[0].style.transition = '0.5s ease-out';
+                    el.children[4].children[1].style.transition = '0.5s ease-out';
+                    el.children[5].style.transition = '0.5s ease-out';
+                    el.children[6].style.transition = '0.5s ease-out';
+                }, 300);
 
-            el.addEventListener('mousemove', (e) => {
-                
-                let X = e.clientX - el.getBoundingClientRect().left;
-                let Y = e.clientY - el.getBoundingClientRect().top;
-                let dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
-                let dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
-
-                el.children[0].style.transform = `rotateX(50deg)`;
-                el.children[1].style.transform = `translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(${0.8 - Math.abs(dx * 0.005)}) scaleY(0.3) skewY(${-dx * 0.2}deg)`;
-                el.children[2].style.transform = `translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg) rotateY(${dx / 1.9}deg)`;
-                el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
-                el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
-                el.children[4].children[0].style.textShadow = '0 10px 20px #000';
-                el.children[4].children[1].style.textShadow = '0 10px 11px #000';
-                el.children[5].style.transform = 'translateY(-60px) translateZ(130px) rotateX(-15deg) scale(1.2)';
-                el.children[6].style.transform = 'translateZ(270px) rotateX(50deg) translateX(-50%) translateY(-105px)';
-                el.children[6].style.boxShadow = '0 0 0 10px rgba(0, 0, 0, 0.3)';
-                // el.children[6].style.transform = 'translateZ(280px) rotateX(50deg) translateX(-50%) translateY(-120px) scale(1.2)';
-                // el.children[5].style.transition = '0.6s ease-in';
-            });
-            el.addEventListener('mouseout', (e) => {
                 el.children[0].style.transform = 'rotateX(0deg)';
-                el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(40px) rotateX(0deg) scaleX(0.8) scaleY(0.8)';
-                el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px)';
+                el.children[0].style.backgroundPosition = '0% 100%';
+                el.children[1].style.transform = 'translateX(-50%) translateY(0%) translateZ(0px) rotateX(0deg) scaleX(0.7) scaleY(0.7)';
+                el.children[2].style.transform = 'translateX(-50%) translateY(0%) translateZ(160px) scale(0.9)';
                 el.children[3].style.transform = 'translateY(0) translateZ(20px)';
                 el.children[4].style.transform = 'translateY(0) translateZ(10px)';
-                el.children[4].children[0].style.textShadow = '0 10px 10px #000';
-                el.children[4].children[1].style.textShadow = '0 10px 10px #000';
+                el.children[5].style.transform = 'translateY(5px) translateZ(100px) scale(1.1)';
+                el.children[6].style.transform = 'translateY(25px) translateZ(-1px) translateX(-50%)';
+                el.children[6].style.filter = 'blur(0px) saturate(100%) brightness(55%) contrast(100%) invert(0%) sepia(0%)';
+                
+                el.addEventListener('mouseover', (e) => {
 
-                el.children[5].style.transform = 'translateY(0) translateZ(60px)';
-                el.children[6].style.transform = 'translateY(25px) translateZ(1px) translateX(-50%)';
-                el.children[6].style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.3)';
-                // el.children[5].style.transition = '1s';
+                    el.children[0].style.transform = `rotateX(50deg)`;
+                    el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                        0 7px 20px 1px #000000ff inset,
+                                                        0 7px 40px 10px #05050560 inset`;
+                    el.children[0].style.backgroundPosition = '0% 70%';
+                    el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.7) scaleY(0.2)';
+                    el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
+                    el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                    el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                    el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                    el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                    el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
+                    el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
+                    el.children[6].style.filter = '';
+                    el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                });
+
+                el.addEventListener('mousemove', (e) => {
+                    
+                    let X = e.clientX - el.getBoundingClientRect().left;
+                    let Y = e.clientY - el.getBoundingClientRect().top;
+                    let dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
+                    let dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
+
+                    el.children[0].style.transform = `rotateX(50deg)`;
+                    el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                        0 7px 20px 1px #000000ff inset,
+                                                        0 7px 40px 10px #05050560 inset`;
+                    el.children[0].style.backgroundPosition = '0% 70%';
+                    el.children[1].style.transform = `translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(${0.7 - Math.abs(dx * 0.005)}) scaleY(0.2) skewY(${-dx * 0.2}deg)`;
+                    el.children[2].style.transform = `translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg) rotateY(${dx / 1.9}deg)`;
+                    el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                    el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                    el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                    el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                    el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
+                    el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
+                    el.children[6].style.filter = '';
+                    el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                });
+                el.addEventListener('mouseout', (e) => {
+                    if (window.innerWidth >= 1100) {
+                        el.children[0].style.transform = '';
+                        el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                        0 10px 20px 1px #00000060 inset,
+                                                        0 10px 40px 10px #05050560 inset`;
+                        el.children[0].style.backgroundPosition = '0% 100%';
+                        el.children[1].style.transform = 'translateX(-50%) translateZ(40px) scaleX(0.7) scaleY(0.7)';
+                        el.children[2].style.transform = 'translateX(-50%) translateZ(160px) scale(0.9)';
+                        el.children[3].style.transform = 'translateZ(20px)';
+                        el.children[4].style.transform = 'translateZ(10px)';
+                        el.children[4].children[0].style.textShadow = '0 10px 10px #000';
+                        el.children[4].children[1].style.textShadow = '0 10px 10px #000';
+
+                        el.children[5].style.transform = 'translateY(5px) translateZ(100px) scale(1.1)';
+                        el.children[6].style.transform = 'translateY(25px) translateZ(-1px) translateX(-50%)';
+                        el.children[6].style.boxShadow = '0 0 20px 10px rgba(67, 64, 69, 0.744)';
+                        el.children[6].style.filter = 'saturate(100%) brightness(55%) contrast(100%)';
+                    }
+                });
+            });
+            const Contact = document.querySelector('#Contact');
+            const contactWrapper = document.querySelector('#Contact .contactWrapper');
+            const titleH1 = document.querySelector('#Contact .contactWrapper .contact h1');
+            const titleH6 = document.querySelector('#Contact .contactWrapper .contact h6');
+            const input1 = document.querySelector('.field1');
+            const input2 = document.querySelector('.field2');
+            const input3 = document.querySelector('.field3');
+            const input4 = document.querySelector('.field4');
+            const input5 = document.querySelector('.field5');
+            const textarea = document.querySelector('.textarea');
+            const submit = document.querySelector('.submitForm');
+
+            const formElements = [input1, input2, input3, input4, input5];
+            
+            contactWrapper.style.transition = '0.5s ease-in-out';
+            Contact.style.transition = '0.5s ease-in-out';
+            titleH1.style.transition = '0.5s ease-in-out';
+            titleH6.style.transition = '0.5s ease-in-out';
+            submit.style.transition = '0.5s ease-in-out';
+            textarea.style.transition = '0.5s ease-in-out';
+
+            formElements.forEach((el) => {
+                el.style.transition = '0.5s ease-in-out';
+                el.addEventListener('focus', (e) => {
+                    contactWrapper.style.transform = `rotateX(${formElements.indexOf(el) * 10 + 10}deg)`;
+                    el.style.transform = `translateY(0px) translateZ(80px) rotateX(-${formElements.indexOf(el) * 10 + 10}deg)`;
+                    titleH1.style.transform = 'rotateX(-80deg) translateY(-200px) translateZ(80px)';
+                    titleH6.style.transform = 'rotateX(-90deg) translateY(-100px) translateZ(30px)';
+                });
+                el.addEventListener('blur', (e) => {
+                    if (el.value === '') {
+                        el.style.transform = '';
+                        titleH1.style.transform = '';
+                        titleH6.style.transform = '';
+                    }
+                });
+            });
+
+            Contact.addEventListener('mouseenter', (e) => {
+                contactWrapper.style.transform = ' translateY(-100px) translateZ(-200px)';
+                titleH1.style.transform = 'rotateX(-80deg) translateY(-200px) translateZ(80px)';
+                titleH6.style.transform = 'rotateX(-90deg) translateY(-100px) translateZ(30px)';
+            });
+            Contact.addEventListener('mouseleave', (e) => {
+                contactWrapper.style.transform = 'rotateX(0deg)';
+                titleH1.style.transform = '';
+                titleH6.style.transform = '';
+                input1.style.transform = '';
+                input2.style.transform = '';
+                input3.style.transform = '';
+                input4.style.transform = '';
+                input5.style.transform = '';
+                textarea.style.transform = '';
+                submit.style.transform = '';
+            });
+
+
+            textarea.addEventListener('focus', (e) => {
+                contactWrapper.style.transform = 'rotateX(60deg)';
+                titleH1.style.transform = 'rotateX(-80deg) translateY(-200px) translateZ(80px)';
+                titleH6.style.transform = 'rotateX(-90deg) translateY(-100px) translateZ(30px)';
+                textarea.style.transform = 'translateY(0px) translateZ(80px) rotateX(-60deg) translateY(-20px) translateZ(20px)';
+            });
+            textarea.addEventListener('blur', (e) => {
+                if (textarea.value === '') {
+                    textarea.style.transform = 'translateY(0px)';
+                    textarea.style.transition = '0.5s';
+                }
+            });
+            submit.addEventListener('focus', (e) => {
+                contactWrapper.style.transform = 'rotateX(70deg) translateZ(-200px)';
+                submit.style.transform = 'translateY(0px) translateZ(80px) rotateX(-30deg) translateY(-20px) translateZ(20px)';
+            });
+            submit.addEventListener('blur', (e) => {
+                submit.style.transform = '';
+                submit.style.transition = '0.5s';
             });
         });
     </script>
