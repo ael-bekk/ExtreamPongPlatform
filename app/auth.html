@@ -47,15 +47,16 @@
         <span></span>
         <h1 class="title">LOGIN</h1>
         <div class="anotherContainer">
-            <div class="sign"><img src="assets/images/goolge.svg" alt="google" class="google"></div>
-            <div class="sign"><img src="assets/images/42.svg" alt="42" class="school42"></div>
+            <div class="sign"><img src="assets/images/goolge.svg" alt="google" class="google" onclick="window.location.href = 'http:\/\/localhost:3000/auth/google'"></div>
+            <div class="sign"><img src="assets/images/42.svg" alt="42" class="school42" onclick="window.location.href = 'http:\/\/localhost:3000/auth/42'"></div>
             <div class="form">
-                <form>
-                    <input type="text" name="username" placeholder="Username" class="username">
+                <form id="formElement">
+
+                    <input required type="text" name="username" placeholder="Username" class="username">
                     <input type="email" name="email" placeholder="Email" class="email">
-                    <input type="password" name="password" placeholder="Password" class="password">
+                    <input required type="password" name="password" placeholder="Password" class="password">
                     <div>
-                        <input type="submit" value="Sign in" class="submit">
+                        <input type="submit" value="Sign in" class="submit" onclick="submitForm()">
                         <input type="button" value="Sign up" class="submit2" onclick="handleChangeForm()" >
                     </div>
                 </form>
@@ -67,6 +68,7 @@
         <script>
             let span = document.querySelector('span');
             let sign = document.querySelectorAll('.sign');
+
             document.addEventListener('mousemove', function(e){
                 let x = e.clientX;
                 let y = e.clientY;
@@ -75,31 +77,51 @@
                     el.style.background = `linear-gradient(${x / 20 + y / 20 + 90}deg, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.7) 100%)`;
                 });
             });
+            const formElement = document.querySelector('#formElement');
+            const form = document.querySelector('.form');
+            const submit = document.querySelector('.submit');
+            const submit2 = document.querySelector('.submit2');
+            const username = document.querySelector('.username');
+            const email = document.querySelector('.email');
+            const password = document.querySelector('.password');
+
+            let signIn = true;
+            
             handleChangeForm = () => {
-                const form = document.querySelector('.form');
-                const submit = document.querySelector('.submit');
-                const submit2 = document.querySelector('.submit2');
-                const username = document.querySelector('.username');
-                const email = document.querySelector('.email');
-                const password = document.querySelector('.password');
 
                 if (submit2.value === 'Sign up') {
+                    email.required = true;
                     submit2.value = 'Sign in';
                     submit.value = 'Sign up';
                     username.placeholder = 'Username';
                     password.placeholder = 'Password';
                     email.style.display = 'block';
                     form.classList.add('form2');
+                    signIn = false;
                 } else {
+                    email.required = false;
                     submit2.value = 'Sign up';
                     submit.value = 'Sign in';
                     username.placeholder = 'Username';
                     password.placeholder = 'Password';
                     email.style.display = 'none';
                     form.classList.remove('form2');
+                    signIn = true;
                 }
                 submit.style.transition = '0s';
                 submit2.style.transition = '0s';
+            }
+            function submitForm() {
+                if (signIn) {
+                    formElement.method = 'POST';
+                    formElement.action = 'http://localhost:3000/auth/signin';
+                    formElement.submit();
+
+                } else {
+                    formElement.method = 'POST';
+                    formElement.action = 'http://localhost:3000/auth/signup';
+                    formElement.submit();
+                }
             }
         </script>
     </div>
