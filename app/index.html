@@ -1000,22 +1000,23 @@
                 el.children[6].style.filter = 'blur(0px) saturate(100%) brightness(55%) contrast(100%) invert(0%) sepia(0%)';
                 
                 el.addEventListener('mouseover', (e) => {
-
-                    el.children[0].style.transform = `rotateX(50deg)`;
-                    el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
-                                                        0 7px 20px 1px #000000ff inset,
-                                                        0 7px 40px 10px #05050560 inset`;
-                    el.children[0].style.backgroundPosition = '0% 70%';
-                    el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.7) scaleY(0.2)';
-                    el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
-                    el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
-                    el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
-                    el.children[4].children[0].style.textShadow = '0 10px 20px #000';
-                    el.children[4].children[1].style.textShadow = '0 10px 11px #000';
-                    el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
-                    el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
-                    el.children[6].style.filter = '';
-                    el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                    if (window.innerWidth >= 1100) {
+                        el.children[0].style.transform = `rotateX(50deg)`;
+                        el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                            0 7px 20px 1px #000000ff inset,
+                                                            0 7px 40px 10px #05050560 inset`;
+                        el.children[0].style.backgroundPosition = '0% 70%';
+                        el.children[1].style.transform = 'translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(0.7) scaleY(0.2)';
+                        el.children[2].style.transform = 'translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg)';
+                        el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                        el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                        el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                        el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                        el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
+                        el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
+                        el.children[6].style.filter = '';
+                        el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                    }
                 });
 
                 el.addEventListener('mousemove', (e) => {
@@ -1025,21 +1026,25 @@
                     let dx = (X - el.getBoundingClientRect().width / 2) * (100 / el.getBoundingClientRect().width);
                     let dy = (Y - el.getBoundingClientRect().height / 2) * (100 / el.getBoundingClientRect().height);
 
-                    el.children[0].style.transform = `rotateX(50deg)`;
-                    el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
-                                                        0 7px 20px 1px #000000ff inset,
-                                                        0 7px 40px 10px #05050560 inset`;
-                    el.children[0].style.backgroundPosition = '0% 70%';
-                    el.children[1].style.transform = `translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(${0.7 - Math.abs(dx * 0.005)}) scaleY(0.2) skewY(${-dx * 0.2}deg)`;
-                    el.children[2].style.transform = `translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg) rotateY(${dx / 1.9}deg)`;
-                    el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
-                    el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
-                    el.children[4].children[0].style.textShadow = '0 10px 20px #000';
-                    el.children[4].children[1].style.textShadow = '0 10px 11px #000';
-                    el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
-                    el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
-                    el.children[6].style.filter = '';
-                    el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                    if (el.getBoundingClientRect().top < window.innerHeight / 2 && el.getBoundingClientRect().bottom > window.innerHeight / 2) {
+                        el.children[1].style.transform = `translateX(-50%) translateY(25px) translateZ(-110px) rotateX(60deg) scaleX(${0.7 - Math.abs(dx * 0.005)}) scaleY(0.2) skewY(${-dx * 0.2}deg)`;
+                        el.children[2].style.transform = `translateX(-50%) translateY(-45%) translateZ(-120px) rotateX(-10deg) rotateY(${dx / 1.9}deg)`;
+                    }
+                    if (window.innerWidth >= 1100) {
+                        el.children[0].style.transform = `rotateX(50deg)`;
+                        el.children[0].style.boxShadow = `0 10px 20px 2px rgba(0, 0, 0, 0.8),
+                                                            0 7px 20px 1px #000000ff inset,
+                                                            0 7px 40px 10px #05050560 inset`;
+                        el.children[0].style.backgroundPosition = '0% 70%';
+                        el.children[3].style.transform = 'translateY(-50px) translateZ(100px) rotateX(-20deg) ';
+                        el.children[4].style.transform = 'translateY(-25px) translateZ(25px) rotateX(50deg) scaleY(.8)';
+                        el.children[4].children[0].style.textShadow = '0 10px 20px #000';
+                        el.children[4].children[1].style.textShadow = '0 10px 11px #000';
+                        el.children[5].style.transform = 'translateY(-55px) translateZ(130px) rotateX(50deg) scale(1.2)';
+                        el.children[6].style.transform = 'translateZ(160px) translateX(-50%) translateY(3px)';
+                        el.children[6].style.filter = '';
+                        el.children[6].style.boxShadow = '0 0 10px 10px rgba(0, 0, 0, 0.3)';
+                    }
                 });
                 el.addEventListener('mouseout', (e) => {
                     if (window.innerWidth >= 1100) {
