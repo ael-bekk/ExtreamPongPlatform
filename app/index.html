@@ -26,6 +26,10 @@
             background: linear-gradient(120deg, #000000 44%, #5c21c3 55%, #5c1a1a 60%)  no-repeat center center fixed;
             animation: animateColors 20s linear infinite;
         }
+        /* .e {
+            mask: url(#msk);
+            border: 1px solid white;
+        } */
         background-component {
             position: absolute;
             transform-style:none;
@@ -47,6 +51,7 @@
             transform-style: preserve-3d;
             padding: 0;
             margin: 0;
+            /* transition: 0.5s ease-in-out; */
         }
 
         body .home {
@@ -54,7 +59,7 @@
             height: 100%;
             width: 100%;
             backdrop-filter: blur(5px);
-            perspective: 1000px;
+            perspective: 1000px; 
             overflow: auto;
         }
         .home main {
@@ -76,44 +81,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            /* overflow: hidden; */
             height: 100%;
             width: 100%;
-            /* background : url(assets/images/mother.jpeg) no-repeat center center fixed;
-            background-size: cover; */
+            
             transform-style: preserve-3d;
             transform: rotateX(50deg) translateY(-85px);
             transition: 0.5s ease-in-out;
-
         }
-        main .leftside, main .rightside {
-            /* position: relative; */
-            width: 0%;
-            height: 100%;
-            transform: rotateX(50deg) translateY(-85px);
-            /* transform: rotateY(90deg) translateZ(-650px); */
-            /* opacity: 0.5; */
-            z-index: -1;
-            transition: 0.5s ease-in-out;
-        }
-        main .leftside div {
-            position: absolute;
-            width: 200px;
-            height: 200%;
-            opacity: 0.5;
-            background: linear-gradient(90deg, #000000 0%, #5c21c3 50%, rgb(255, 255, 255) 100%);
-            transform: rotateY(0deg) translateZ(-4000px) rotateX(-70deg) translateY(-5570px);
-            /* transform: rotateY(-90deg) translateZ(200px) translateX(200px) translateY(-1500px); */
-        }
-        main .rightside div {
-            position: absolute;
-            width: 200px;
-            height: 200%;
-            background: linear-gradient(-90deg, #000000 0%, #5c21c3 50%, rgb(255, 255, 255) 100%);
-            transform: rotateY(0deg) translateZ(-4000px) rotateX(-70deg) translateY(-5570px) translateX(-200px);
-            /* transform: rotateY(90deg) translateZ(-200px) translateX(-200px) translateY(-1500px); */
-            opacity: 0.5;
-            /* transform: rotateY(90deg) translateZ(-650px); */
-        }
+        
         main .mainContainer > * {
             position: relative;
             display: flex;
@@ -133,18 +109,46 @@
             width: fit-content;
             height: fit-content;
             transform: scaleX(0.5) scaleY(0.5);
+            transition: 0.5s ease-in-out;
         }
         .screen {
-            /* position: absolute; */
+            position: absolute;
             display: flex;
             width: 500px;
             height: 300px;
             border: 1px solid white;
             background: radial-gradient(ellipse at center, #ffffff3c 0%, #2989d800 50%, #ffffff00 100%);
+            transition: 0.5s ease-in-out;
+        }
+        main .mainContainer .screen .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* -webkit-mas */
+            clip-path: url(#msk);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(0deg, #0000006d 0, #5c21c36d 5px);
+            background-size: 100% 5px;
+            transition: 0.7s ease-in-out 0.3s;
+            transform: rotateX(-50deg) translateY(-150px);
+            /* border: rgb(255, 3, 3) 1px solid; */
+            /* text-shadow: 0 0 5px #000000; */
+            animation: animateScreen 10s linear infinite;
+        }
+        @keyframes animateScreen {
+            0% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 100% 0%;
+            }
         }
         .profile .screen, .tournament .screen {
             position: absolute;
             left: 14%;
+            top: 100%;
         }
         .leaderboard .screen, .game .screen {
             position: absolute;
@@ -157,6 +161,7 @@
         .tournament .base, .profile .base {
             position: relative;
             right: 45%;
+            top: 100%;
         }
         #backgroundM {
             position: absolute;
@@ -166,14 +171,36 @@
             opacity: 0.5;
             /* border: 1px solid white; */
         }
+        .home main .bgWrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+        .home main .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.5;
+            backdrop-filter: blur(15px); 
+            background: linear-gradient(300deg, #000000 46%, #5c21c3 55%, #5c1a1a 60%)  no-repeat center center fixed;
+            animation: animateColors 20s linear infinite;
+        }
+        @media screen and (max-width: 1400px){
+            .profile .screen, .tournament .screen, .tournament .base, .profile .base {
+                top : 0;
+            }
+        }
         @media screen and (max-width: 1080px){
             main .mainContainer {
                 transform: rotateX(0deg) translateY(0px);
                 transition: 0.5s ease-in-out 0.2s;
             }
-            main .leftside, main .rightside {
+            main .mainContainer .screen .content {
                 transform: rotateX(0deg) translateY(0px);
-                transition: 0.5s ease-in-out 0.2s;
+                transition: 0.5s ease-in-out;
             }
         }
     </style>
@@ -190,18 +217,20 @@
             </div>
         </nav>
         <main>
-            <div class="leftside">
+            <!-- <div class="leftside">
                 <div></div>
-            </div>
+            </div> -->
             <div class="mainContainer">
                 <div class="profile">
                     <div class="base">
                     </div>
                     <div class="screen">
+                        <div class="content">sdfdsf</div>
                     </div>
                 </div>
                 <div class="game">
                     <div class="screen">
+                        <div class="content">sdf</div>
                     </div>
                     <div class="base">
                     </div>
@@ -210,24 +239,31 @@
                     <div class="base">
                     </div>
                     <div class="screen">
+                        <div class="content">sdf</div>
                     </div>
                 </div>
                 <div class="leaderboard">
                     <div class="screen">
+                        <div class="content">sdafasdf</div>
                     </div>
                     <div class="base">
                     </div>
                 </div>
-                <img src="./assets/images/mother.jpeg" id="backgroundM" alt="">
+                <div class="bgWrapper">
+                    <div class="bg">
+                    </div>
+                </div>
+                <img ?src="./assets/images/mother.jpeg" id="backgroundM" alt="">
             </div>
-            <div class="rightside">
+            <!-- <div class="rightside">
                 <div></div>
-            </div>
+            </div> -->
         </main>
     </div>
     <script src="js/utils/backgroundBody.js"></script>
     <script src="js/utils/base3d.js"></script>
     <script src="js/utils/screen.js"></script>
+    <script src="js/utils/avatarCadr.js"></script>
     <script>
         document.querySelectorAll('.base').forEach(bs => {
             bs.appendChild(createBase());
@@ -235,6 +271,42 @@
         document.querySelectorAll('.screen').forEach(sc => {
             sc.appendChild(createScreen());
         });
+        document.querySelectorAll('.screen .content').item(0).appendChild(createAvatar());
+        document.querySelectorAll('.screen .content').forEach (sc => {
+            const width = sc.parentElement.clientWidth;
+            const height = sc.parentElement.clientHeight - 50;
+            let corner = height * 0.04;
+            let littleCorner = corner * 0.6;
+            let side = width * 0.3;
+            sc.innerHTML += `
+                    <svg style="position : relative" width="100%" height="100%" viewBox="0 0 ${width} ${height}">
+                        <defs>
+                        <clipPath id="msk" x="0" y="0" width="100%" height="100%" transform="translate(0,25)">
+                            <path d=
+                                "M ${corner} ${0}
+                                L ${side} ${0}
+                                L ${side + corner } ${littleCorner}
+                                L ${width - corner - side} ${littleCorner}
+                                L ${width - side} ${0}
+                                L ${width - corner} ${0}
+                                L ${width} ${corner}
+                                L ${width} ${height - corner}
+                                L ${width - corner} ${height}
+                                L ${width - side} ${height}
+                                L ${width - corner - side} ${height - littleCorner}
+                                L ${corner + side} ${height - littleCorner}
+                                L ${side} ${height}
+                                L ${corner} ${height}
+                                L ${0} ${height - corner}
+                                L ${0} ${corner}
+                                Z"
+                                fill="rgba(0,255,0,0.5)" stroke="green" stroke-width="1"/>
+                        </clipPath>
+                        </defs>
+                    </svg>
+            `;
+        });
+            // document.querySelector(".screen .content").style.mask = "url(#screenMask)";
     </script>
 </body>
 </html>

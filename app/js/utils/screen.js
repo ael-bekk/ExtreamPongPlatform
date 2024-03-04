@@ -22,7 +22,7 @@ class Screen extends HTMLElement {
                             width: 100%;
                             height: 100%;
                             transform: rotateX(-50deg) translateY(-150px);
-                            fill: #8176AF55;
+                            fill: #8176AF20;
                             transition: 0.7s ease-in-out 0.3s;
                         }
                         @media screen and (max-width: 1080px){
@@ -33,27 +33,6 @@ class Screen extends HTMLElement {
                         }
                     </style>
                     <svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
-                        <mask id="screenMask" x="0" y="0" width="100%" height="100%">
-                            <path d=
-                                "M ${corner} ${0}
-                                L ${side} ${0}
-                                L ${side + corner } ${littleCorner}
-                                L ${width - corner - side} ${littleCorner}
-                                L ${width - side} ${0}
-                                L ${width - corner} ${0}
-                                L ${width} ${corner}
-                                L ${width} ${height - corner}
-                                L ${width - corner} ${height}
-                                L ${width - side} ${height}
-                                L ${width - corner - side} ${height - littleCorner}
-                                L ${corner + side} ${height - littleCorner}
-                                L ${side} ${height}
-                                L ${corner} ${height}
-                                L ${0} ${height - corner}
-                                L ${0} ${corner}
-                                Z"
-                                fill="rgba(0,255,0,0.5)" stroke="green" stroke-width="1"/>
-                        </mask>
                         <path d=
                             "M ${corner} ${0}
                             L ${side} ${0}

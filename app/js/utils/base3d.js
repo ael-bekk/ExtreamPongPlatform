@@ -9,25 +9,25 @@ class Base extends HTMLElement {
                 position: absolute;
                 top: 0;
                 left: 0;
-                fill: #edeeff;
+                fill: #edeeff35;
             }
             #Capa_1:nth-of-type(2) {
                 animation: rotateCapa4 10s linear infinite;
                 position: absolute;
                 top: 0;
                 left: 0;
-                fill: #dadcff;
+                fill: #dadcff35;
             }
             #Capa_1:nth-of-type(3) {
                 animation: rotateCapa3 10s linear infinite;
                 position: absolute;
                 top: 0;
                 left: 0;
-                fill: #57597a;
+                fill: #57597a35;
             }
             #Capa_1:nth-of-type(4) {
                 animation: rotateCapa1 2s linear infinite;
-                fill: #8176AF;
+                fill: #8176AF35;
             }
             @keyframes rotateCapa1 {
                 0% {
