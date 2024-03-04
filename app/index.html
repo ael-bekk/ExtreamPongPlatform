@@ -225,12 +225,12 @@
                     <div class="base">
                     </div>
                     <div class="screen">
-                        <div class="content">sdfdsf</div>
+                        <div class="content"></div>
                     </div>
                 </div>
                 <div class="game">
                     <div class="screen">
-                        <div class="content">sdf</div>
+                        <div class="content"></div>
                     </div>
                     <div class="base">
                     </div>
@@ -239,12 +239,12 @@
                     <div class="base">
                     </div>
                     <div class="screen">
-                        <div class="content">sdf</div>
+                        <div class="content"></div>
                     </div>
                 </div>
                 <div class="leaderboard">
                     <div class="screen">
-                        <div class="content">sdafasdf</div>
+                        <div class="content"></div>
                     </div>
                     <div class="base">
                     </div>
@@ -269,7 +269,7 @@
             bs.appendChild(createBase());
         });
         document.querySelectorAll('.screen').forEach(sc => {
-            sc.appendChild(createScreen());
+            sc.insertBefore(createScreen(), sc.firstChild);
         });
         document.querySelectorAll('.screen .content').item(0).appendChild(createAvatar());
         document.querySelectorAll('.screen .content').forEach (sc => {
