@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/backgroundBody.css">
+    <link href="https://fonts.cdnfonts.com/css/esporte-personal-use" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style >
         body {
@@ -52,6 +53,8 @@
             padding: 0;
             margin: 0;
             /* transition: 0.5s ease-in-out; */
+            /* border : 1px solid white;
+            border-image: linear-gradient(-90deg, #ffffff3c 50%, transparent 100%) 1; */
         }
 
         body .home {
@@ -116,7 +119,7 @@
             display: flex;
             width: 500px;
             height: 300px;
-            border: 1px solid white;
+            border: 1px dashed white;
             background: radial-gradient(ellipse at center, #ffffff3c 0%, #2989d800 50%, #ffffff00 100%);
             transition: 0.5s ease-in-out;
         }
@@ -127,6 +130,7 @@
             /* -webkit-mas */
             clip-path: url(#msk);
             display: flex;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
             background-image: linear-gradient(0deg, #0000006d 0, #5c21c36d 5px);
@@ -136,6 +140,15 @@
             /* border: rgb(255, 3, 3) 1px solid; */
             /* text-shadow: 0 0 5px #000000; */
             animation: animateScreen 10s linear infinite;
+        }
+        main .mainContainer .screen .content #profileBg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.5;
+            z-index: -1;
         }
         @keyframes animateScreen {
             0% {
@@ -149,27 +162,21 @@
             position: absolute;
             left: 14%;
             top: 100%;
+            border-image: linear-gradient(-90deg, #ffffff3c 50%, transparent 100%) 1;
         }
         .leaderboard .screen, .game .screen {
             position: absolute;
             right: 14%;
+            border-image: linear-gradient(90deg, #95ed063c 50%, transparent 100%) 1;
         }
         .leaderboard .base, .game .base {
             position: relative;
-            left: 45%;
+            left: 50%;
         }
         .tournament .base, .profile .base {
             position: relative;
-            right: 45%;
+            right: 50%;
             top: 100%;
-        }
-        #backgroundM {
-            position: absolute;
-            width: 130%;
-            min-height: 100%;
-            z-index: -1;
-            opacity: 0.5;
-            /* border: 1px solid white; */
         }
         .home main .bgWrapper {
             position: absolute;
@@ -217,15 +224,14 @@
             </div>
         </nav>
         <main>
-            <!-- <div class="leftside">
-                <div></div>
-            </div> -->
             <div class="mainContainer">
                 <div class="profile">
                     <div class="base">
                     </div>
                     <div class="screen">
-                        <div class="content"></div>
+                        <div class="content">
+                            <img src="assets/images/prof6.webp" alt="profileBg" id="profileBg">
+                        </div>
                     </div>
                 </div>
                 <div class="game">
@@ -253,11 +259,7 @@
                     <div class="bg">
                     </div>
                 </div>
-                <img ?src="./assets/images/mother.jpeg" id="backgroundM" alt="">
             </div>
-            <!-- <div class="rightside">
-                <div></div>
-            </div> -->
         </main>
     </div>
     <script src="js/utils/backgroundBody.js"></script>
@@ -273,15 +275,15 @@
         });
         document.querySelectorAll('.screen .content').item(0).appendChild(createAvatar());
         document.querySelectorAll('.screen .content').forEach (sc => {
-            const width = sc.parentElement.clientWidth;
-            const height = sc.parentElement.clientHeight - 50;
-            let corner = height * 0.04;
-            let littleCorner = corner * 0.6;
-            let side = width * 0.3;
+            const width = sc.parentElement.clientWidth-10;
+            const height = sc.parentElement.clientHeight - 60;
+            let corner = height * 0.03;
+            let littleCorner = corner * 0.8;
+            let side = width * 0.296;
             sc.innerHTML += `
-                    <svg style="position : relative" width="100%" height="100%" viewBox="0 0 ${width} ${height}">
+                    <svg style="position : relative; z-index: -1;" width="100%" height="100%" viewBox="0 0 ${width} ${height}">
                         <defs>
-                        <clipPath id="msk" x="0" y="0" width="100%" height="100%" transform="translate(0,25)">
+                        <clipPath id="msk" x="0" y="0" width="100%" height="100%" transform="translate(5,30)">
                             <path d=
                                 "M ${corner} ${0}
                                 L ${side} ${0}

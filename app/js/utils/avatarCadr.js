@@ -4,12 +4,13 @@ class Avatar extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.innerHTML = `
         <style>
+            @import url('https://fonts.cdnfonts.com/css/esporte-personal-use');
             .avatar {
                 width: 220px;
                 height: 220px;
                 position: relative;
-                top: -30px;
-                left: -10%;
+                top: -45px;
+                left: -12%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -20,17 +21,221 @@ class Avatar extends HTMLElement {
                 height: 100%;
                 z-index: 10;
             }
-            .avatar img {
+            .avatar img#avatarImg {
                 // position: absolute;
                 width: 65%;
                 height: 65%;
                 opacity: 0.8;
+                z-index: -10;
                 clip-path: url(#clip0);
             }
             .avatar #borderAvatar {
                 position: absolute;
                 width: 55%;
+                z-index: -9;
                 height: 55%;
+            }
+            .avatar:hover {
+                cursor: pointer;
+            }
+            .avatar .info {
+                position: absolute;
+                width: 75%;
+                height: 100%;
+                transform: translate(100%, 20%);
+                // border : 1px solid white;
+            }
+            .avatar .info h1 {
+                font-size: 1rem;
+                font-weight: 200;
+                color: white;
+                text-align: center;
+            }
+            .avatar .info h2 {
+                font-size: 1rem;
+                font-weight: 400;
+                color: #acf1f3;
+                text-align: center;
+                font-family: 'Esporte Personal Use', sans-serif;
+            }
+            .avatar .status {
+                position: absolute;
+                display: flex;
+                flex-direction: row;
+                width: 150%;
+                height: 50%;
+                bottom: -30%;
+                left: 14%;
+                font-size: 0.4rem;
+                color: white;
+                // background-color: #00ebff55;
+            }
+            .avatar .status div:nth-of-type(1) {
+                width: 15%;
+                height: 70%;
+                border: 1px dashed #ffffff14;
+            }
+            .avatar .status div:nth-of-type(2) {
+                width: 35%;
+                height: 70%;
+                border: 1px dashed #ffffff14;
+            }
+            .avatar .status div:nth-of-type(3) {
+                width: 50%;
+                height: 70%;
+                ba
+                // border: 1px dashed #ffffff14;
+            }
+
+            .avatar .status .level {
+                position: absolute;
+                width: 100%;
+                height: 25%;
+                bottom: 0;
+                left: 0;
+                clip-path: polygon(0 0, 70% 0, 100% 100%, 0 100%);
+                background-color: #00ebff55;
+            }
+            .avatar .status .level span {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                color : #5AE1A1;
+                font-size : 0.7rem;
+                font-weight : bold;
+                position : absolute;
+                top : 0;
+                left : 10px;
+            }
+            .avatar .status .league img {
+                position: relative;
+                height: 70%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .avatar .status .rank {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .avatar .status .rank div {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 30%;
+            }
+            .avatar .status .rank div:nth-of-type(1) h1 {
+                color: red;
+            }
+            .avatar .status .rank div:nth-of-type(1) h2 {
+                color: #A6A6A6;
+            }
+            .avatar .status .rank div:nth-of-type(2) {
+                height: 50%;
+                font-size: 0.5rem;
+            }
+            .avatar .status .rank div:nth-of-type(2) h1 {
+                color: #5AE1A1;
+            }
+
+            .avatar .status .rank div:nth-of-type(2) h1 em {
+                font-size: 0.8rem;
+            }
+            .avatar .status .score {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .avatar .status .score div {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 30%;
+            }
+            .avatar .status .score div em {
+                color: #EDB91A;
+                font-size: 0.8rem;
+            }
+            .avatar .friends {
+                position: absolute;
+                width: 100%;
+                height: 110%;
+                left: 167%;
+                top: 16%;
+                border: 1px dashed #ffffff14;
+                z-index: 10;
+                display: flex;
+                overflow: hidden;
+                flex-direction: column;
+            }
+            .avatar .friends div#title {
+                color: #00ebff;
+                font-size: 1rem;
+                font-weight: bold;
+                position: absolute;
+                width: 70%;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10;
+                background-color: #0ff5;
+                animation: fadeIn 2s linear infinite;
+            }
+            @keyframes fadeIn {
+                0% {
+                    box-shadow: 0 0 30px #00ebff;
+                }
+                50% {
+                    box-shadow: 0 0 10px #00ebff;
+                }
+                100% {
+                    box-shadow: 0 0 30px #00ebff;
+                }
+            }
+            .avatar .friends > div:nth-of-type(2) {
+                position: relative;
+                top: 10%;
+                left: 5%;
+                width: 80%;
+                height: 90%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                color: white;
+                font-size: 0.5rem;
+                // border : 1px solid #ffffff44;
+            }
+            .avatar .friends:hover {
+                cursor: pointer;
+            }
+            .avatar .friends .friend .friendCard {
+                width: 100%;
+                height: 30%;
+                top: 0;
+                left: 0;
+                display: flex;
+                flex-direction: row;
+                // border: 1px solid #ffffff44;
+            }
+            .avatar .friends .friend .friendCard img {
+                // width: 30%;
+                height: 67%;
+                clip-path: url(#clip10);
+                // border: 1px solid #ffffff44;
+            }
+            .avatar .friends .friend .friendCard svg {
+                animation: none;
+                height: 20%;
+                left: -58px;
+                // border: 1px solid #ffffff44;
             }
             .avatar svg:nth-of-type(1) {
                 animation: rotate 1s linear infinite;
@@ -73,6 +278,9 @@ class Avatar extends HTMLElement {
             }
             .avatar svg:nth-of-type(14) {
                 animation: rotate 13s linear infinite;
+            }
+            .avatar svg:nth-of-type(15) {
+                opacity: 0.4;
             }
             @keyframes rotate {
                 0% {
@@ -214,15 +422,103 @@ class Avatar extends HTMLElement {
             </linearGradient>
             </defs>
             </svg>
-        
         </div>
         `;
     }
     connectedCallback() {
         this._avatar = this.shadowRoot.querySelector('.avatar');
         this._avatar.innerHTML += `
-            <img src="./assets/images/avatar/avatarTest.png" alt="avatar">
+            <img id="avatarImg" src="./assets/images/avatar/avatarTest.png" alt="avatar">
         `;
+        this._avatar.innerHTML += `
+            <div class="info">
+                <h1>@algoAce</h1>
+                <h2>Abdellah El Bekkali</h2>
+            </div>
+        `;
+        this._avatar.innerHTML += `
+            <div class="status">
+                <div class="league">
+                    <img src="./assets/images/leagues/1.png" alt="iron">
+                </div>
+                <div class="rank">
+                    <div class="rankNumber">
+                        <h1> Rank</h1>
+                        <h2> <em style="color:white">:</em> 5000 ${getOrdinalSuffix(5000)} </h2>
+                    </div>
+                    <div class="rankLeague">
+                        <h1> IRON <em> / 52 ${getOrdinalSuffix(52)} </em> </h1>
+                    </div>
+                </div>
+                <div class="score">
+                    <div><h1> 472 <em> Games </em> / 1015 <em>LP</em> <h1></div>
+                    <div><h1> 278<em>W </em> / 1015<em>L</em> / 59% <em>WR</em> <h1></div>
+                </div>
+                <div class="level">
+                    <span>Level 30</span>
+                    <em></em>
+                </div>
+            </div>
+        `;
+        const friends = [
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 2],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 2],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 0],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 0],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 0],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 0],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 1],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1],
+            ['./assets/images/devCard/avatar1.svg', '@amajane', 0],
+            ['./assets/images/devCard/avatar3.svg', '@hichame', 1]
+        ]
+        this._avatar.innerHTML += `
+            <div class="friends">
+                <div id="title">Friends</div>
+                <div class="friend">
+                    ${friends.map(friend => `
+                        <div class="friendCard">
+                            <img src="${friend[0]}" alt="friend">
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
+                                <clipPath id="clip10" transform="translate(4.30642 0.376274)">
+                                    <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
+                                </clipPath>
+                                <defs>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#A73EE7"/>
+                                        <stop offset="1" stop-color="#00EBFF"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="friendInfo">
+                                <h1>${friend[1]}</h1>
+                                ${
+                                    friend[2] === 0 ? "<h2 style='color: #00FF4C'>Online</h2>" : friend[2] === 1 ? "<h2 style='color: #FF0000'>In Game</h2>" : "<h2 style='color: #FF8C00'>Offline</h2>"
+                                }
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        const levelEm = this.shadowRoot.querySelector('.level em');
+        levelEm.style.height = '100%';
+        levelEm.style.width = '80%';
+        levelEm.style.position = 'absolute';
+        levelEm.style.top = '0';
+        levelEm.style.left = '0';
+        levelEm.style.background = 'linear-gradient(90deg, #acf1f355 30%, #FF8C00 100%)';
     }
 }
 
@@ -231,4 +527,16 @@ customElements.define('avatar-cadr', Avatar);
 function createAvatar() {
     const avatar = document.createElement('avatar-cadr');
     return avatar;
+}
+
+function getOrdinalSuffix(number) {
+    if (number % 100 >= 11 && number % 100 <= 13) {
+        return "th";
+    }
+    switch (number % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+    }
 }
