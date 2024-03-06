@@ -5,6 +5,9 @@ class Avatar extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <style>
             @import url('https://fonts.cdnfonts.com/css/esporte-personal-use');
+            div::-webkit-scrollbar {
+                width: 0;
+            }
             .avatar {
                 width: 220px;
                 height: 220px;
@@ -169,7 +172,7 @@ class Avatar extends HTMLElement {
                 width: 100%;
                 height: 110%;
                 left: 167%;
-                top: 16%;
+                top: 34px;
                 border: 1px dashed #ffffff14;
                 z-index: 10;
                 display: flex;
@@ -234,7 +237,7 @@ class Avatar extends HTMLElement {
             .avatar .friends .friend .friendCard svg {
                 animation: none;
                 height: 20%;
-                left: -58px;
+                left: -66px;
                 // border: 1px solid #ffffff44;
             }
             .avatar svg:nth-of-type(1) {
@@ -490,7 +493,7 @@ class Avatar extends HTMLElement {
                         <div class="friendCard">
                             <img src="${friend[0]}" alt="friend">
                             <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
-                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="1"/>
                                 <clipPath id="clip10" transform="translate(4.30642 0.376274)">
                                     <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
                                 </clipPath>

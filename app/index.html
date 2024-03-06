@@ -59,6 +59,8 @@
 
         body .home {
             position: relative;
+            display: flex;
+            justify-content: center;
             height: 100%;
             width: 100%;
             backdrop-filter: blur(5px);
@@ -69,6 +71,7 @@
             position: relative;
             height: 100%;
             width: 100%;
+            max-width: 1500px;
             display: flex;
             /* padding-top: 200px; */
             
@@ -87,7 +90,7 @@
             /* overflow: hidden; */
             height: 100%;
             width: 100%;
-            
+            background: rgba(109, 109, 109, 0.5);
             transform-style: preserve-3d;
             transform: rotateX(50deg) translateY(-85px);
             transition: 0.5s ease-in-out;
@@ -119,7 +122,6 @@
             display: flex;
             width: 500px;
             height: 300px;
-            border: 1px dashed white;
             background: radial-gradient(ellipse at center, #ffffff3c 0%, #2989d800 50%, #ffffff00 100%);
             transition: 0.5s ease-in-out;
         }
@@ -146,9 +148,19 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: hue-rotate(200deg);
             object-position: center;
             opacity: 0.5;
             z-index: -1;
+            animation: animatehue 10s linear infinite;
+        }
+        @keyframes animatehue {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
         }
         @keyframes animateScreen {
             0% {
@@ -171,12 +183,18 @@
         }
         .leaderboard .base, .game .base {
             position: relative;
-            left: 50%;
+            left: 0%;
         }
         .tournament .base, .profile .base {
             position: relative;
-            right: 50%;
+            right: 0%;
             top: 100%;
+        }
+        .profile .screen, .profile .base {
+            top: 120%;
+        }
+        .leaderboard .screen, .leaderboard .base {
+            top: 20%;
         }
         .home main .bgWrapper {
             position: absolute;
@@ -198,6 +216,12 @@
         @media screen and (max-width: 1400px){
             .profile .screen, .tournament .screen, .tournament .base, .profile .base {
                 top : 0;
+            }
+            .profile .screen, .profile .base {
+                top: 0%;
+            }
+            .leaderboard .screen, .leaderboard .base {
+                top: 0%;
             }
         }
         @media screen and (max-width: 1080px){
@@ -234,7 +258,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="game">
+                <div class="leaderboard">
                     <div class="screen">
                         <div class="content"></div>
                     </div>
@@ -248,7 +272,7 @@
                         <div class="content"></div>
                     </div>
                 </div>
-                <div class="leaderboard">
+                <div class="game">
                     <div class="screen">
                         <div class="content"></div>
                     </div>
@@ -265,7 +289,9 @@
     <script src="js/utils/backgroundBody.js"></script>
     <script src="js/utils/base3d.js"></script>
     <script src="js/utils/screen.js"></script>
-    <script src="js/utils/avatarCadr.js"></script>
+    <script src="js/components/avatarCadr.js"></script>
+    <script src="js/components/history.js"></script>
+    <script src="js/utils/backgroundComponent.js"></script>
     <script>
         document.querySelectorAll('.base').forEach(bs => {
             bs.appendChild(createBase());
@@ -273,7 +299,48 @@
         document.querySelectorAll('.screen').forEach(sc => {
             sc.insertBefore(createScreen(), sc.firstChild);
         });
+        document.querySelectorAll('.screen').item(0).addEventListener('mouseenter', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(0).style.transform = "translateZ(200px) translateY(300px) translateX(50px)";
+            document.querySelectorAll('.screen').item(0).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(0).addEventListener('mouseleave', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(0).style.transform = "";
+            document.querySelectorAll('.screen').item(0).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(1).addEventListener('mouseenter', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(1).style.transform = "translateZ(200px) translateY(300px) translateX(-52px)";
+            document.querySelectorAll('.screen').item(1).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(1).addEventListener('mouseleave', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(1).style.transform = "";
+            document.querySelectorAll('.screen').item(1).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(2).addEventListener('mouseenter', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(2).style.transform = "translateZ(50px) translateY(40px) translateX(10px)";
+            document.querySelectorAll('.screen').item(2).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(2).addEventListener('mouseleave', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(2).style.transform = "";
+            document.querySelectorAll('.screen').item(2).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(3).addEventListener('mouseenter', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(3).style.transform = "translateZ(50px) translateY(40px) translateX(-10px)";
+            document.querySelectorAll('.screen').item(3).style.transition = "0.5s ease-in-out";
+        });
+        document.querySelectorAll('.screen').item(3).addEventListener('mouseleave', () => {
+            if (window.innerWidth < 1400) return;
+            document.querySelectorAll('.screen').item(3).style.transform = "";
+            document.querySelectorAll('.screen').item(3).style.transition = "0.5s ease-in-out";
+        });
         document.querySelectorAll('.screen .content').item(0).appendChild(createAvatar());
+        document.querySelectorAll('.screen .content').item(1).appendChild(createHistoryCard(45345345));
         document.querySelectorAll('.screen .content').forEach (sc => {
             const width = sc.parentElement.clientWidth-10;
             const height = sc.parentElement.clientHeight - 60;
@@ -308,6 +375,8 @@
                     </svg>
             `;
         });
+        const leaderboard = document.querySelector('.leaderboard');
+        // leaderboard.querySelector('.screen .content').appendChild(createHistory());
             // document.querySelector(".screen .content").style.mask = "url(#screenMask)";
     </script>
 </body>
