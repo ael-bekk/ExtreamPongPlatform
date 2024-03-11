@@ -40,6 +40,7 @@
             left: 0;
             z-index: -2;
         }
+
         @keyframes animateColors {
             0% {
                 transform: rotate(0deg) scale(10);
@@ -63,6 +64,7 @@
             justify-content: center;
             height: 100%;
             width: 100%;
+            overflow-y: auto;
             backdrop-filter: blur(5px);
             perspective: 1000px; 
             overflow: auto;
@@ -73,8 +75,68 @@
             width: 100%;
             max-width: 1500px;
             display: flex;
+            flex-direction: column;
+            
             /* padding-top: 200px; */
             
+        }
+        .home main .searchContainer {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            /* background: rgba(255, 255, 255, 0.5); */
+            /* border: 1px solid white; */
+            
+            transform: rotateX(0deg) translateY(164px) translateZ(-533px);
+        }
+        .home main .searchContainer .search {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* border-left: wheat 3px solid;
+            border-right: wheat 3px solid; */
+            box-shadow: 0 10px 10px rgb(0, 0, 0) inset;
+
+            /* background: rgba(109, 109, 109, 0.5); */
+            /* background: rgba(255, 255, 255, 0.5); */
+            /* border: 1px solid white; */
+        }
+        .home main .searchContainer .search .bgWrapper2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+        }
+        .home main .searchContainer .search .bg2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.5;
+            backdrop-filter: blur(15px); 
+            /* background: linear-gradient(300deg, #000000 46%, #5c21c3 55%, #5c1a1a 60%)  no-repeat center center fixed; */
+            background: #5c21c3;
+            animation: animateColors3 20s linear infinite;
+        }
+        @keyframes animateColors3 {
+            0% {
+                background: #5c21c3;
+            }
+            50% {
+                background: #000000cc;
+            }
+            70% {
+                background: #000000cc;
+            }
+            100% {
+                background: #5c21c3;
+            }
         }
         .home .navbar {
             position: absolute;
@@ -83,15 +145,19 @@
         }
         main .mainContainer {
             position: relative;
+            bottom: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             /* overflow: hidden; */
-            height: 100%;
+            height: calc(100% - 100px);
             width: 100%;
-            background: rgba(109, 109, 109, 0.5);
+            /* background: rgba(109, 109, 109, 0.5); */
             transform-style: preserve-3d;
+            /* border-left: rgba(245, 222, 179, 0.268) 3px solid; */
+            /* border-right: wheat 3px solid; */
+            box-shadow: 0 -10px 10px rgb(0, 0, 0) inset;
             transform: rotateX(50deg) translateY(-85px);
             transition: 0.5s ease-in-out;
         }
@@ -152,9 +218,9 @@
             object-position: center;
             opacity: 0.5;
             z-index: -1;
-            animation: animatehue 10s linear infinite;
+            animation: animateHue 10s linear infinite;
         }
-        @keyframes animatehue {
+        @keyframes animateHue {
             0% {
                 filter: hue-rotate(0deg);
             }
@@ -176,12 +242,12 @@
             top: 100%;
             border-image: linear-gradient(-90deg, #ffffff3c 50%, transparent 100%) 1;
         }
-        .leaderboard .screen, .game .screen {
+        .leaderBoard .screen, .game .screen {
             position: absolute;
             right: 14%;
             border-image: linear-gradient(90deg, #95ed063c 50%, transparent 100%) 1;
         }
-        .leaderboard .base, .game .base {
+        .leaderBoard .base, .game .base {
             position: relative;
             left: 0%;
         }
@@ -193,7 +259,7 @@
         .profile .screen, .profile .base {
             top: 120%;
         }
-        .leaderboard .screen, .leaderboard .base {
+        .leaderBoard .screen, .leaderBoard .base {
             top: 20%;
         }
         .home main .bgWrapper {
@@ -214,17 +280,27 @@
             animation: animateColors 20s linear infinite;
         }
 
+        .boxx
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1px;
+            height: 50px;
+            background-color: rgb(255, 255, 255); /* Color of the first box */
+            animation: moveStars 25s linear infinite;
+        }
         .box
         {
             position: absolute;
             left: 0;
             top: 0;
             width: 1px;
-            height: 30px;
+            height: 50px;
             background-color: rgb(255, 255, 255); /* Color of the first box */
-            animation: moveStars 5s linear infinite;
+            animation: moveStars 25s linear infinite 2.9s;
         }
-        .bgWrapper {
+        .bgWrapper, .bgWrapper2 {
             position: absolute;
             left: 0;
             top: 0;
@@ -233,12 +309,52 @@
             overflow: hidden;
             z-index: -2;
         }
-        #box2 {
+        #box2, #box22 {
             background-color: rgb(255, 0, 255); /* Color of the second box */
+        }
+        .searchBox {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            /* border: 1px solid white; */
+        }
+        .form-controler {
+            width: 300px;
+            height: 50px;
+            border-radius: 5px;
+            border: 1px solid #00fbff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #00e5ff;
+            text-shadow: 0 0 5px #0000008f;
+            box-shadow: 0 0 10px #00fbff8f inset,
+                        0 0 10px #00fbff8f;
+            font-size: 30px;
+            text-indent: 10px;
+        }
+        .form-controler::placeholder {
+            color: #00e5ff46;
+            text-shadow: 0 0 5px #0000008f;
+        }
+        .profiles {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 600%;
+            /* border: 1px solid white; */
+            box-shadow: 0 0 10px #0000008f inset,
+                        0 -6px 10px #00fbff36,
+                        0 0 100px #0000007b;
         }
         @keyframes moveStars {
             0% { transform: translateY(0); }
-            100% { transform: translateY(1000px); } /* Adjust the value as needed */
+            100% { transform: translateY(5000px); } /* Adjust the value as needed */
         }
         @media screen and (max-width: 1400px){
             .profile .screen, .tournament .screen, .tournament .base, .profile .base {
@@ -247,7 +363,7 @@
             .profile .screen, .profile .base {
                 top: 0%;
             }
-            .leaderboard .screen, .leaderboard .base {
+            .leaderBoard .screen, .leaderBoard .base {
                 top: 0%;
             }
         }
@@ -275,10 +391,30 @@
             </div>
         </nav>
         <main>
+            <div class="searchContainer">
+                <div class="search">
+                    <div class="searchBox">
+                        <input type="text" class="form-controler" placeholder="user" aria-label="Search" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    </div>
+                    <div class="profiles">
+                    </div>
+                    <div class="bgWrapper2">
+                        <div class="bg2">
+                        </div>
+                    </div>
+                    <div class="bgWrapper2">
+                        <div class="boxx" id="box11"></div>
+                        <div class="boxx" id="box22"></div>
+                    </div>
+                </div>
+                
+            </div>
             <div class="mainContainer">
                 <div class="bgWrapper">
                     <div class="box" id="box1"></div>
                     <div class="box" id="box2"></div>
+                    
                 </div>
                 <div class="profile">
                     <div class="base">
@@ -289,7 +425,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="leaderboard">
+                <div class="leaderBoard">
                     <div class="screen">
                         <div class="content"></div>
                     </div>
@@ -322,6 +458,7 @@
     <script src="js/utils/screen.js"></script>
     <script src="js/components/avatarCard.js"></script>
     <script src="js/components/historyCard.js"></script>
+    <script src="js/components/tournamentCard.js"></script>
     <script src="js/utils/backgroundComponent.js"></script>
     <script src="js/components/gameCard.js"></script>
     <script>
@@ -331,46 +468,24 @@
         document.querySelectorAll('.screen').forEach(sc => {
             sc.insertBefore(createScreen(), sc.firstChild);
         });
-        document.querySelectorAll('.screen').item(0).addEventListener('mouseenter', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(0).style.transform = "translateZ(200px) translateY(300px) translateX(50px)";
-            document.querySelectorAll('.screen').item(0).style.transition = "0.5s ease-in-out";
+        const transforms = [
+            'translateZ(200px) translateY(300px) translateX(50px)',
+            'translateZ(200px) translateY(300px) translateX(-52px)',
+            'translateZ(50px) translateY(40px) translateX(10px)',
+            'translateZ(50px) translateY(40px) translateX(-10px)'
+        ];
+        document.querySelectorAll('.screen').forEach((sc, index) => {
+            sc.addEventListener('mouseenter', () => {
+                if (window.innerWidth < 1400) return;
+                sc.style.transform = transforms[index];
+            });
+            sc.addEventListener('mouseleave', () => {
+                if (window.innerWidth < 1400) return;
+                sc.style.transform = "";
+                sc.style.transition = "0.5s ease-in-out";
+            });
         });
-        document.querySelectorAll('.screen').item(0).addEventListener('mouseleave', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(0).style.transform = "";
-            document.querySelectorAll('.screen').item(0).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(1).addEventListener('mouseenter', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(1).style.transform = "translateZ(200px) translateY(300px) translateX(-52px)";
-            document.querySelectorAll('.screen').item(1).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(1).addEventListener('mouseleave', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(1).style.transform = "";
-            document.querySelectorAll('.screen').item(1).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(2).addEventListener('mouseenter', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(2).style.transform = "translateZ(50px) translateY(40px) translateX(10px)";
-            document.querySelectorAll('.screen').item(2).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(2).addEventListener('mouseleave', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(2).style.transform = "";
-            document.querySelectorAll('.screen').item(2).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(3).addEventListener('mouseenter', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(3).style.transform = "translateZ(50px) translateY(40px) translateX(-10px)";
-            document.querySelectorAll('.screen').item(3).style.transition = "0.5s ease-in-out";
-        });
-        document.querySelectorAll('.screen').item(3).addEventListener('mouseleave', () => {
-            if (window.innerWidth < 1400) return;
-            document.querySelectorAll('.screen').item(3).style.transform = "";
-            document.querySelectorAll('.screen').item(3).style.transition = "0.5s ease-in-out";
-        });
+
         document.querySelectorAll('.screen .content').item(0).appendChild(createAvatar());
         document.querySelectorAll('.screen .content').item(1).appendChild(createHistoryCard(45345345));
         document.querySelectorAll('.screen .content').forEach (sc => {
@@ -407,7 +522,7 @@
                     </svg>
             `;
         });
-        const leaderboard = document.querySelector('.leaderboard');
+        const leaderBoard = document.querySelector('.leaderBoard');
         window.onload = function() {
             createShadows();
         };
@@ -415,33 +530,37 @@
             let wrapper = document.querySelector(".bgWrapper");
             let box1 = document.getElementById("box1");
             let box2 = document.getElementById("box2");
+            let box11 = document.getElementById("box11");
+            let box22 = document.getElementById("box22");
 
             let shadows = '0 0 10px rgba(255, 0, 0, 1)';
-
+            let shadows2 = '0 0 10px rgba(255, 0, 0, 1)';
             for (let i = 0; i < 1000; i++) {
                 let randomSize1 = Math.floor(Math.random() * 10) + 1; // Random size between 5px and 500px
                 let randomSize2 = Math.floor(Math.random() * 10) + 1;
 
                 let randomX1 = Math.floor(Math.random() * (wrapper.offsetWidth));
-                let randomY1 = Math.floor(Math.random() * (wrapper.offsetHeight*2)) - wrapper.offsetHeight;
+                let randomY1 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
 
                 let randomX2 = Math.floor(Math.random() * (wrapper.offsetWidth));
-                let randomY2 = Math.floor(Math.random() * (wrapper.offsetHeight*2)) - wrapper.offsetHeight;
+                let randomY2 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
 
-                // Append each shadow to the shadows string
-                shadows += `, ${randomX1}px ${randomY1}px ${randomSize1}px rgba(0, 255, 255, 0.6)`;
-                shadows += `, ${randomX2}px ${randomY2}px ${randomSize2}px rgba(255, 0, 255, 0.6)`;
+                shadows += `, ${randomX1}px ${randomY1}px ${randomSize1}px rgba(30, 255, 255, 0.6)`;
+                shadows += `, ${randomX2}px ${randomY2}px ${randomSize2}px rgba(255, 40, 255, 0.6)`;
+                shadows2 += `, ${randomX1}px ${randomY1}px ${randomSize1}px rgba(30, 255, 255, 0.2)`;
+                shadows2 += `, ${randomX2}px ${randomY2}px ${randomSize2}px rgba(255, 20, 255, 0.4)`;
             }
 
-            // Apply the generated shadows to both boxes
             box1.style.boxShadow = `${shadows}`;
             box2.style.boxShadow = `${shadows}`;
+            box11.style.boxShadow = `${shadows2}`;
+            box22.style.boxShadow = `${shadows2}`;
             console.log(box1);
         }
         const game = document.querySelector('.game');
         game.querySelector('.screen .content').appendChild(createGameCard());
-        // leaderboard.querySelector('.screen .content').appendChild(createHistory());
-        // document.querySelector(".screen .content").style.mask = "url(#screenMask)";
+        const tournament = document.querySelector('.tournament');
+        tournament.querySelector('.screen .content').appendChild(createTournamentCard());
     </script>
 </body>
 </html>
