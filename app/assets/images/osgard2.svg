@@ -1,0 +1,13 @@
+<svg width="5440" height="151" viewBox="0 0 5440 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="drop-shadow" x="0%" y="0%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#fff" flood-opacity="1">
+                <animate attributeName="stdDeviation" values="2;20;2" dur="1s" repeatCount="indefinite"/>
+                <animate attributeName="color" values="#ff0000;#ff0000;#ff0000" dur="1s" repeatCount="indefinite"/>
+            </feDropShadow>
+        </filter>
+    </defs>
+    <g filter="url(#drop-shadow)">
+        <path d="M2487.5 115.5H2406L2522 0H2603L2487.5 115.5Z" fill="#00FEFF"/>
+    </g>
+</svg>

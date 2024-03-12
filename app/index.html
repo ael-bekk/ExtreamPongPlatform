@@ -93,14 +93,15 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 600px;
+            height: 573px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             /* border-left: wheat 3px solid;
             border-right: wheat 3px solid; */
-            box-shadow: 0 10px 10px rgb(0, 0, 0) inset;
+            box-shadow: 0 10px 10px rgb(0, 0, 0) inset,
+                        0 -5px 10px rgb(0, 0, 0);
 
             /* background: rgba(109, 109, 109, 0.5); */
             /* background: rgba(255, 255, 255, 0.5); */
@@ -157,7 +158,8 @@
             transform-style: preserve-3d;
             /* border-left: rgba(245, 222, 179, 0.268) 3px solid; */
             /* border-right: wheat 3px solid; */
-            box-shadow: 0 -10px 10px rgb(0, 0, 0) inset;
+            box-shadow: 0 -10px 10px rgb(0, 0, 0) inset,
+                        0 5px 10px rgb(0, 0, 0);
             transform: rotateX(50deg) translateY(-85px);
             transition: 0.5s ease-in-out;
         }
@@ -322,6 +324,40 @@
             height: 100%;
             /* border: 1px solid white; */
         }
+        .searchContainer .search > img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            /* height: 400px; */
+            transform: translateY(-100%);
+            /* border : 1px solid white; */
+            filter: hue-rotate(60deg);
+        }
+        .searchContainer .search > img:nth-child(2) {
+            transform: translateY(-100%) translateX(-44.25%);
+        }
+        .searchContainer .search > img:nth-child(3) {
+            transform: translateY(-100%) translateX(44.25%);
+        }
+        .searchContainer .search > img:nth-child(4) {
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            z-index: 1;
+            /* border : 1px solid white; */
+            transform: none;
+            cursor: pointer;
+            animation: animateHue 10s linear infinite;
+        }
+        .searchContainer .search > img:nth-child(4):hover {
+            transform: scale(1.1);
+        }
+        .searchContainer .search > img:nth-child(4):active {
+            transform: scale(0.9);
+        }
+        
+
         .form-controler {
             width: 300px;
             height: 50px;
@@ -332,6 +368,7 @@
             text-shadow: 0 0 5px #0000008f;
             box-shadow: 0 0 10px #00fbff8f inset,
                         0 0 10px #00fbff8f;
+
             font-size: 30px;
             text-indent: 10px;
         }
@@ -341,16 +378,112 @@
         }
         .profiles {
             position: relative;
-            display: flex;
-            flex-direction: row;
+            
+            /* flex-direction: grid; */
             justify-content: center;
             align-items: center;
             width: 70%;
             height: 600%;
+            overflow-y: auto;
             /* border: 1px solid white; */
             box-shadow: 0 0 10px #0000008f inset,
                         0 -6px 10px #00fbff36,
                         0 0 100px #0000007b;
+        }
+        .profiles .profileWrapper {
+            position: relative;
+            width: 100%;
+            /* height: 100%; */
+            display: grid;
+            gap: 70px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin: 50px 0 100px 0;
+            /* background: rgba(255, 255, 255, 0.1); */
+        }
+        .profiles .profileWrapper .profile {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            /* background: rgba(255, 255, 255, 0.1); */
+            /* box-shadow: 0 0 10px #0000008f inset,
+                        0 -6px 10px #00fbff36,
+                        0 0 100px #0000007b; */
+            margin: 0 50px;
+            transform: rotateX(0deg) translateY(0px);
+            transition: 0.5s ease-in-out;
+        }
+        .profiles .profileWrapper .profile .avatar {
+            position: relative;
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid white; */
+        }
+        .profiles .profileWrapper .profile .info {
+            position: relative;
+            /* width: 100%; */
+            height: 30%;
+            /* height: 100%; */
+            /* display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; */
+            /* border: 1px solid white; */
+        }
+        .profiles .profileWrapper .profile .info img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: hue-rotate(60deg);
+        }
+        .profiles .profileWrapper .profile .avatar img {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            object-fit: cover;
+            object-position: center;
+            filter: hue-rotate(60deg);
+        }
+        .profiles .profileWrapper .profile .avatar .avatarInfo {
+            position: absolute;
+            width: 66%;
+            height: 90%;
+            clip-path: url(#userMask);
+            background: rgb(255, 0, 0);
+            backdrop-filter: blur(5px);
+            z-index: -1;
+        }
+        .profiles .profileWrapper .profile .avatar .avatarInfo img {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            object-position: center;
+            filter: hue-rotate(60deg);
+        }
+        .profiles .profileWrapper .profile .avatar .avatarInfo svg{
+            position: absolute;
+            top: -5%;
+            left: -10%;
+            width: 100%;
+            height: 100%;
+            fill: #00e5ff;
+            /* border: 1px solid white; */
+        }
+        .profiles .profileWrapper .profile .info .infoWrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00e5ff;
+            /* border: 1px solid white; */
         }
         @keyframes moveStars {
             0% { transform: translateY(0); }
@@ -381,7 +514,7 @@
 </head>
 <body>
     <div class="home">
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="assets/logo.svg" alt="Pong" width="100" height="100"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
@@ -389,15 +522,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-        </nav>
+        </nav> -->
         <main>
             <div class="searchContainer">
                 <div class="search">
+                    <img src="assets/images/osgard.svg" alt="Pong">
+                    <img src="assets/images/osgard2.svg" alt="Pong">
+                    <img src="assets/images/osgard3.svg" alt="Pong">
+                    <img src="assets/images/3d.png" alt="Pong" class="enable3d" onclick="enable3d = !enable3d; reset3d();">
                     <div class="searchBox">
                         <input type="text" class="form-controler" placeholder="user" aria-label="Search" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                     </div>
                     <div class="profiles">
+                        <div class="profileWrapper">
+                        </div>
                     </div>
                     <div class="bgWrapper2">
                         <div class="bg2">
@@ -561,6 +699,51 @@
         game.querySelector('.screen .content').appendChild(createGameCard());
         const tournament = document.querySelector('.tournament');
         tournament.querySelector('.screen .content').appendChild(createTournamentCard());
+        const profiles = document.querySelector('.profiles .profileWrapper');
+        for (let i = 0; i < 20; i++) {
+            profiles.innerHTML += `
+                <div class="profile" id="profile${i}">
+                    <div class="avatar">
+                        <img src="assets/images/profileScreen.svg" alt="profile">
+                        <div class="avatarInfo">
+                            <img src="assets/images/devCard/amajan.png" alt="profile">
+                            <h3>Username</h3>
+                            <svg viewBox="0 0 277 363" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <clipPath id="userMask" x="0" y="0" transform="scale(0.57) translate(-22, -15)">
+                                    <path d="M234 22H43L22 43V319.5L43 340.5H234L255 319.5V43L234 22Z" fill="#00FEFF30"/>
+                                </clipPath>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <img src="assets/images/nameScreen.svg" alt="profile">
+                        <div class="infoWrapper">
+                            <h3>show</h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        let enable3d = false;
+        function reset3d() {
+            if (!enable3d) {
+                document.querySelector('main').style.transform = `rotateY(0deg) rotateX(0deg)`;
+            }
+        }
+        window.addEventListener('mousemove', (e) => {
+            if (!enable3d) return;
+            let x = e.clientX;
+            let y = e.clientY;
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            let xPercent = (x / width) * 100;
+            let yPercent = (y / height) * 100;
+            let xDeg = (xPercent - 50) * 0.5;
+            let yDeg = (yPercent - 50) * 0.5;
+            document.querySelector('main').style.transform = `rotateY(${xDeg}deg) rotateX(${-yDeg}deg)`;
+        }
+        );
     </script>
 </body>
 </html>
