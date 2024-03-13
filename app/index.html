@@ -425,6 +425,7 @@
             position: relative;
             /* width: 100%; */
             height: 30%;
+            cursor: pointer;
             /* height: 100%; */
             /* display: flex;
             flex-direction: column;
@@ -485,6 +486,9 @@
             color: #00e5ff;
             /* border: 1px solid white; */
         }
+        .home > img {
+            position: absolute;
+        }
         @keyframes moveStars {
             0% { transform: translateY(0); }
             100% { transform: translateY(5000px); } /* Adjust the value as needed */
@@ -514,6 +518,7 @@
 </head>
 <body>
     <div class="home">
+        <!-- <img src="assets/images/BG.gif"> -->
         <!-- <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="assets/logo.svg" alt="Pong" width="100" height="100"></a>
@@ -599,6 +604,7 @@
     <script src="js/components/tournamentCard.js"></script>
     <script src="js/utils/backgroundComponent.js"></script>
     <script src="js/components/gameCard.js"></script>
+    <script src="js/components/popup.js"></script>
     <script>
         document.querySelectorAll('.base').forEach(bs => {
             bs.appendChild(createBase());
@@ -656,8 +662,8 @@
                                 Z"
                                 fill="rgba(0,255,0,0.5)" stroke="green" stroke-width="1"/>
                         </clipPath>
-                        </defs>
-                    </svg>
+                    </defs>
+                </svg>
             `;
         });
         const leaderBoard = document.querySelector('.leaderBoard');
@@ -715,7 +721,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="info">
+                    <div class="info" onclick="openProfilePopup(${i})">
                         <img src="assets/images/nameScreen.svg" alt="profile">
                         <div class="infoWrapper">
                             <h3>show</h3>
@@ -744,6 +750,7 @@
             document.querySelector('main').style.transform = `rotateY(${xDeg}deg) rotateX(${-yDeg}deg)`;
         }
         );
+        openProfilePopup(0);
     </script>
 </body>
 </html>
