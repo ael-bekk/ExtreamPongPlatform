@@ -189,7 +189,7 @@ class PopUpProfile extends HTMLElement {
             position: absolute;
             width: 200px;
             height: 50px;
-            bottom: 125px;
+            bottom: 90px;
             left: 160px;
             justify-content: center;
             align-items: center;
@@ -268,6 +268,16 @@ class PopUpProfile extends HTMLElement {
             left: 0;
             transform: translateY(0%);
         }
+        .popup-inner .friends h3 {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            color: #24C2E5;
+            font-size: 20px;
+            font-weight: 600;
+            z-index: 2;
+            text-shadow: 0 0 10px #24C2E5;
+        }
         .popup-inner .statistics {
             position: absolute;
             width: 500px;
@@ -279,94 +289,276 @@ class PopUpProfile extends HTMLElement {
             align-items: center;
             padding: 0px;
         }
-
-
+        .popup-inner .history {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            bottom: 180px;
+            left: 200px;
+            border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            // border: 1px solid #24C2E5;
+        }
+        .popup-inner .history svg#bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: pathDraw 1s;
+        }
+        #line1 {
+            animation: line1 2s infinite;
+        }
+        #line2 {
+            animation: line2 4s infinite;
+        }
+        #line3 {
+            animation: line3 3s infinite;
+        }
+        #myCircle {
+            animation: moveCircle 1.5s infinite;
+        }
+        @keyframes moveCircle {
+            0% {
+                fill: #FF0000;
+            }
+            50% {
+                fill: #500000;
+            }
+            100% {
+                fill: #FF0000;
+            }
+        }
+        @keyframes line1 {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-40%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        @keyframes line2 {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-65%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        @keyframes line3 {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(15%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
         </style>
         <div class="popup">
             <img src="./assets/images/tenor.gif">
             <div class="popup-inner">
                 <svg viewBox="0 0 672 439" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#drop-shadow)">    
-                <path d="M319 1.5H311L308 7.5H63L23 47.5V194.5L39 204.5V230.5L23 241.5V390.5L63 430.5H608L648 390.5V240.5L632 230.5V203.5L648 192V47.5L608 7.5H365L362 1.5H354L353 0H319.5L319 1.5Z" fill="#24C2E500" fill-opacity="0.49"/>
-                <path d="M17.5 194.5V177.5H19.5V194.5H17.5Z" fill="#000"/>
-                <path d="M19.5 240H17.5V258H19.5V240Z" fill="#000"/>
-                <path d="M1 122.5L14.5 114V120L1 128.5V122.5Z" fill="#000"/>
-                <path d="M1 133L14.5 124.5V130.5L1 139V133Z" fill="#000"/>
-                <path d="M1 143.5L14.5 135V141L1 149.5V143.5Z" fill="#000"/>
-                <path d="M1 154L14.5 145.5V151.5L1 160V154Z" fill="#000"/>
-                <path d="M1 165L14.5 156.5V162.5L1 171V165Z" fill="#000"/>
-                <path d="M1 175.5L14.5 167V173L1 181.5V175.5Z" fill="#000"/>
-                <path d="M1 186L14.5 177.5V183.5L1 192V186Z" fill="#000"/>
-                <path d="M1 196.5L14.5 188V194L1 202.5V196.5Z" fill="#000"/>
-                <path d="M1 239.5V233L14 241.5V248L1 239.5Z" fill="#000"/>
-                <path d="M1 250V243.5L14 252V258.5L1 250Z" fill="#000"/>
-                <path d="M1 260.5V254L14 262.5V269L1 260.5Z" fill="#000"/>
-                <path d="M1 271V264.5L14 273V279.5L1 271Z" fill="#000"/>
-                <path d="M1 281.5V275L14 283.5V290L1 281.5Z" fill="#000"/>
-                <path d="M1 292V285.5L14 294V300.5L1 292Z" fill="#000"/>
-                <path d="M1 302.5V296L14 304.5V311L1 302.5Z" fill="#000"/>
-                <path d="M1 312.5V306L14 314.5V321L1 312.5Z" fill="#000"/>
-                <path d="M12 113L17.5 109V194.5H19.5V177.5H17.5M12 321.5L17.5 325V258M17.5 258V240H19.5V258H17.5ZM14.5 114L1 122.5V128.5L14.5 120V114ZM14.5 124.5L1 133V139L14.5 130.5V124.5ZM14.5 135L1 143.5V149.5L14.5 141V135ZM14.5 145.5L1 154V160L14.5 151.5V145.5ZM14.5 156.5L1 165V171L14.5 162.5V156.5ZM14.5 167L1 175.5V181.5L14.5 173V167ZM14.5 177.5L1 186V192L14.5 183.5V177.5ZM14.5 188L1 196.5V202.5L14.5 194V188ZM1 233V239.5L14 248V241.5L1 233ZM1 243.5V250L14 258.5V252L1 243.5ZM1 254V260.5L14 269V262.5L1 254ZM1 264.5V271L14 279.5V273L1 264.5ZM1 275V281.5L14 290V283.5L1 275ZM1 285.5V292L14 300.5V294L1 285.5ZM1 296V302.5L14 311V304.5L1 296ZM1 306V312.5L14 321V314.5L1 306Z" stroke="#aaa"/>
-                <path d="M653 194.5H654.5V178H653V194.5Z" fill="#001"/>
-                <path d="M653 194.5H654.5V178H653V194.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M653 241.5H654.5V258H653V241.5Z" fill="#001"/>
-                <path d="M653 241.5H654.5V258H653V241.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 120.5V114L671 122.5V128.5L657.5 120.5Z" fill="#001"/>
-                <path d="M657.5 120.5V114L671 122.5V128.5L657.5 120.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 138.5L657.5 130.5V124L671 132.5V138.5Z" fill="#001"/>
-                <path d="M671 138.5L657.5 130.5V124L671 132.5V138.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 149.5L657.5 141.5V135L671 143.5V149.5Z" fill="#001"/>
-                <path d="M671 149.5L657.5 141.5V135L671 143.5V149.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 160L657.5 152V145.5L671 154V160Z" fill="#001"/>
-                <path d="M671 160L657.5 152V145.5L671 154V160Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 170.5L657.5 162.5V156L671 164.5V170.5Z" fill="#001"/>
-                <path d="M671 170.5L657.5 162.5V156L671 164.5V170.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 181L657.5 173V166.5L671 175V181Z" fill="#001"/>
-                <path d="M671 181L657.5 173V166.5L671 175V181Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 191.5L657.5 183.5V177L671 185.5V191.5Z" fill="#001"/>
-                <path d="M671 191.5L657.5 183.5V177L671 185.5V191.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M671 202L657.5 194V187.5L671 196V202Z" fill="#001"/>
-                <path d="M671 202L657.5 194V187.5L671 196V202Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 241.5L671 233.5V239.5L657.5 248V241.5Z" fill="#001"/>
-                <path d="M657.5 241.5L671 233.5V239.5L657.5 248V241.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 252L671 244V250L657.5 258.5V252Z" fill="#001"/>
-                <path d="M657.5 252L671 244V250L657.5 258.5V252Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 262.5L671 254.5V260.5L657.5 269V262.5Z" fill="#001"/>
-                <path d="M657.5 262.5L671 254.5V260.5L657.5 269V262.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 273L671 265V271L657.5 279.5V273Z" fill="#001"/>
-                <path d="M657.5 273L671 265V271L657.5 279.5V273Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 283.5L671 275.5V281.5L657.5 290V283.5Z" fill="#001"/>
-                <path d="M657.5 283.5L671 275.5V281.5L657.5 290V283.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 294.5L671 286.5V292.5L657.5 301V294.5Z" fill="#001"/>
-                <path d="M657.5 294.5L671 286.5V292.5L657.5 301V294.5Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 305L671 297V303L657.5 311.5V305Z" fill="#001"/>
-                <path d="M657.5 305L671 297V303L657.5 311.5V305Z" fill="black" fill-opacity="0.2"/>
-                <path d="M657.5 315L671 307V313L657.5 321.5V315Z" fill="#001"/>
-                <path d="M657.5 315L671 307V313L657.5 321.5V315Z" fill="black" fill-opacity="0.2"/>
-                <path d="M660.5 113L654.5 109V178M654.5 178V194.5H653V178H654.5ZM660.5 321.5L654.5 325V258M654.5 258V241.5H653V258H654.5ZM657.5 114V120.5L671 128.5V122.5L657.5 114ZM657.5 124L671 132.5V138.5L657.5 130.5V124ZM657.5 135L671 143.5V149.5L657.5 141.5V135ZM657.5 145.5L671 154V160L657.5 152V145.5ZM657.5 156L671 164.5V170.5L657.5 162.5V156ZM657.5 166.5L671 175V181L657.5 173V166.5ZM657.5 177L671 185.5V191.5L657.5 183.5V177ZM657.5 187.5L671 196V202L657.5 194V187.5ZM671 233.5L657.5 241.5V248L671 239.5V233.5ZM671 244L657.5 252V258.5L671 250V244ZM671 254.5L657.5 262.5V269L671 260.5V254.5ZM671 265L657.5 273V279.5L671 271V265ZM671 275.5L657.5 283.5V290L671 281.5V275.5ZM671 286.5L657.5 294.5V301L671 292.5V286.5ZM671 297L657.5 305V311.5L671 303V297ZM671 307L657.5 315V321.5L671 313V307Z" stroke="#aaa"/>
-                <path d="M319 0.5H325V1.5H318.5H311.5L303.5 15.5V17H258L256.5 15.5H203H195H188.5H180.5H173L171 17H167L165.5 15.5H173H180.5H188.5H195H203H256.5H303.5L311.5 1.5H318.5L319 0.5Z" fill="#000"/>
-                <path d="M348 1.5V0.5H354V1.5H362L369.5 15.5H417H470H478H485.5H493.5H500.5H508L506.5 17H502L500.5 15.5H493.5H485.5H478H470H417L415 17H369.5V15.5L362 1.5H354H348Z" fill="#000"/>
-                <path d="M75.5 46H78H540.5H543V56.5H540.5V46H78V56.5H75.5V46Z" fill="#000"/>
-                <path d="M68 382H71.5V369.5H68V382Z" fill="#000"/>
-                <path d="M85 335.5V333.5H103V335.5H85Z" fill="#000"/>
-                <path d="M95 328.5H85V331.5H95V328.5Z" fill="#000"/>
-                <path d="M97 331.5V328.5H106V331.5H97Z" fill="#000"/>
-                <path d="M108 331.5V328.5H118V331.5H108Z" fill="#000"/>
-                <path d="M120 331.5V328.5H130V331.5H120Z" fill="#000"/>
-                <path d="M54 321L58 326L54 331.5L49.5 326L54 321Z" fill="#000"/>
-                <path d="M319 438V436.5H311L303.5 422.5H256.5H202.5H194.5H187.5H180H172H165L166.5 420.5H171L172 422.5H180H187.5H194.5H202.5H256.5L258 420.5H303.5V422.5L311 436.5H319H325V438H319Z" fill="#000"/>
-                <path d="M354 436.5V438H348V436.5H354H362.236L369 422.5V420.5H415.5L417 422.5H469.5H478H485.5H493.5H500.5L502 420.5H506.5L507.5 422.5H500.5H493.5H485.5H478H469.5H417H369L362.236 436.5H354Z" fill="#000"/>
-                <path d="M23 182.5V47.5L63 7.5H301.5M369.5 7.5H608L648 47.5V182.5M648 254.5V390.5L608 430.5H369M302 430.5H63L23 390.5V255M318.5 1.5L319 0.5H325V1.5H318.5ZM318.5 1.5H311.5L303.5 15.5M303.5 15.5H256.5M303.5 15.5V17H258L256.5 15.5M165.5 15.5L161.5 19.5M165.5 15.5L167 17H171L173 15.5M165.5 15.5H173M173 15.5H180.5M174.5 17H179L180.5 15.5M180.5 15.5H188.5M182.5 17H187L188.5 15.5M188.5 15.5H195M190 17H193.5L195 15.5M195 15.5H203M197 17H201.5L203 15.5M203 15.5H256.5M354 1.5H348V0.5H354V1.5ZM354 1.5H362L369.5 15.5M369.5 15.5H417M369.5 15.5V17H415L417 15.5M500.5 15.5H508L506.5 17H502L500.5 15.5ZM500.5 15.5H493.5M499 17H495.5L493.5 15.5M493.5 15.5H485.5M492 17H487.5L485.5 15.5M485.5 15.5H478M484 17H479.5L478 15.5M478 15.5H470M476.5 17H471.5L470 15.5M470 15.5H417M75.5 46H78V56.5H75.5V46ZM75.5 46H540.5M540.5 46H543V56.5H540.5V46ZM535 52.5H364.5M535 54.5H522M362 62.5H134.5M71.5 211.5V369.5M71.5 369.5V382H68V369.5H71.5ZM131.5 333.5H103M103 333.5H85V335.5H103V333.5ZM77.5 370.5H369.5M378 336V408M375 397V408M65.5 326H58M58 326L54 321L49.5 326L54 331.5L58 326ZM387.5 370.5H543.5M581.5 97.5L611.5 67V128.5M616 66V77.5M616 129.5V77.5M616 77.5H638M611.5 288.5V351L572.5 312M616 288.5V298.5M616 351V298.5M616 298.5H638M319 436.5V438H325V436.5H311L303.5 422.5M303.5 422.5H256.5M303.5 422.5V420.5H258L256.5 422.5M165 422.5L162 419M165 422.5L166.5 420.5H171L172 422.5M165 422.5H172M172 422.5H180M174.5 420.5H178.5L180 422.5M180 422.5H187.5M182 420.5H186.5L187.5 422.5M187.5 422.5H194.5M189.5 420.5H193.5L194.5 422.5M194.5 422.5H202.5M196.5 420.5H201L202.5 422.5M202.5 422.5H256.5M354 436.5V438H348V436.5H362.236L369 422.5M369 422.5H417M369 422.5V420.5H415.5L417 422.5M507.5 422.5L512.5 417.5M507.5 422.5L506.5 420.5H502L500.5 422.5M507.5 422.5H500.5M500.5 422.5H493.5M498.5 420.5H494.5L493.5 422.5M493.5 422.5H485.5M491 420.5H487L485.5 422.5M485.5 422.5H478M483.5 420.5H479L478 422.5M478 422.5H469.5M476 420.5H471L469.5 422.5M469.5 422.5H417M656 200L641 208.5V226L656 235L671 226V208.5L656.5 200M16 200L1 208.5V226L16 235L31 226V208.5L16.5 200M85 328.5H95V331.5H85V328.5ZM97 328.5V331.5H106V328.5H97ZM108 328.5V331.5H118V328.5H108ZM120 328.5V331.5H130V328.5H120Z" stroke="#aaa"/>
-                <path d="M652 215.5L656 212.5L660 215.5V219.5L656 222.5L652 219.5V215.5Z" fill="#24C2E5" fill-opacity="0.49"/>
-                <path d="M12 215.5L16 212.5L20 215.5V219.5L16 222.5L12 219.5V215.5Z" fill="#24C2E5" fill-opacity="0.49"/>
-                <path d="M648 209.5L656 204.5L664 209.5M664 225.5L656 230.5L648 225.5M8 209.5L16 204.5L24 209.5M24 225.5L16 230.5L8 225.5M656 212.5L652 215.5V219.5L656 222.5L660 219.5V215.5L656 212.5ZM16 212.5L12 215.5V219.5L16 222.5L20 219.5V215.5L16 212.5Z" stroke="#aaa"/>
+                    <path d="M319 1.5H311L308 7.5H63L23 47.5V194.5L39 204.5V230.5L23 241.5V390.5L63 430.5H608L648 390.5V240.5L632 230.5V203.5L648 192V47.5L608 7.5H365L362 1.5H354L353 0H319.5L319 1.5Z" fill="#24C2E500" fill-opacity="0.49"/>
+                    <path d="M17.5 194.5V177.5H19.5V194.5H17.5Z" fill="#000"/>
+                    <path d="M19.5 240H17.5V258H19.5V240Z" fill="#000"/>
+                    <path d="M1 122.5L14.5 114V120L1 128.5V122.5Z" fill="#000"/>
+                    <path d="M1 133L14.5 124.5V130.5L1 139V133Z" fill="#000"/>
+                    <path d="M1 143.5L14.5 135V141L1 149.5V143.5Z" fill="#000"/>
+                    <path d="M1 154L14.5 145.5V151.5L1 160V154Z" fill="#000"/>
+                    <path d="M1 165L14.5 156.5V162.5L1 171V165Z" fill="#000"/>
+                    <path d="M1 175.5L14.5 167V173L1 181.5V175.5Z" fill="#000"/>
+                    <path d="M1 186L14.5 177.5V183.5L1 192V186Z" fill="#000"/>
+                    <path d="M1 196.5L14.5 188V194L1 202.5V196.5Z" fill="#000"/>
+                    <path d="M1 239.5V233L14 241.5V248L1 239.5Z" fill="#000"/>
+                    <path d="M1 250V243.5L14 252V258.5L1 250Z" fill="#000"/>
+                    <path d="M1 260.5V254L14 262.5V269L1 260.5Z" fill="#000"/>
+                    <path d="M1 271V264.5L14 273V279.5L1 271Z" fill="#000"/>
+                    <path d="M1 281.5V275L14 283.5V290L1 281.5Z" fill="#000"/>
+                    <path d="M1 292V285.5L14 294V300.5L1 292Z" fill="#000"/>
+                    <path d="M1 302.5V296L14 304.5V311L1 302.5Z" fill="#000"/>
+                    <path d="M1 312.5V306L14 314.5V321L1 312.5Z" fill="#000"/>
+                    <path d="M12 113L17.5 109V194.5H19.5V177.5H17.5M12 321.5L17.5 325V258M17.5 258V240H19.5V258H17.5ZM14.5 114L1 122.5V128.5L14.5 120V114ZM14.5 124.5L1 133V139L14.5 130.5V124.5ZM14.5 135L1 143.5V149.5L14.5 141V135ZM14.5 145.5L1 154V160L14.5 151.5V145.5ZM14.5 156.5L1 165V171L14.5 162.5V156.5ZM14.5 167L1 175.5V181.5L14.5 173V167ZM14.5 177.5L1 186V192L14.5 183.5V177.5ZM14.5 188L1 196.5V202.5L14.5 194V188ZM1 233V239.5L14 248V241.5L1 233ZM1 243.5V250L14 258.5V252L1 243.5ZM1 254V260.5L14 269V262.5L1 254ZM1 264.5V271L14 279.5V273L1 264.5ZM1 275V281.5L14 290V283.5L1 275ZM1 285.5V292L14 300.5V294L1 285.5ZM1 296V302.5L14 311V304.5L1 296ZM1 306V312.5L14 321V314.5L1 306Z" stroke="#aaa"/>
+                    <path d="M653 194.5H654.5V178H653V194.5Z" fill="#001"/>
+                    <path d="M653 194.5H654.5V178H653V194.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M653 241.5H654.5V258H653V241.5Z" fill="#001"/>
+                    <path d="M653 241.5H654.5V258H653V241.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 120.5V114L671 122.5V128.5L657.5 120.5Z" fill="#001"/>
+                    <path d="M657.5 120.5V114L671 122.5V128.5L657.5 120.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 138.5L657.5 130.5V124L671 132.5V138.5Z" fill="#001"/>
+                    <path d="M671 138.5L657.5 130.5V124L671 132.5V138.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 149.5L657.5 141.5V135L671 143.5V149.5Z" fill="#001"/>
+                    <path d="M671 149.5L657.5 141.5V135L671 143.5V149.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 160L657.5 152V145.5L671 154V160Z" fill="#001"/>
+                    <path d="M671 160L657.5 152V145.5L671 154V160Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 170.5L657.5 162.5V156L671 164.5V170.5Z" fill="#001"/>
+                    <path d="M671 170.5L657.5 162.5V156L671 164.5V170.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 181L657.5 173V166.5L671 175V181Z" fill="#001"/>
+                    <path d="M671 181L657.5 173V166.5L671 175V181Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 191.5L657.5 183.5V177L671 185.5V191.5Z" fill="#001"/>
+                    <path d="M671 191.5L657.5 183.5V177L671 185.5V191.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M671 202L657.5 194V187.5L671 196V202Z" fill="#001"/>
+                    <path d="M671 202L657.5 194V187.5L671 196V202Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 241.5L671 233.5V239.5L657.5 248V241.5Z" fill="#001"/>
+                    <path d="M657.5 241.5L671 233.5V239.5L657.5 248V241.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 252L671 244V250L657.5 258.5V252Z" fill="#001"/>
+                    <path d="M657.5 252L671 244V250L657.5 258.5V252Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 262.5L671 254.5V260.5L657.5 269V262.5Z" fill="#001"/>
+                    <path d="M657.5 262.5L671 254.5V260.5L657.5 269V262.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 273L671 265V271L657.5 279.5V273Z" fill="#001"/>
+                    <path d="M657.5 273L671 265V271L657.5 279.5V273Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 283.5L671 275.5V281.5L657.5 290V283.5Z" fill="#001"/>
+                    <path d="M657.5 283.5L671 275.5V281.5L657.5 290V283.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 294.5L671 286.5V292.5L657.5 301V294.5Z" fill="#001"/>
+                    <path d="M657.5 294.5L671 286.5V292.5L657.5 301V294.5Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 305L671 297V303L657.5 311.5V305Z" fill="#001"/>
+                    <path d="M657.5 305L671 297V303L657.5 311.5V305Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M657.5 315L671 307V313L657.5 321.5V315Z" fill="#001"/>
+                    <path d="M657.5 315L671 307V313L657.5 321.5V315Z" fill="black" fill-opacity="0.2"/>
+                    <path d="M660.5 113L654.5 109V178M654.5 178V194.5H653V178H654.5ZM660.5 321.5L654.5 325V258M654.5 258V241.5H653V258H654.5ZM657.5 114V120.5L671 128.5V122.5L657.5 114ZM657.5 124L671 132.5V138.5L657.5 130.5V124ZM657.5 135L671 143.5V149.5L657.5 141.5V135ZM657.5 145.5L671 154V160L657.5 152V145.5ZM657.5 156L671 164.5V170.5L657.5 162.5V156ZM657.5 166.5L671 175V181L657.5 173V166.5ZM657.5 177L671 185.5V191.5L657.5 183.5V177ZM657.5 187.5L671 196V202L657.5 194V187.5ZM671 233.5L657.5 241.5V248L671 239.5V233.5ZM671 244L657.5 252V258.5L671 250V244ZM671 254.5L657.5 262.5V269L671 260.5V254.5ZM671 265L657.5 273V279.5L671 271V265ZM671 275.5L657.5 283.5V290L671 281.5V275.5ZM671 286.5L657.5 294.5V301L671 292.5V286.5ZM671 297L657.5 305V311.5L671 303V297ZM671 307L657.5 315V321.5L671 313V307Z" stroke="#aaa"/>
+                    <path d="M319 0.5H325V1.5H318.5H311.5L303.5 15.5V17H258L256.5 15.5H203H195H188.5H180.5H173L171 17H167L165.5 15.5H173H180.5H188.5H195H203H256.5H303.5L311.5 1.5H318.5L319 0.5Z" fill="#000"/>
+                    <path d="M348 1.5V0.5H354V1.5H362L369.5 15.5H417H470H478H485.5H493.5H500.5H508L506.5 17H502L500.5 15.5H493.5H485.5H478H470H417L415 17H369.5V15.5L362 1.5H354H348Z" fill="#000"/>
+                    <path d="M75.5 46H78H540.5H543V56.5H540.5V46H78V56.5H75.5V46Z" fill="#000"/>
+                    <path d="M68 382H71.5V369.5H68V382Z" fill="#000"/>
+                    <path d="M85 355V353H103V355H85Z" fill="#000"/>
+                    <path d="M95 348H85V351H95V348Z" fill="#000"/>
+                    <path d="M97 351V348H106V351H97Z" fill="#000"/>
+                    <path d="M108 351V348H118V351H108Z" fill="#000"/>
+                    <path d="M120 351V348H130V351H120Z" fill="#000"/>
+                    <path d="M54 321L58 326L54 331.5L49.5 326L54 321Z" fill="#000"/>
+                    <path d="M319 438V436.5H311L303.5 422.5H256.5H202.5H194.5H187.5H180H172H165L166.5 420.5H171L172 422.5H180H187.5H194.5H202.5H256.5L258 420.5H303.5V422.5L311 436.5H319H325V438H319Z" fill="#000"/>
+                    <path d="M354 436.5V438H348V436.5H354H362.236L369 422.5V420.5H415.5L417 422.5H469.5H478H485.5H493.5H500.5L502 420.5H506.5L507.5 422.5H500.5H493.5H485.5H478H469.5H417H369L362.236 436.5H354Z" fill="#000"/>
+
+                    <path d="M23 183V48L63 8H301.5" stroke="#aaa"/>
+                    <path d="M369.5 8H608L648 48V183" stroke="#aaa"/>
+                    <path d="M648 255V391L608 431H369" stroke="#aaa"/>
+                    <path d="M302 431H63L23 391V255.5" stroke="#aaa"/>
+                    <path d="M318.5 2L319 1H325V2H318.5Z" stroke="#aaa"/>
+                    <path d="M318.5 2H311.5L303.5 16" stroke="#aaa"/>
+                    <path d="M303.5 16H256.5" stroke="#aaa"/>
+                    <path d="M303.5 16V17.5H258L256.5 16" stroke="#aaa"/>
+                    <path d="M165.5 16L161.5 20" stroke="#aaa"/>
+                    <path d="M165.5 16L167 17.5H171L173 16" stroke="#aaa"/>
+                    <path d="M165.5 16H173" stroke="#aaa"/>
+                    <path d="M173 16H180.5" stroke="#aaa"/>
+                    <path d="M174.5 17.5H179L180.5 16" stroke="#aaa"/>
+                    <path d="M180.5 16H188.5" stroke="#aaa"/>
+                    <path d="M182.5 17.5H187L188.5 16" stroke="#aaa"/>
+                    <path d="M188.5 16H195" stroke="#aaa"/>
+                    <path d="M190 17.5H193.5L195 16" stroke="#aaa"/>
+                    <path d="M195 16H203" stroke="#aaa"/>
+                    <path d="M197 17.5H201.5L203 16" stroke="#aaa"/>
+                    <path d="M203 16H256.5" stroke="#aaa"/>
+                    <path d="M354 2H348V1H354V2Z" stroke="#aaa"/>
+                    <path d="M354 2H362L369.5 16" stroke="#aaa"/>
+                    <path d="M369.5 16H417" stroke="#aaa"/>
+                    <path d="M369.5 16V17.5H415L417 16" stroke="#aaa"/>
+                    <path d="M500.5 16H508L506.5 17.5H502L500.5 16Z" stroke="#aaa"/>
+                    <path d="M500.5 16H493.5" stroke="#aaa"/>
+                    <path d="M499 17.5H495.5L493.5 16" stroke="#aaa"/>
+                    <path d="M493.5 16H485.5" stroke="#aaa"/>
+                    <path d="M492 17.5H487.5L485.5 16" stroke="#aaa"/>
+                    <path d="M485.5 16H478" stroke="#aaa"/>
+                    <path d="M484 17.5H479.5L478 16" stroke="#aaa"/>
+                    <path d="M478 16H470" stroke="#aaa"/>
+                    <path d="M476.5 17.5H471.5L470 16" stroke="#aaa"/>
+                    <path d="M470 16H417" stroke="#aaa"/>
+                    <path d="M75.5 46.5H540.5" stroke="#aaa"/>
+                    <path d="M75.5 46.5H78V57H75.5V46.5Z" stroke="#aaa"/>
+                    <path d="M540.5 46.5H543V57H540.5V46.5Z" stroke="#aaa"/>
+                    
+                    <g id="line1">
+                        <path d="M535 53H364.5" stroke="#aaa"/>
                     </g>
+                    <g id="line2">
+                        <path d="M535 55H522" stroke="#aaa"/>
+                    </g>
+                    <g id="line3">
+                        <path d="M362 63H134.5" stroke="#aaa"/>
+                    </g>
+
+                    <path d="M71.5 212V370" stroke="#aaa"/>
+                    <path d="M71.5 370V382.5H68V370H71.5Z" stroke="#aaa"/>
+                    <path d="M131.5 353H103" stroke="#aaa"/>
+                    <path d="M103 353H85V355H103V353Z" stroke="#aaa"/>
+                    <path d="M77.5 390H369.5" stroke="#aaa"/>
+                    <path d="M378 336.5V408.5" stroke="#aaa"/>
+                    <path d="M375 397.5V408.5" stroke="#aaa"/>
+                    <path d="M65.5 326.5H58" stroke="#aaa"/>
+                    <path d="M58 326.5L54 321.5L49.5 326.5L54 332L58 326.5Z" stroke="#aaa"/>
+                    <path d="M387.5 371H543.5" stroke="#aaa"/>
+                    <path d="M581.5 98L611.5 67.5V129" stroke="#aaa"/>
+                    <path d="M616 66.5V78" stroke="#aaa"/>
+                    <path d="M616 130V78" stroke="#aaa"/>
+                    <path d="M616 78H638" stroke="#aaa"/>
+                    <path d="M611.5 289V351.5L572.5 312.5" stroke="#aaa"/>
+                    <path d="M616 289V299" stroke="#aaa"/>
+                    <path d="M616 351.5V299" stroke="#aaa"/>
+                    <path d="M616 299H638" stroke="#aaa"/>
+                    <path d="M319 437V438.5H325V437H311L303.5 423" stroke="#aaa"/>
+                    <path d="M303.5 423H256.5" stroke="#aaa"/>
+                    <path d="M303.5 423V421H258L256.5 423" stroke="#aaa"/>
+                    <path d="M165 423L162 419.5" stroke="#aaa"/>
+                    <path d="M165 423L166.5 421H171L172 423" stroke="#aaa"/>
+                    <path d="M165 423H172" stroke="#aaa"/>
+                    <path d="M172 423H180" stroke="#aaa"/>
+                    <path d="M174.5 421H178.5L180 423" stroke="#aaa"/>
+                    <path d="M180 423H187.5" stroke="#aaa"/>
+                    <path d="M182 421H186.5L187.5 423" stroke="#aaa"/>
+                    <path d="M187.5 423H194.5" stroke="#aaa"/>
+                    <path d="M189.5 421H193.5L194.5 423" stroke="#aaa"/>
+                    <path d="M194.5 423H202.5" stroke="#aaa"/>
+                    <path d="M196.5 421H201L202.5 423" stroke="#aaa"/>
+                    <path d="M202.5 423H256.5" stroke="#aaa"/>
+                    <path d="M354 437V438.5H348V437H362.236L369 423" stroke="#aaa"/>
+                    <path d="M369 423H417" stroke="#aaa"/>
+                    <path d="M369 423V421H415.5L417 423" stroke="#aaa"/>
+                    <path d="M507.5 423L512.5 418" stroke="#aaa"/>
+                    <path d="M507.5 423L506.5 421H502L500.5 423" stroke="#aaa"/>
+                    <path d="M507.5 423H500.5" stroke="#aaa"/>
+                    <path d="M500.5 423H493.5" stroke="#aaa"/>
+                    <path d="M498.5 421H494.5L493.5 423" stroke="#aaa"/>
+                    <path d="M493.5 423H485.5" stroke="#aaa"/>
+                    <path d="M491 421H487L485.5 423" stroke="#aaa"/>
+                    <path d="M485.5 423H478" stroke="#aaa"/>
+                    <path d="M483.5 421H479L478 423" stroke="#aaa"/>
+                    <path d="M478 423H469.5" stroke="#aaa"/>
+                    <path d="M476 421H471L469.5 423" stroke="#aaa"/>
+                    <path d="M469.5 423H417" stroke="#aaa"/>
+                    <path d="M656 200.5L641 209V226.5L656 235.5L671 226.5V209L656.5 200.5" stroke="#aaa"/>
+                    <path d="M16 200.5L1 209V226.5L16 235.5L31 226.5V209L16.5 200.5" stroke="#aaa"/>
+                    <path d="M85 348H95V351H85V348Z" stroke="#aaa"/>
+                    <path d="M97 348V351H106V348H97Z" stroke="#aaa"/>
+                    <path d="M108 348V351H118V348H108Z" stroke="#aaa"/>
+                    <path d="M120 348V351H130V348H120Z" stroke="#aaa"/>"
+
+                    <path d="M652 215.5L656 212.5L660 215.5V219.5L656 222.5L652 219.5V215.5Z" fill="#24C2E5" fill-opacity="0.49"/>
+                    <path d="M12 215.5L16 212.5L20 215.5V219.5L16 222.5L12 219.5V215.5Z" fill="#24C2E5" fill-opacity="0.49"/>
+                    <path d="M648 209.5L656 204.5L664 209.5M664 225.5L656 230.5L648 225.5M8 209.5L16 204.5L24 209.5M24 225.5L16 230.5L8 225.5M656 212.5L652 215.5V219.5L656 222.5L660 219.5V215.5L656 212.5ZM16 212.5L12 215.5V219.5L16 222.5L20 219.5V215.5L16 212.5Z" stroke="#aaa"/>
+                </g>
+                <g id="myCircle" filter="url(#drop-shadow2)" fill="#FF0000">
+                    <circle cx="36.5" cy="55" r="3"/>
+                </g>
                     <defs>
                         <filter id="drop-shadow" x="0%" y="0%" width="140%" height="140%">
                             <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#24C2E5" flood-opacity="1">
                                 <animate attributeName="stdDeviation" values="1;3;1" dur="1s" repeatCount="indefinite"/>
                                 <animate attributeName="color" values="#24C2E5;#24C2E5;#24C2E5" dur="1s" repeatCount="indefinite"/>
                             </feDropShadow>
+                        </filter>
+
+                        <filter id="drop-shadow2" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow id="drop-shadow" dx="0" dy="0" stdDeviation="0" flood-color="#FF0000" flood-opacity="1"/>
                         </filter>
                     </defs>
                 </svg>
@@ -399,25 +591,25 @@ class PopUpProfile extends HTMLElement {
                     </div>
                 </div>
                 <div class="friends">
-                <svg id="bg" width="180" height="241" viewBox="0 0 180 241" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#drop-shadow)">
-                        <path d="M1 21H179.5V218.5L157.5 240.5H24.5L1 217V21Z" fill="#073C7011" fill-opacity="0.55" stroke="#00FFF0" stroke-opacity="0.63"/>
-                        <path d="M51.5 3.5L69 21H1V3.5H51.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M170 16.5H175L160 1.5H155L170 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M157 16.5H162L147 1.5H142L157 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M145.5 16.5H150.5L135.5 1.5H130.5L145.5 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M134 16.5H139L124 1.5H119L134 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M122 16.5H127L112 1.5H107L122 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M110 16.5H115L100 1.5H95L110 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M98.5 16.5H103.5L88.5 1.5H83.5L98.5 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M86.5 16.5H91.5L76.5 1.5H71.5L86.5 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M74.5 16.5H79.5L64.5 1.5H59.5L74.5 16.5Z" fill="black" fill-opacity="0.2"/>
-                        <path d="M1 21V217L24.5 240.5H157.5L179.5 218.5V21M1 21V3.5H51.5L69 21M1 21H69M69 21H124.25H151.875H165.688H172.594H176.047H177.773H178.637H179.49M1 1H53L70 18H177.773M175 16.5H170L155 1.5H160L175 16.5ZM162 16.5H157L142 1.5H147L162 16.5ZM150.5 16.5H145.5L130.5 1.5H135.5L150.5 16.5ZM139 16.5H134L119 1.5H124L139 16.5ZM127 16.5H122L107 1.5H112L127 16.5ZM115 16.5H110L95 1.5H100L115 16.5ZM103.5 16.5H98.5L83.5 1.5H88.5L103.5 16.5ZM91.5 16.5H86.5L71.5 1.5H76.5L91.5 16.5ZM79.5 16.5H74.5L59.5 1.5H64.5L79.5 16.5Z" stroke="#00FFF0" stroke-opacity="0.63"/>
-                        </g>
-                </svg>
-                <div class="title">
-                    <h3>Friends</h3>
-                </div>
+                    <svg id="bg" width="180" height="241" viewBox="0 0 180 241" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#drop-shadow)">
+                            <path d="M1 21H179.5V218.5L157.5 240.5H24.5L1 217V21Z" fill="#073C7011" fill-opacity="0.55" stroke="#00FFF0" stroke-opacity="0.63"/>
+                            <path d="M51.5 3.5L69 21H1V3.5H51.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M170 16.5H175L160 1.5H155L170 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M157 16.5H162L147 1.5H142L157 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M145.5 16.5H150.5L135.5 1.5H130.5L145.5 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M134 16.5H139L124 1.5H119L134 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M122 16.5H127L112 1.5H107L122 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M110 16.5H115L100 1.5H95L110 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M98.5 16.5H103.5L88.5 1.5H83.5L98.5 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M86.5 16.5H91.5L76.5 1.5H71.5L86.5 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M74.5 16.5H79.5L64.5 1.5H59.5L74.5 16.5Z" fill="black" fill-opacity="0.2"/>
+                            <path d="M1 21V217L24.5 240.5H157.5L179.5 218.5V21M1 21V3.5H51.5L69 21M1 21H69M69 21H124.25H151.875H165.688H172.594H176.047H177.773H178.637H179.49M1 1H53L70 18H177.773M175 16.5H170L155 1.5H160L175 16.5ZM162 16.5H157L142 1.5H147L162 16.5ZM150.5 16.5H145.5L130.5 1.5H135.5L150.5 16.5ZM139 16.5H134L119 1.5H124L139 16.5ZM127 16.5H122L107 1.5H112L127 16.5ZM115 16.5H110L95 1.5H100L115 16.5ZM103.5 16.5H98.5L83.5 1.5H88.5L103.5 16.5ZM91.5 16.5H86.5L71.5 1.5H76.5L91.5 16.5ZM79.5 16.5H74.5L59.5 1.5H64.5L79.5 16.5Z" stroke="#00FFF0" stroke-opacity="0.63"/>
+                            </g>
+                    </svg>
+                    <div class="title">
+                        <h3>Friends</h3>
+                    </div>
                 </div>
                 <div class="statistics">
                     <svg width="519" height="212" viewBox="0 0 519 212" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -471,7 +663,45 @@ class PopUpProfile extends HTMLElement {
                         <path d="M317 208L202 208C202 208 202.289 209.726 203 210.5C203.476 211.018 204.5 211.5 205.5 211.5L313 211.5C314 211.5 315.134 211.38 316 210.5C316.738 209.751 317 208 317 208Z" fill="#D9D9D9" stroke="#377E7A"/>
                         <circle cx="258.5" cy="180.5" r="3.5" fill="#D9D9D9"/>
                     </svg>
-                </div>                
+                </div>
+                    <div class="history">
+                        <svg id="bg" width="576" height="346" viewBox="0 0 576 346" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#drop-shadow)">    
+                            <path d="M2 154V165L11 174V261L1 271V291.5M200 345H245.5L256.5 334H320L331 345H377M574 154V165L565 174V260.5L575 270.5V291" stroke="#95FF8C"/>
+                            <path d="M6 21.5L27 0.5H51.5L64.5 13.5H171.5L178 7H398L404.5 13.5H511.5L524.5 0.5H549L570 21.5V161.5L561.5 170V264L571 273.5V329L559.5 340.5H334L323 329.5H253.5L242.5 340.5H16L5 329.5V273.5L14.5 264V169.5L6 161V21.5Z" stroke="#07FFF0"/>
+                        </g>
+                            <path d="M60.5 1.5H65.5L73.5 9.5H68.5L60.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M70 1.5H75L83 9.5H78L70 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M79 1.5H84L92 9.5H87L79 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M88 1.5H93L101 9.5H96L88 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M97 1.5H102L110 9.5H105L97 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M106.5 1.5H111.5L119.5 9.5H114.5L106.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M115.5 1.5H120.5L128.5 9.5H123.5L115.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M124.5 1.5H129.5L137.5 9.5H132.5L124.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M134 1.5H139L147 9.5H142L134 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M143.5 1.5H148.5L156.5 9.5H151.5L143.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M152.5 1.5H157.5L165.5 9.5H160.5L152.5 1.5Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M410 10H415L423 2H418L410 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M419.5 10H424.5L432.5 2H427.5L419.5 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M428.5 10H433.5L441.5 2H436.5L428.5 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M437.5 10H442.5L450.5 2H445.5L437.5 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M446.5 10H451.5L459.5 2H454.5L446.5 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M456 10H461L469 2H464L456 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M465 10H470L478 2H473L465 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M474 10H479L487 2H482L474 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M483.5 10H488.5L496.5 2H491.5L483.5 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M493 10H498L506 2H501L493 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                            <path d="M502 10H507L515 2H510L502 10Z" fill="#95FF8C7a" stroke="#05fa"/>
+                        <g filter="url(#drop-shadow)">    
+                            <path d="M22 15.5L30.5 7H50.5L59 15.5H22Z" fill="#00FF66" fill-opacity="0.1" stroke-width="5"/>
+                            <path d="M517.5 15.5L526 7H546L554.5 15.5H517.5Z" fill="#00FF66" fill-opacity="0.1" stroke-width="5"/>
+                            <path d="M564.5 25.5L558.5 19.5H382.5L378.5 15.5H197.5L193.5 19.5H17.5L10.5 26.5V56.5L17.5 63.5V95.5L10.5 102.5V158.5L18.5 166.5V266.5L9.5 275.5V282.5L12.5 285.5V305.5L10.5 307.5V327.5L18.5 335.5H45L47 333.5H83.5L85.5 335.5H239.5L250.5 324.5H325.5L337 336H490L492.5 333.5H528.5L531 336H557.5L565.5 328V308L563.5 306V285.5L566.5 282.5V275.5L557.5 266.5V166.5L564.5 159.5V101.5L557.5 94.5V64.5L564.5 57.5V25.5Z" fill="#005F16aa" fill-opacity="0.1" stroke-width="5"/>
+                            <path d="M22 15.5L30.5 7H50.5L59 15.5H22Z" stroke="#24C2E553"/>
+                            <path d="M517.5 15.5L526 7H546L554.5 15.5H517.5Z" stroke="#24C2E553"/>
+                            <path d="M564.5 25.5L558.5 19.5H382.5L378.5 15.5H197.5L193.5 19.5H17.5L10.5 26.5V56.5L17.5 63.5V95.5L10.5 102.5V158.5L18.5 166.5V266.5L9.5 275.5V282.5L12.5 285.5V305.5L10.5 307.5V327.5L18.5 335.5H45L47 333.5H83.5L85.5 335.5H239.5L250.5 324.5H325.5L337 336H490L492.5 333.5H528.5L531 336H557.5L565.5 328V308L563.5 306V285.5L566.5 282.5V275.5L557.5 266.5V166.5L564.5 159.5V101.5L557.5 94.5V64.5L564.5 57.5V25.5Z" stroke="#24C2E553"/>
+                        </g>
+                    </svg>
+                </div>
             </div>
         </div>
     `;
