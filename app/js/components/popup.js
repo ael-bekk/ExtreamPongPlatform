@@ -78,7 +78,7 @@ class PopUpProfile extends HTMLElement {
                 stroke-dashoffset: 0;
             }
         }
-        .popup-inner .avatar {
+        .popup-inner > .avatar {
             position: relative;
             width: 230px;
             height: 160px;
@@ -114,14 +114,14 @@ class PopUpProfile extends HTMLElement {
                 0 0 10px 10px #aaa inset;
             }
         }
-        .popup-inner .avatar span#gradient {
+        .popup-inner > .avatar span#gradient {
             position: absolute;
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, #aaaaaa00 0%, #aaaaaaaa 100%);
             animation: moveGradient 5s infinite linear;
         }
-        .popup-inner .avatar span#gradient::before {
+        .popup-inner > .avatar span#gradient::before {
             content: '';
             position: absolute;
             width: 2px;
@@ -154,7 +154,7 @@ class PopUpProfile extends HTMLElement {
                 left: 100%;
             }
         }
-        .popup-inner .avatar h2 {
+        .popup-inner > .avatar h2 {
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -165,7 +165,7 @@ class PopUpProfile extends HTMLElement {
             z-index: 2;
             text-shadow: 0 0 10px #00FFF0;
         }
-        .popup-inner .avatar img {
+        .popup-inner > .avatar img {
             position: absolute;
             width: 120%;
             // border-radius: 50%;
@@ -175,7 +175,7 @@ class PopUpProfile extends HTMLElement {
             transform: translate(-50%, -50%);
             z-index: -1;
         }
-        .popup-inner .avatar img:nth-child(2) {
+        .popup-inner > .avatar img:nth-child(2) {
             position: absolute;
             width: 85px;
             top: 50%;
@@ -256,10 +256,11 @@ class PopUpProfile extends HTMLElement {
             top: 100px;
             right: 200px;
             border-radius: 5px;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0px;
         }
+       
         .popup-inner .friends svg#bg {
             position: absolute;
             width: 100%;
@@ -354,14 +355,319 @@ class PopUpProfile extends HTMLElement {
         }
         @keyframes line3 {
             0% {
-                transform: translateX(0);
+                transform: translate(0, -5px);
             }
             50% {
-                transform: translateX(15%);
+                transform: translate(15%, -5px);
             }
             100% {
-                transform: translateX(0);
+                transform: translate(0, -5px);
             }
+        }
+
+        .popup-inner .friends .friendWrapper::-webkit-scrollbar {
+            display: none;
+            width: 0;
+        }
+        .popup-inner .friends .wrapper {
+            position: absolute;
+            left: 50%;
+            transform: translateX(calc(-50% + 1px));
+            width: 395px;
+            height: 487px;
+            overflow: hidden;
+            bottom: 8px;
+            clip-path: url(#clip-friends);
+        }
+        .popup-inner .friends .friendWrapper {
+            position: absolute;
+            display: grid;
+            gap: 10px;
+            left: 0;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            z-index: -2;
+            background: #07a2; 
+            box-shadow: 0 0 100px 1px #24C2E577 inset;
+        }
+        .friendWrapper .profile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            height: 200px;
+            // border : 1px solid #ff0;
+            margin: 0 auto;
+        }
+        .friendWrapper .profile .avatar {
+            position: relative;
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // border: 1px solid blue;
+        }
+        .friendWrapper .profile .info {
+            position: relative;
+            height: 40px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            // border: 1px solid red;
+        }
+        .friendWrapper .profile .info img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: hue-rotate(60deg);
+        }
+        .friendWrapper .profile .avatar > img {
+            position: absolute;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: hue-rotate(60deg);
+        }
+        .friendWrapper .profile .avatar .avatarInfo {
+            position: absolute;
+            width: 84%;
+            height: 84%;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-2px);
+            justify-content: center;
+            align-items: center;
+            clip-path: url(#userMask);
+        }
+        .friendWrapper .profile .avatar .avatarInfo img {
+            position: relative;
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            filter: hue-rotate(60deg);
+        }
+        .friendWrapper .profile .avatar .avatarInfo h3 {
+            position: relative;
+            width: 100%;
+            height: 50%;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00e5ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 0 0 5px #00e5ff;
+            border: 1px solid #00e5ff55;
+        }
+        .friendWrapper .profile .avatar .avatarInfo svg{
+            position: absolute;
+            top: -5%;
+            left: -10%;
+            width: 100%;
+            height: 100%;
+            fill: #00e5ff;
+        }
+        .friendWrapper .profile .info .infoWrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00e5ff;
+            // border: 1px solid white; 
+        }
+        .friendWrapper .profile .info .infoWrapper h3 {
+            position: relative;
+            width: 100%;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            text-shadow: 0 0 5px #00e5ff;
+        }
+
+        .statisticsWrapper {
+            height: 100%;
+            // border: 1px solid #24C2E5;
+        }
+        
+        .circle {
+            fill: none;
+            stroke-width: 7px;
+            stroke: url(#grad);
+            transform: rotate(-90deg);
+            transform-origin: center;
+            animation: animate 2s linear forwards;
+        }
+        .circle-two{
+            fill: none;
+            stroke-width: 10px;
+            stroke: #0cc;
+        }
+        @keyframes animate{
+            0%{
+                stroke-dasharray: 0 1000;
+            }
+        }
+        .statisticsWrapper .title {
+            position: absolute;
+            height: 50px;
+            top: 0;
+            left: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-50%);
+            color: #24C2E5;
+            font-size: 20px;
+            font-weight: 600;
+            text-shadow: 0 0 20px #24C2E5;
+        }
+        .statisticsWrapper .title h3 {
+            position: relative;
+        }
+        .statisticsWrapper .average {
+            position: absolute;
+            width: 100%;
+            top: 40px;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            // border: 1px solid #24C2E5;
+            color: #24C2E5;
+        }
+        .statisticsWrapper .average h3, .statisticsWrapper .average p {
+            position: relative;
+            width: 30%;
+            color: #bcbcbc;
+            font-size: 20px;
+            margin: 0 20px;
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .average p {
+            font-size: 12px;
+            color: #bcbcbc;
+            text-shadow: 0 0 5px #00e5ff;
+        }
+        .statisticsWrapper .average p em {
+            font-size: 20px;
+            color: #5AE1A1;
+            text-shadow: 0 0 5px #00e5ff;
+        }
+
+        .statisticsWrapper .rankIcon {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background: radial-gradient(#24C2E5, #0000 70%);
+            background-size: 100% 100%;
+            background-position: 50% 50%;
+            animation: animateRank 4s infinite;
+        }
+        @keyframes animateRank {
+            0% {
+                transform: translateX(-50%) translateY(-0%) scale(1);
+                padding: 70px 0 0 0;
+            }
+            50% {
+                transform: translateX(-50%) translateY(-55%) scale(1.2);
+                padding: 0 0 0 0;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-0%) scale(1);
+                padding: 70px 0 0 0;
+            }
+        }
+        .statisticsWrapper .stats {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .chan1, .statisticsWrapper .stats .chan2 {
+            position: relative;
+            width: 35%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 20px;
+            color: #a4C2E5;
+            align-items: center;
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .chan1 h3, .statisticsWrapper .stats .chan2 h3 {
+            position: relative;
+            color: #24C2E5;
+            font-size: 10px;
+            // border: 1px solid #24C2E5;
+        }
+
+        .statisticsWrapper .stats .matches {
+            position: relative;
+            width: 40%;
+            height: 100%;
+            text-align: center; 
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .wins {
+            position: relative;
+            width: 40%;
+            height: 100%;
+            text-align: center; 
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .losses {
+            position: relative;
+            width: 40%;
+            height: 100%;
+            text-align: center; 
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .winRate {
+            position: relative;
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center; 
+            // border: 1px solid #24C2E5;
+        }
+        .statisticsWrapper .stats .matches h3 ,.statisticsWrapper .stats .wins h3, .statisticsWrapper .stats .losses h3, .statisticsWrapper .stats .winRate h3 {
+            color: #55BCBC;
+            font-size: 10px;
+        }
+        .statisticsWrapper .stats .matches h2, .statisticsWrapper .stats .wins h2, .statisticsWrapper .stats .losses h2 {
+            positoin: relative;
+            transform: translateY(8px);
+            font-size: 18px;
+            text-align: center;
+        }
+        .statisticsWrapper .stats .matches h2 {
+            color: #D2977E;
+        }
+        .statisticsWrapper .stats .wins h2 {
+            color: #5AE1A1;
+        }
+        .statisticsWrapper .stats .losses h2 {
+            color: #FF0000;
+        }
+        .statisticsWrapper .winRate svg {
+            position: relative;
+            animation: none;
+            // border: 1px solid #f00;
+            transform: translateY(0);
+            top: 0;
         }
         </style>
         <div class="popup">
@@ -605,10 +911,17 @@ class PopUpProfile extends HTMLElement {
                             <path d="M86.5 16.5H91.5L76.5 1.5H71.5L86.5 16.5Z" fill="black" fill-opacity="0.2"/>
                             <path d="M74.5 16.5H79.5L64.5 1.5H59.5L74.5 16.5Z" fill="black" fill-opacity="0.2"/>
                             <path d="M1 21V217L24.5 240.5H157.5L179.5 218.5V21M1 21V3.5H51.5L69 21M1 21H69M69 21H124.25H151.875H165.688H172.594H176.047H177.773H178.637H179.49M1 1H53L70 18H177.773M175 16.5H170L155 1.5H160L175 16.5ZM162 16.5H157L142 1.5H147L162 16.5ZM150.5 16.5H145.5L130.5 1.5H135.5L150.5 16.5ZM139 16.5H134L119 1.5H124L139 16.5ZM127 16.5H122L107 1.5H112L127 16.5ZM115 16.5H110L95 1.5H100L115 16.5ZM103.5 16.5H98.5L83.5 1.5H88.5L103.5 16.5ZM91.5 16.5H86.5L71.5 1.5H76.5L91.5 16.5ZM79.5 16.5H74.5L59.5 1.5H64.5L79.5 16.5Z" stroke="#00FFF0" stroke-opacity="0.63"/>
-                            </g>
+                        </g>
+                        <clipPath id="clip-friends" transform="translate(-2 -46) scale(2.21)">
+                                <path d="M1 21H179.5V218.5L157.5 240.5H24.5L1 217V21Z" fill="#073C7011" fill-opacity="0.55" stroke="#00FFF0" stroke-opacity="0.63"/>
+                        </clipPath>
                     </svg>
                     <div class="title">
                         <h3>Friends</h3>
+                    </div>
+                    <div class="wrapper">
+                        <div class="friendWrapper">
+                        </div>
                     </div>
                 </div>
                 <div class="statistics">
@@ -663,6 +976,8 @@ class PopUpProfile extends HTMLElement {
                         <path d="M317 208L202 208C202 208 202.289 209.726 203 210.5C203.476 211.018 204.5 211.5 205.5 211.5L313 211.5C314 211.5 315.134 211.38 316 210.5C316.738 209.751 317 208 317 208Z" fill="#D9D9D9" stroke="#377E7A"/>
                         <circle cx="258.5" cy="180.5" r="3.5" fill="#D9D9D9"/>
                     </svg>
+                    <div class="statisticsWrapper">
+                    </div>
                 </div>
                     <div class="history">
                         <svg id="bg" width="576" height="346" viewBox="0 0 576 346" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -701,22 +1016,112 @@ class PopUpProfile extends HTMLElement {
                             <path d="M564.5 25.5L558.5 19.5H382.5L378.5 15.5H197.5L193.5 19.5H17.5L10.5 26.5V56.5L17.5 63.5V95.5L10.5 102.5V158.5L18.5 166.5V266.5L9.5 275.5V282.5L12.5 285.5V305.5L10.5 307.5V327.5L18.5 335.5H45L47 333.5H83.5L85.5 335.5H239.5L250.5 324.5H325.5L337 336H490L492.5 333.5H528.5L531 336H557.5L565.5 328V308L563.5 306V285.5L566.5 282.5V275.5L557.5 266.5V166.5L564.5 159.5V101.5L557.5 94.5V64.5L564.5 57.5V25.5Z" stroke="#24C2E553"/>
                         </g>
                     </svg>
+                    <div class="content">
+                    </div>
                 </div>
             </div>
         </div>
     `;
+        this.fillFriends();
+        this.fillStatistics();
+        // this.fillHistory();
+    }
+    fillFriends() {
+        const friendWrapper = this.shadowRoot.querySelector('.friendWrapper');
+        for (let i = 0; i < 20; i++) {
+            friendWrapper.innerHTML += `
+                <div class="profile" id="profile${i}">
+                    <div class="avatar">
+                        <img src="assets/images/profileScreen.svg" alt="profile">
+                        <div class="avatarInfo">
+                            <img src="assets/images/devCard/amajan.png" alt="profile">
+                            <h3>Username</h3>
+                            <svg viewBox="0 0 277 363" fill="none">
+                                <clipPath id="userMask" x="0" y="0" transform="scale(0.36) translate(-22, -15)">
+                                    <path d="M234 22H43L22 43V319.5L43 340.5H234L255 319.5V43L234 22Z" fill="#00FEFF30"/>
+                                </clipPath>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="info" onclick="openProfilePopup(${i})">
+                        <img src="assets/images/nameScreen.svg" alt="profile">
+                        <div class="infoWrapper">
+                            <h3>show</h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    fillStatistics() {
+        const winRate = 70;
+        const statisticsWrapper = this.shadowRoot.querySelector('.statisticsWrapper');
+        statisticsWrapper.innerHTML = `
+            <div class="title">
+                <h3>Your Summary</h3>
+            </div>
+            <div class="average">
+                <h3>On average:</h3>
+                <p>You played like <em>${"SILVER"}</em></p>
+            </div>
+            <div class="stats">
+                <div class="chan1">
+                    <div class="matches">
+                        <h3>MATCHES</h3>
+                        <h2>100</h2>
+                    </div>
+                    <div class="wins">
+                        <h3>WINS</h3>
+                        <h2>50</h2>
+                    </div>
+                </div>
+                <div class="chan2">
+                    <div class="losses">
+                        <h3>LOSSES</h3>
+                        <h2>50</h2>
+                    </div>
+                    <div class="winRate">
+                        <h3>WINRATE</h3>
+                        <svg viewbox= "0 0 100 100" class="pers">
+                            <defs>
+                                <linearGradient id = "grad">
+                                    <stop offset = "0%" style = "stop-color: rgba(120,50,170)"/>
+                                    <stop offset = "100%" style = "stop-color: rgba(10,20,200)"/>
+                                </linearGradient>
+                            </defs>
+                            <circle
+                                cx = "calc(100 / 2)",
+                                cy = "calc(100 / 2)",
+                                r = 45
+                                class = 'circle-two'
+                            />
+                            <circle
+                                cx = "calc(100 / 2)",
+                                cy = "calc(100 / 2)",
+                                r = 45
+                                class = 'circle'
+                                stroke-dasharray = "calc(2 * 3.14 * 45 * ${winRate} / 100) calc(2 * 3.14 * 45)"
+                            />
+                            <text x="50" y="50" text-anchor="middle" dy=".1em" fill="url(#grad)" font-size="26" transform="translate(0, 7)">${winRate}%</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="rankIcon">
+                <img src="./assets/images/leagues/1.png" alt="rank">
+            </div>
+        `;
+    }
 }
-}
-        
-        // <h2>${id}</h2>
-        // <p>Some text</p>
-        // <button onclick="document.querySelector('popup-profile').remove()">Close</button>
 
 customElements.define('popup-profile', PopUpProfile);
 
 function openProfilePopup(id) {
 
   const popup = document.createElement('popup-profile');
+  const home = document.querySelector('.home');
+
   popup.setAttribute('id', id);
   document.body.appendChild(popup);
+  document.body.removeChild(home);
 }
