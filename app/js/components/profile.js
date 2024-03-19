@@ -2,6 +2,9 @@ class PopUpProfile extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        this.__show = false;
+        this.__toShow = 0;
+        this.__choice = "1v1";
     }
     connectedCallback() {
         this.render();
@@ -296,11 +299,9 @@ class PopUpProfile extends HTMLElement {
             height: 300px;
             bottom: 180px;
             left: 200px;
-            border-radius: 5px;
             justify-content: center;
             align-items: center;
             padding: 0px;
-            // border: 1px solid #24C2E5;
         }
         .popup-inner .history svg#bg {
             position: absolute;
@@ -308,6 +309,74 @@ class PopUpProfile extends HTMLElement {
             height: 100%;
             animation: pathDraw 1s;
         }
+        .popup-inner .history .content {
+            position: relative;
+            width: calc(100% - 17px); 
+            height: calc(100% - 10px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #aaa;
+            clip-path: url(#clip-history);
+        }
+        .popup-inner .history .content .nav {
+            position: relative;
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .popup-inner .history .content .nav > div {
+            position: relative;
+            width: 35%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aff;
+            font-size: 14px;
+            font-weight: 600;
+            text-shadow: 0 0 5px #aff;
+            cursor: pointer;
+            box-shadow: 0 0 20px 1px #24C2E5 inset;
+            // border: 1px solid #fff;
+        }
+        .popup-inner .history .content .nav > div:nth-child(1) {
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+            background: #24C2E531;
+        }
+        .popup-inner .history .content .nav > div:nth-child(2) {
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+            width: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #24C2E533;
+        }
+        .popup-inner .history .content .nav > div:nth-child(3) {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+            background: #24C2E533;
+        }
+        .popup-inner .history .content .nav > div:hover {
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+            background: #24C2E555;
+        }
+        // .popup-inner .history .content .contentWrapper {
+        //     position: relative;
+        //     width: 100%;
+        //     height: 100%;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     overflow: auto;
+        //     border: 1px solid #aaa2E5a3;
+        // }
+    
         #line1 {
             animation: line1 2s infinite;
         }
@@ -389,8 +458,8 @@ class PopUpProfile extends HTMLElement {
             height: 100%;
             overflow: auto;
             z-index: -2;
-            background: #07a2; 
-            box-shadow: 0 0 100px 1px #24C2E577 inset;
+            // background: #07a2; 
+            box-shadow: 0 0 100px 1px #24C2E527 inset; 
         }
         .friendWrapper .profile {
             position: relative;
@@ -668,6 +737,371 @@ class PopUpProfile extends HTMLElement {
             // border: 1px solid #f00;
             transform: translateY(0);
             top: 0;
+        }
+
+        .contentWrapper::-webkit-scrollbar {
+            width: 0;
+        }
+        .contentWrapper {
+            position: relative;
+            // background-color: #fff;
+            
+            width: 100%;
+            height: 80%;
+            overflow: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            // background: #000000;
+        }
+        .contentWrapper svg {
+            position: absolute;
+            all: initial;
+        }
+        .info {
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            height: 30px;
+            z-index: 10;
+            // border: 1px solid #ffffff44;
+            font-size: 0.4em;
+            // background-color: #055;
+        }
+        .info h1 {
+            position: relative;
+            width: 25%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background-color: #055;
+            // background-color: #f0f0f0;
+        }
+        .player {
+            width: 100%;
+            height: 25%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            // border: 1px solid #ffffff44;
+        }
+        .HeroInfo {
+            width: 75%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            // border: 1px solid #f00;
+        }
+        .HeroInfo h1 {
+            width: 25%;
+            // border: 1px solid #ffffff44;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .Hero {
+            width: 25%;
+            justify-content: space-between;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            // border: 1px solid #f00;
+        }
+        .Hero h1 {
+            position: relative;
+            width: 60%;
+            font-size: 0.5em;
+            color: #fff;
+            // border: 1px solid #ffffff44;
+        }
+        .player img {
+            position: relative;
+            left: 5px;
+            width: 30%;
+            height: 67%;
+
+            clip-path: url(#clip10);
+            // border: 1px solid #ffffff44;
+        }
+        .player svg {
+            width: 36px;
+            left: 6px;
+            // border: 1px solid #ffffff44;
+        }
+        .game {
+            position: relative;
+            width: 100%;
+            height: 25%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            border: 1px solid #ffffff22;
+        }
+        .game div {
+            position: relative;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            // border: 1px solid #ffffff44;
+        }
+        .game .win, .game .lose {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .game .win {
+            left: 0;
+            opacity: 0.6;
+        }
+        .game .lose {
+            right: 0;
+        }
+        .game .win img, .game .lose img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: hue-rotate(150deg);
+        }
+        .game div:nth-of-type(2) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            font-size: 0.5em;
+            color: #fff;
+        }
+        .game div:nth-of-type(1), .game div:nth-of-type(3) {
+            position: relative;
+            width: 35%;
+            text-align: space-between;
+            // border: 1px solid #ffffff44;
+            font-size: 0.5em;
+        }
+        .game div:nth-of-type(3) {
+            transform: translateX(-10px);
+        }
+        .game div:nth-of-type(1) img, .game div:nth-of-type(3) img {
+            width: 25%;
+            height: 100%;
+            // border: 1px solid #ffffff44;
+        }
+        .game div:nth-of-type(1) h1, .game div:nth-of-type(3) h1 {
+            width: 70%;
+            // border : 1px solid #ffffff44;
+        }
+        .game div:nth-of-type(1) h1 {
+            transform: translateX(8px);
+        }
+        .game div:nth-of-type(1) svg {
+            position: absolute;
+            height: 100%;
+            left: 9px;
+            // border: 1px solid #ffffff44;
+        }
+        .game div:nth-of-type(3) svg {
+            position: absolute;
+            height: 100%;
+            left: calc(100% - 38px);
+            // border: 1px solid #ffffff44;
+        }
+        .game div:nth-of-type(3) h1 {
+            text-align: right;
+        }
+        .game div:nth-of-type(1) img {
+            border 
+        }
+        .game div:nth-of-type(2) h1 {
+            width: 25%;
+            text-align: center;
+            // border: 1px solid #ffffff44;
+        }
+        .game div:nth-of-type(2) > :nth-child(2) {
+            font-size: 3em;
+            width: 60%;
+            color: #055;
+            // border: 1px solid #ffffff44;
+        }
+        .game2 {
+            position: relative;
+            width: 100%;
+            height: 45%;
+            display: flex;
+            justify-content: space-between;
+            // border: 1px solid #ffffff22;
+            // background: linear-gradient( #0ff00000, #5524, #0ff00000);
+        }
+        .game2 .win, .game2 .lose {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .game2 .win {
+            left: 0;
+            opacity: 0.6;
+        }
+        .game2 .lose {
+            right: 0;
+        }
+        .game2 .win img, .game2 .lose img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: hue-rotate(150deg);
+        }
+        .team {
+            position: relative;
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            // border: 1px solid #f00;
+        }
+        .game2 > div:nth-of-type(1) {
+            transform: translateX(10px);
+        }
+        .game2 > div:nth-of-type(3) {
+            transform: translateX(-10px);
+        }
+        .game2 > div:nth-of-type(2) {
+            position: relative;
+            width: 30%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+            font-size: 0.5em;
+            color: #fff;
+        }
+        .game2 > div:nth-of-type(2) h1 {
+            width: 40%;
+            border: 1px solid #ffffff44;
+        }
+        .game2 > div:nth-of-type(2) h1:nth-of-type(2) {
+            width: 20%;
+            font-size: 5em;
+            // border: 1px solid #ffffff44;
+        }
+        .teamPlayer {
+            position: relative;
+            height: 50%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            font-size: 1em;
+            justify-content: space-around;
+            align-items: center;
+            // border: 1px solid #000;
+        }
+        .teamPlayer h1 {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            // border: 1px solid #ffffff44;
+        }
+        .teamPlayer img {
+            position: relative;
+            clip-path: url(#clip12);
+        }
+        .team:nth-of-type(1) img, .team:nth-of-type(3) img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // border: 1px solid #ffffff44;
+        }
+        .teamPlayer svg {
+            position: absolute;
+            height: 130%;
+            width: 36px;
+            top: calc(50% - 2px);
+            transform: translateY(-50%);
+            // border: 1px solid #ffffff44;
+        }
+        .team:nth-of-type(1) .teamPlayer:nth-of-type(1) svg {
+            left: 24px;
+        }
+        .team:nth-of-type(1) .teamPlayer:nth-of-type(2) svg {
+            left: 24px;
+        }
+        .team:nth-of-type(3) .teamPlayer:nth-of-type(1) svg {
+            left: calc(100% - 61px);
+        }
+        .team:nth-of-type(3) .teamPlayer:nth-of-type(2) svg {
+            left: calc(100% - 61px);
+        }
+        .tournament {
+            position: relative;
+            width: 100%;
+            height: 80%;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            align-items: center;
+            border: 1px solid #ffffff22;
+        }
+        .rank1, .rank2, .rank3, .rank4 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid #ffffff22;
+        }
+        .rank1 div, .rank2 div, .rank3 div, .rank4 div {
+            position: relative;
+            width: 100%;
+            height: 33.33%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            // border: 1px solid #ffffff44;
+        }
+        .rank1 img, .rank2 img, .rank3 img, .rank4 img {
+            position: relative;
+            top: 5px;
+            width: 45px;
+            height: 45px;
+            clip-path: url(#clip10);
+            // border: 1px solid #00f;
+        }
+        .rank1 svg, .rank2 svg, .rank3 svg, .rank4 svg {
+            position: absolute;
+            top: 15.5px;
+            height: 48px;
+            width: 48px;
+            // border: 1px solid #ffffff44;
+        }
+        .rank1 h1, .rank2 h1, .rank3 h1, .rank4 h1 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            align-items: center;
+            font-size: 0.5em;
+            color: #fff;
+            // border: 1px solid #ffffff44;
+        }
+        .rank1 .rankTitle, .rank2 .rankTitle, .rank3 .rankTitle, .rank4 .rankTitle {
+            font-size: 1em;
+            color: #ff0;
         }
         </style>
         <div class="popup">
@@ -979,8 +1413,8 @@ class PopUpProfile extends HTMLElement {
                     <div class="statisticsWrapper">
                     </div>
                 </div>
-                    <div class="history">
-                        <svg id="bg" width="576" height="346" viewBox="0 0 576 346" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="history">
+                    <svg id="bg" width="576" height="346" viewBox="0 0 576 346" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#drop-shadow)">    
                             <path d="M2 154V165L11 174V261L1 271V291.5M200 345H245.5L256.5 334H320L331 345H377M574 154V165L565 174V260.5L575 270.5V291" stroke="#95FF8C"/>
                             <path d="M6 21.5L27 0.5H51.5L64.5 13.5H171.5L178 7H398L404.5 13.5H511.5L524.5 0.5H549L570 21.5V161.5L561.5 170V264L571 273.5V329L559.5 340.5H334L323 329.5H253.5L242.5 340.5H16L5 329.5V273.5L14.5 264V169.5L6 161V21.5Z" stroke="#07FFF0"/>
@@ -1015,8 +1449,27 @@ class PopUpProfile extends HTMLElement {
                             <path d="M517.5 15.5L526 7H546L554.5 15.5H517.5Z" stroke="#24C2E553"/>
                             <path d="M564.5 25.5L558.5 19.5H382.5L378.5 15.5H197.5L193.5 19.5H17.5L10.5 26.5V56.5L17.5 63.5V95.5L10.5 102.5V158.5L18.5 166.5V266.5L9.5 275.5V282.5L12.5 285.5V305.5L10.5 307.5V327.5L18.5 335.5H45L47 333.5H83.5L85.5 335.5H239.5L250.5 324.5H325.5L337 336H490L492.5 333.5H528.5L531 336H557.5L565.5 328V308L563.5 306V285.5L566.5 282.5V275.5L557.5 266.5V166.5L564.5 159.5V101.5L557.5 94.5V64.5L564.5 57.5V25.5Z" stroke="#24C2E553"/>
                         </g>
+                        <clipPath id="clip-history" transform="translate(-8 -4) scale(0.866)">
+                            <path d="M22 15.5L30.5 7H50.5L59 15.5H22Z" fill="#00FF66" fill-opacity="0.1" stroke-width="5"/>
+                            <path d="M517.5 15.5L526 7H546L554.5 15.5H517.5Z" fill="#00FF66" fill-opacity="0.1" stroke-width="5"/>
+                            <path d="M564.5 25.5L558.5 19.5H382.5L378.5 15.5H197.5L193.5 19.5H17.5L10.5 26.5V56.5L17.5 63.5V95.5L10.5 102.5V158.5L18.5 166.5V266.5L9.5 275.5V282.5L12.5 285.5V305.5L10.5 307.5V327.5L18.5 335.5H45L47 333.5H83.5L85.5 335.5H239.5L250.5 324.5H325.5L337 336H490L492.5 333.5H528.5L531 336H557.5L565.5 328V308L563.5 306V285.5L566.5 282.5V275.5L557.5 266.5V166.5L564.5 159.5V101.5L557.5 94.5V64.5L564.5 57.5V25.5Z" fill="#005F16aa" fill-opacity="0.1" stroke-width="5"/>
+                        </clipPath>
                     </svg>
+                    
                     <div class="content">
+                        <div class="nav">
+                            <div class="game1vs1" onclick="changeHistory('1v1')">
+                                <h3>1v1</h3>
+                            </div>
+                            <div class="tournament" onclick="changeHistory('tournament')">
+                                <h3>tournament</h3>
+                            </div>
+                            <div class="game2vs2" onclick="changeHistory('2v2')">
+                                <h3>2v2</h3>
+                            </div>
+                        </div>
+                        <div class="contentWrapper">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1024,7 +1477,7 @@ class PopUpProfile extends HTMLElement {
     `;
         this.fillFriends();
         this.fillStatistics();
-        // this.fillHistory();
+        this.fillHistory();
     }
     fillFriends() {
         const friendWrapper = this.shadowRoot.querySelector('.friendWrapper');
@@ -1054,7 +1507,7 @@ class PopUpProfile extends HTMLElement {
         }
     }
     fillStatistics() {
-        const winRate = 70;
+        const winRate = 10;
         const statisticsWrapper = this.shadowRoot.querySelector('.statisticsWrapper');
         statisticsWrapper.innerHTML = `
             <div class="title">
@@ -1112,6 +1565,30 @@ class PopUpProfile extends HTMLElement {
             </div>
         `;
     }
+    fillHistory() {
+        const contentWrapper = this.shadowRoot.querySelector('.contentWrapper');
+        if (!this.__show) {
+            if (this.__choice === '1v1')
+                showGame1Vs1HistoryProfile(contentWrapper);
+            else if (this.__choice === 'tournament')
+                showTournamentHistoryProfile(contentWrapper);
+            else if (this.__choice === '2v2')
+                showGame2Vs2HistoryProfile(contentWrapper);
+        }
+    }
+    set __choice(value) {
+        this._choice = value;
+    }
+    get __choice() {
+        return this._choice;
+    }
+}
+
+function changeHistory(choice) {
+    const popup = document.querySelector('popup-profile');
+    popup.__choice = choice;
+    popup.__show = false;
+    popup.fillHistory();
 }
 
 customElements.define('popup-profile', PopUpProfile);
@@ -1124,4 +1601,457 @@ function openProfilePopup(id) {
   popup.setAttribute('id', id);
   document.body.appendChild(popup);
   document.body.removeChild(home);
+}
+
+function showGame1Vs1HistoryProfile(data) {
+    const game1vs1Data = [
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 1',
+            score1: 20,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 2',
+            score2: 15
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 3',
+            score1: 10,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 4',
+            score2: 5
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 5',
+            score1: 30,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 6',
+            score2: 25
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 7',
+            score1: 20,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 8',
+            score2: 15
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 9',
+            score1: 10,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 10',
+            score2: 5
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 11',
+            score1: 30,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 12',
+            score2: 25
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 13',
+            score1: 20,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 14',
+            score2: 15
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 15',
+            score1: 10,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 16',
+            score2: 5
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 17',
+            score1: 30,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 18',
+            score2: 25
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 19',
+            score1: 20,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 20',
+            score2: 15
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 21',
+            score1: 10,
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 22',
+            score2: 5
+        }
+    ];
+    data.innerHTML = `
+            ${game1vs1Data.map((game) => `
+                <div class="game">
+                    <div class="player">
+                        <img src="${
+                            game.avatar1
+                        }" alt="friend">
+                        <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                            <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                            <clipPath id="clip10" transform="translate(2.500642 6.576274)">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
+                            </clipPath>
+                            <defs>
+                                <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#000"/>
+                                    <stop offset="1" stop-color="#00EBFF55"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <h1>${
+                            game.player1
+                        }</h1>
+                    </div>
+                    <div>
+                        <h1>${
+                            game.score1
+                        }</h1>
+                        <h1>Vs</h1>
+                        <h1> ${
+                            game.score2
+                        }</h1>
+                    </div>
+                    <div class="player">
+                        <h1>${
+                            game.player2
+                        }</h1>
+                        <img src="${
+                            game.avatar2
+                        }" alt="friend">
+                        <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                            <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#000"/>
+                                    <stop offset="1" stop-color="#00EBFF55"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="win">
+                        <img src="./assets/images/win.jpeg" alt="win">
+                    </div>
+                    <div class="lose">
+                        <img src="./assets/images/lose.jpeg" alt="lose">
+                    </div>
+                </div>
+            `).join('')}
+        `;
+
+}
+function showGame2Vs2HistoryProfile(data) {
+    const game2vs2Data = [
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 1',
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 2',
+            score1: 15,
+            avatar3: './assets/images/devCard/avatar1.svg',
+            player3: 'Player 3',
+            avatar4: './assets/images/devCard/avatar3.svg',
+            player4: 'Player 4',
+            score2: 5
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 5',
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 6',
+            score1: 25,
+            avatar3: './assets/images/devCard/avatar1.svg',
+            player3: 'Player 7',
+            avatar4: './assets/images/devCard/avatar3.svg',
+            player4: 'Player 8',
+            score2: 10
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 9',
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 10',
+            score1: 35,
+            avatar3: './assets/images/devCard/avatar1.svg',
+            player3: 'Player 11',
+            avatar4: './assets/images/devCard/avatar3.svg',
+            player4: 'Player 12',
+            score2: 15
+        },
+        {
+            avatar1: './assets/images/devCard/avatar1.svg',
+            player1: 'Player 13',
+            avatar2: './assets/images/devCard/avatar3.svg',
+            player2: 'Player 14',
+            score1: 45,
+            avatar3: './assets/images/devCard/avatar1.svg',
+            player3: 'Player 15',
+            avatar4: './assets/images/devCard/avatar3.svg',
+            player4: 'Player 16',
+            score2: 20
+        }
+    ];
+    data.innerHTML = `
+            ${game2vs2Data.map((game, index) => `
+                <div class="game2">
+                    <div class="team">
+                        <div class="teamPlayer">
+                            <img src="${
+                                game.avatar1
+                            }" alt="friend">
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                                <clipPath id="clip12" transform="translate(24.500642 1.076274)">
+                                    <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="2"/>
+                                </clipPath>
+                                <defs>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#000"/>
+                                        <stop offset="1" stop-color="#00EBFF55"/>
+                                    </linearGradient>
+                                </
+                            </svg>
+                            <h1>${
+                                game.player1
+                            }</h1>
+                        </div>
+                        <div class="teamPlayer">
+                            <img src="${
+                                game.avatar2
+                            }" alt="friend">
+                            <h1>${
+                                game.player2
+                            }</h1>
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#000"/>
+                                        <stop offset="1" stop-color="#00EBFF55"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h1>${
+                            game.score1
+                        }</h1>
+                        <h1>Vs</h1>
+                        <h1> ${
+                            game.score2
+                        }</h1>
+                    </div>
+                    <div class="team">
+                        <div class="teamPlayer">
+                            <h1>${
+                                game.player3
+                            }</h1>
+                            <img src="${
+                                game.avatar3
+                            }" alt="friend">
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#000"/>
+                                        <stop offset="1" stop-color="#00EBFF55"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="teamPlayer">
+                            
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#000"/>
+                                        <stop offset="1" stop-color="#00EBFF55"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <h1>${
+                                game.player4
+                            }</h1>
+                            <img src="${
+                                game.avatar4
+                            }" alt="friend">
+                        </div>
+                    </div>
+                    <div class="win">
+                        <img src="./assets/images/win.jpeg" alt="win">
+                    </div>
+                    <div class="lose">
+                        <img src="./assets/images/lose.jpeg" alt="lose">
+                    </div>
+                </div>
+            `).join('')}
+        `;
+}
+
+function showTournamentHistoryProfile(data) {
+    const tournamentData = [
+        [
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 1',
+                score: 20,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 2',
+                score: 15
+            },
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 3',
+                score: 10,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 4',
+                score: 5
+            }
+        ],
+        [
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 5',
+                score: 30,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 6',
+                score: 25
+            },
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 7',
+                score: 20,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 8',
+                score: 15
+            }
+        ],
+        [
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 9',
+                score: 10,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 10',
+                score: 5
+            },
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 11',
+                score: 30,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 12',
+                score: 25
+            }
+        ],
+        [
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 13',
+                score: 20,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 14',
+                score: 15
+            },
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 15',
+                score: 10,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 16',
+                score: 5
+            }
+        ],
+        [
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 17',
+                score: 30,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 18',
+                score: 25
+            },
+            {
+                avatar: './assets/images/devCard/avatar1.svg',
+                player: 'Player 19',
+                score: 20,
+            },
+            {
+                avatar: './assets/images/devCard/avatar3.svg',
+                player: 'Player 20',
+                score: 15
+            }
+        ]
+    ];
+    const rankTitle = ["1st", "2nd", "3rd", "4th", "5th"];
+    data.innerHTML = `
+            ${tournamentData.map(game => `
+                <div class="tournament">
+                    ${game.map((player, index) => `
+                        <div class="rank${index + 1}">
+                            <img src="${
+                                player.avatar
+                            }" alt="friend">
+                            <svg width="36" height="44" viewBox="0 0 36 44" fill="none">
+                                <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="3"/>
+                                <defs>
+                                    <clipPath id="clip10" transform="translate(4.50064 1.07627)">
+                                        <path d="M18.5204 2.14608L18 1.82893L17.4796 2.14608L1.89114 11.6461L1.41154 11.9384V12.5V31.5V32.0616L1.89114 32.3539L17.4796 41.8539L18 42.1711L18.5204 41.8539L34.1089 32.3539L34.5885 32.0616V31.5V12.5V11.9384L34.1089 11.6461L18.5204 2.14608Z" fill="url(#pattern0)" stroke="url(#paint0_linear_268_905)" stroke-width="1"/>
+                                    </clipPath>
+                                    <linearGradient id="paint0_linear_268_905" x1="8.59091" y1="3" x2="29.0565" y2="40.091" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#000"/>
+                                        <stop offset="1" stop-color="#00EBFF55"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div>
+                                <h1>${
+                                    player.player
+                                }</h1>
+                                <h1>Score : ${
+                                    player.score
+                                }</h1>
+                                <h1 class="rankTitle">${
+                                    rankTitle[index]
+                                }</h1>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('')}
+    `;
 }
