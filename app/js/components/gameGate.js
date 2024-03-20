@@ -267,7 +267,10 @@ class PopUpGates extends HTMLElement {
                 top: 50px;
                 width: fit-content;
                 height: fit-content;
-                transform: translate(-50%, -50%) translateZ(0px) rotateX(0deg) translateY(125px);
+                transform: translate(-50%, -50%) translateZ(1px) rotateX(0deg) translateY(125px);
+            }
+            .laserHologram#base {
+                background: radial-gradient(ellipse at center, #00f 0%, #0ffa 30%, #0af5 50%, #0000 70%);
             }
             .laserHologram#laser {
                 width: 650px;
@@ -278,6 +281,8 @@ class PopUpGates extends HTMLElement {
                 background-repeat: repeat;
                 background-position: center;
                 background-size: 50px;
+                filter: hue-rotate(300deg);
+                z-index: 0;
                 transform: translate(-50%, -50%) translateZ(0px) rotateX(0deg) translateY(0px) rotate(-90deg);
             }
             .laserHologram#laser img {
@@ -287,6 +292,7 @@ class PopUpGates extends HTMLElement {
                 left: -40px;
                 // border: 1px solid #f00;
                 transform: none;
+                filter: hue-rotate(360deg);
             }
         </style>
         <div class="gates">
@@ -416,7 +422,7 @@ class PopUpGates extends HTMLElement {
                 </div>
                 <div class='gateWorld' id='gate3'>
                 </div>
-                <div class='laserHologram'>
+                <div class='laserHologram' id="base">
                     <img src='./assets/images/gate.gif' alt='laserHologram'>
                 </div>
                 <div class='laserHologram' id="laser">
