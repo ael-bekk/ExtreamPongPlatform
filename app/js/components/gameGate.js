@@ -12,54 +12,54 @@ class PopUpGates extends HTMLElement {
         const id = this.getAttribute('id');
         this.shadowRoot.innerHTML = `
         <style>
-            .bgWrapper2Wrapper {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: -1;
-            }
-            .bgWrapper2 {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: -2;
-                left: 50%;
-                right: 50%;
-                transition: 1s ease-in-out;
-                animation: moveBackground 5s linear forwards;
-            }
-            @keyframes moveBackground {
-                0% {
-                    transform: translate(-50%, -30%);
-                }
-                30% {
-                    transform: translate(-50%, -30%) scale(2);
-                }
-                50% {
-                    transform: translate(-50%, -10%) scale(2);
-                }
-                95% {
-                    transform: translate(-50%, 0%) scale(2);
-                }
-                100% {
-                    transform: translate(-50%, 0%) scale(2);
-                }
-            }
-            #box22 {
-                background-color: rgb(0, 100, 255);
-            }
-            .boxx
-            {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 2px;
-                height: 2px;
-                background-color: rgb(255, 255, 255); /* Color of the first box */
-                animation: moveStars 5s linear infinite;
-            }
+            // .bgWrapper2Wrapper {
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 100%;
+            //     overflow: hidden;
+            //     z-index: -1;
+            // }
+            // .bgWrapper2 {
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 100%;
+            //     overflow: hidden;
+            //     z-index: -2;
+            //     left: 50%;
+            //     right: 50%;
+            //     transition: 1s ease-in-out;
+            //     animation: moveBackground 5s linear forwards;
+            // }
+            // @keyframes moveBackground {
+            //     0% {
+            //         transform: translate(-50%, -30%);
+            //     }
+            //     30% {
+            //         transform: translate(-50%, -30%) scale(2);
+            //     }
+            //     50% {
+            //         transform: translate(-50%, -10%) scale(2);
+            //     }
+            //     95% {
+            //         transform: translate(-50%, 0%) scale(2);
+            //     }
+            //     100% {
+            //         transform: translate(-50%, 0%) scale(2);
+            //     }
+            // }
+            // #box22 {
+            //     background-color: rgb(0, 100, 255);
+            // }
+            // .boxx
+            // {
+            //     position: absolute;
+            //     left: 0;
+            //     top: 0;
+            //     width: 0px;
+            //     height: 0px;
+            //     background-color: rgb(255, 255, 255); /* Color of the first box */
+            //     animation: moveStars 5s linear infinite;
+            // }
             .gates {
                 display: flex;
                 justify-content: center;
@@ -211,7 +211,8 @@ class PopUpGates extends HTMLElement {
                 transform: translate(-50%, -50%) translateZ(300px); 
                 width: 100%;
                 height: 100%;
-                border: 10px solid #00f;
+                // border: 10px solid #00f;
+                background: radial-gradient(ellipse at center, #00f1 0%, #0ff1 20%, #0000 70%);
                 transition: 1s;
             }
             .gateWorld#gate2 {
@@ -225,8 +226,40 @@ class PopUpGates extends HTMLElement {
                 top: 20%;
                 left: 50%;
                 transform-style: preserve-3d;
-                transform: translate(-50%, -50%) rotateX(-80deg) translateZ(-200px) translateY(150px);
-                transition: 1s;
+                transform: translate(-50%, -50%) rotateX(-100deg) translateZ(-200px) translateY(200px);
+            }
+            .gatePath img {
+                position: absolute;
+                height: 160px;
+                top: 50%;
+                left: 50%;
+                z-index: -1;
+                animation: animateGatePathImg 5s linear infinite;
+            }
+            .gatePath img:nth-of-type(2) {
+                animation: animateGatePathImg2 15s linear infinite;
+            } 
+            @keyframes animateGatePathImg {
+                0% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(360deg);
+                }
+            }
+            @keyframes animateGatePathImg2 {
+                0% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(0) scaleX(1.8) scaleY(1);
+                }
+                25% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(50deg) scaleX(1.8) scaleY(1);
+                }
+                75% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(-50deg) scaleX(1.8) scaleY(1);
+                }
+                100% {
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(0) scaleX(1.8) scaleY(1);
+                }
             }
         </style>
         <div class="gates">
@@ -244,7 +277,26 @@ class PopUpGates extends HTMLElement {
                         <g id="frontGroundGatesBase">
                             <path d="M600 977L606 839.5L612.5 977L627 959L616 986L648 990.5L617.5 997L628.5 1017L612.5 1003C612.5 1003 610.5 1040 614 1040C617.5 1040 632.5 1025.5 632.5 1025.5C632.5 1025.5 645.008 1011.97 650 1001.5C653.535 994.087 655.53 989.655 656.5 981.5C657.354 974.315 656.929 970.093 655.5 963C654.221 956.654 652.709 953.196 650.159 947.365L650 947C647.796 941.959 643.5 934.5 643.5 934.5C643.5 934.5 647.73 927.632 650 923C651.963 918.994 654.5 912.5 654.5 912.5L661.5 896C661.5 896 662.669 891.161 663 888C663.756 880.791 663.25 876.534 661.5 869.5C659.81 862.708 658.222 858.928 654.5 853C651.695 848.532 646 840.5 646 840.5C646 840.5 652.661 842.455 655.5 844C658.973 845.89 660.765 847.227 664 849.5C667.419 851.902 669.486 853.105 672.5 856C675.097 858.494 676.268 860.175 678.5 863C681.891 867.293 683.715 869.791 686.5 874.5C689.168 879.01 690.745 881.563 692.5 886.5C694.373 891.769 694.679 894.969 695.5 900.5C696.048 904.19 696.282 906.276 696.5 910L696.523 910.391C696.783 914.83 696.938 917.467 696.5 922C695.963 927.566 694.963 930.603 693.5 936L693.38 936.443C692.274 940.523 691.615 942.958 690 947C688.057 951.866 684 959 684 959C684 959 689.044 953.219 691.5 949C693.346 945.829 693.938 943.819 695.5 940.5C697.062 937.181 697.713 935.12 698.5 931.5C699.21 928.234 699.264 926.334 699.5 923C699.858 917.936 699.966 915.055 699.5 910C699.247 907.25 699.02 905.712 698.5 903C697.893 899.837 697.629 898.116 697 895C696.447 892.259 695.5 888 695.5 888C695.5 888 697.467 889.705 698.5 891C698.5 891 700.825 896.247 702.5 900.5C704.175 904.753 706.5 911.5 706.5 911.5C706.5 911.5 709.423 918.989 710.5 924C711.656 929.376 711.825 932.504 712 938C712.075 940.342 712.104 941.659 712 944C711.8 948.525 711.495 951.082 710.5 955.5C709.415 960.319 708.259 962.884 706.5 967.5C705.067 971.262 704.382 973.442 702.5 977C701.106 979.635 699.933 980.887 698.5 983.5C696.736 986.717 694.5 992 694.5 992C694.5 992 697.699 988.462 699.5 986C700.747 984.295 701.328 983.257 702.5 981.5C703.672 979.743 704.438 978.826 705.5 977C706.598 975.113 707.003 973.942 708 972C709.515 969.047 712 964.5 712 964.5C712 964.5 710.456 972.196 709 977C706.991 983.628 705.762 987.391 702.5 993.5C700.452 997.336 699.036 999.365 696.567 1002.9L696.5 1003C694.109 1006.43 692.701 1008.31 690 1011.5C687.41 1014.56 685.928 1016.27 683 1019C680.058 1021.75 678.25 1023.12 675 1025.5C670.89 1028.51 668.392 1029.92 664 1032.5C662.642 1033.3 661.88 1033.74 660.5 1034.5C656.135 1036.89 653.616 1038.14 649 1040C644.419 1041.85 641.771 1042.72 637 1044C630.86 1045.65 627.265 1045.92 621 1047C618.659 1047.4 617.358 1047.71 615 1048C608.603 1048.78 604.905 1048.7 598.5 1048C595.947 1047.72 594.532 1047.43 592 1047C586.299 1046.03 583.057 1045.6 577.5 1044C572.191 1042.47 569.278 1041.24 564.266 1039.11L564 1039C558.612 1036.72 555.634 1035.31 550.5 1032.5C545.887 1029.98 543.369 1028.42 539 1025.5C535.397 1023.09 533.296 1021.82 530 1019C526.851 1016.31 525.229 1014.62 522.5 1011.5C519.746 1008.36 518.391 1006.43 516 1003C513.489 999.401 512.107 997.349 510 993.5C508.029 989.899 506.953 987.839 505.5 984C503.99 980.012 503.484 977.65 502.5 973.5C501.537 969.438 500.5 963 500.5 963C500.5 963 502.64 967.568 504 970.5C505.177 973.036 505.668 974.542 507 977C508.548 979.857 509.336 981.575 511.5 984C513.531 986.276 517.5 989 517.5 989C517.5 989 513.707 983.911 511.5 980.5C509.644 977.632 508.58 976.028 507 973L506.864 972.74C505.653 970.421 504.928 969.032 504 966.5C502.484 962.364 502.215 959.847 501.5 955.5C500.958 952.202 500.701 950.336 500.5 947C500.289 943.492 500.335 941.511 500.5 938C500.685 934.08 500.858 931.872 501.5 928C502.189 923.842 502.833 921.55 504 917.5C505.026 913.94 505.76 911.991 507 908.5C508.117 905.356 508.746 903.592 510 900.5C511.282 897.34 511.95 895.537 513.5 892.5C515.05 889.463 516 888 516 888C516 888 515.355 890.429 515 892C514.257 895.288 514.203 896.729 513.5 900.5C512.923 903.595 512.721 905.359 512.5 908.5C512.215 912.549 512.317 914.856 512.494 918.875L512.5 919C512.691 923.309 512.647 925.772 513.5 930C514.184 933.392 514.853 935.236 516 938.5C517.479 942.709 518.11 945.233 520.5 949C523.386 953.548 530 959 530 959C530 959 527.069 955.473 525.5 953C523.066 949.165 520.5 942.5 520.5 942.5C520.5 942.5 518.366 937.722 517.5 934.5C516.634 931.278 516.323 926.6 516 921.5C515.605 915.264 515.229 911.701 516 905.5C516.643 900.33 517.608 897.521 519 892.5C520.204 888.156 520.845 885.693 522.5 881.5C524.168 877.276 525.323 875.583 527.5 872C530.117 867.694 532.071 865.21 535 861.5C537.929 857.79 539.976 856.101 543.5 853C546.843 850.059 548.807 848.488 552.5 846C555.333 844.092 556.756 843.07 560 842C562.439 841.195 566.5 840.5 566.5 840.5C566.5 840.5 560.14 848.288 557 853C553.193 858.713 552.195 862.711 550.544 869.325L550.5 869.5C548.739 876.55 548.991 880.783 549.5 888C549.721 891.141 549.916 892.906 550.5 896C551.679 902.25 553.098 905.611 555.5 911.5C557.38 916.11 558.572 918.654 561 923C563.615 927.681 568.5 934.5 568.5 934.5C568.5 934.5 564.137 941.93 562 947C559.458 953.032 558.285 956.581 557 963C555.577 970.107 554.746 974.291 555.5 981.5C556.354 989.668 558.461 994.089 562 1001.5C566.529 1010.98 570.261 1015.88 577.5 1023.5C584.684 1031.06 595 1040 598.5 1040C602 1040 600 1003 600 1003L583.5 1017L595 997L563.5 990.5L595 986L585 959L600 977Z" fill="#4DE9D0" stroke="#4DE9D0"/>
                         </g>
-                        <path d="M606 0V801.5M176 50.5L548.5 813.5M71 664.5L275.75 771.75L480.5 879M2.5 945H465M98 1268.5L487.5 1021M606 1883V1086M1040.5 1820L673.5 1069.5M1143 1226L733 1010.5M1213.5 945H749M1120.5 619.5L728.5 869" stroke="#96AFB8" stroke-width="5"/>
+                        <path d="M606 0V801.5" stroke="#96AFB8" stroke-width="5"/>
+                        <g transform="rotate(120)">
+                            <path d="M606 0V801.5" stroke="#96AFB8" stroke-width="5"/>
+                        </g>
+                        <g transform="rotate(-120) translate(-2 -2)"> 
+                            <path d="M606 0V801.5" stroke="#96AFB8" stroke-width="5"/>
+                        </g>
+                        <g transform="rotate(35)"> 
+                            <path d="M71 664.5L275.75 771.75L480.5 879" stroke="#96AFB8" stroke-width="5"/>
+                        </g>
+                        <g transform="rotate(-95)"> 
+                            <path d="M71 664.5L275.75 771.75L480.5 879" stroke="#96AFB8" stroke-width="5"/>
+                        </g>
+                        <g transform="rotate(-145)"> 
+                            <path d="M71 664.5L275.75 771.75L480.5 879" stroke="#96AFB8" stroke-width="5"/>
+                        </g>
+                        <path d="M71 664.5L275.75 771.75L480.5 879" stroke="#96AFB8" stroke-width="5"/>
+                        <path d="M2.5 945H465" stroke="#96AFB8" stroke-width="5"/>
+                        <path d="M1213.5 945H749" stroke="#96AFB8" stroke-width="5"/>
+                        <path d="M1120.5 619.5L728.5 869" stroke="#96AFB8" stroke-width="5"/>
                         <circle cx="607" cy="944" r="141.5" stroke="#96AFB8" stroke-width="5"/>
                         <circle cx="606" cy="943" r="238.5" stroke="#24C2E5" stroke-width="5"/>
                         <circle cx="606" cy="943" r="266.5" stroke="#96AFB8" stroke-width="5"/>
@@ -351,13 +403,10 @@ class PopUpGates extends HTMLElement {
                     </svg>
                 </div>
                 <div class='gateWorld' id='gate1'>
-                
                 </div>
                 <div class='gateWorld' id='gate2'>
-                
                 </div>
                 <div class='gateWorld' id='gate3'>
-                
                 </div>
             </div>
         </div>
@@ -437,55 +486,61 @@ class PopUpGates extends HTMLElement {
                     </linearGradient>
                     </defs>
                     </svg>
+                    <img src="./assets/images/portal.gif" alt="gate">
+                    <img src="./assets/images/portal2.gif" alt="gate">
                 </div>
             `;
             gate.innerHTML += gatePath;
         });
-        let wrapper = this.shadowRoot.querySelector('.bgWrapper2');
-        let box11 = this.shadowRoot.getElementById("box11");
-        let box22 = this.shadowRoot.getElementById("box22");
+        // let wrapper = this.shadowRoot.querySelector('.bgWrapper2');
+        // let box11 = this.shadowRoot.getElementById("box11");
+        // let box22 = this.shadowRoot.getElementById("box22");
 
-        let shadows = '0 0 10px rgba(255, 0, 0, 1)';
-        for (let i = 0; i < 10000; i++) {
-            let randomSize1 = Math.floor(Math.random() * 10) + 1; // Random size between 5px and 500px
-            let randomSize2 = Math.floor(Math.random() * 10) + 1;
+        // let shadows = '0 0 10px rgba(255, 0, 0, 1)';
+        // for (let i = 0; i < 10000; i++) {
+        //     let randomSize1 = Math.floor(Math.random() * 10) + 1; // Random size between 5px and 500px
+        //     let randomSize2 = Math.floor(Math.random() * 10) + 1;
 
-            let randomX1 = Math.floor(Math.random() * (wrapper.offsetWidth));
-            let randomY1 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
+        //     let randomX1 = Math.floor(Math.random() * (wrapper.offsetWidth));
+        //     let randomY1 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
 
-            let randomX2 = Math.floor(Math.random() * (wrapper.offsetWidth));
-            let randomY2 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
+        //     let randomX2 = Math.floor(Math.random() * (wrapper.offsetWidth));
+        //     let randomY2 = Math.floor(Math.random() * (wrapper.offsetHeight*10)) - wrapper.offsetHeight*5;
 
-            shadows += `, ${randomX1}px ${randomY1}px ${randomSize1}px rgba(30, 255, 255, 0.6)`;
-            shadows += `, ${randomX2}px ${randomY2}px ${randomSize2}px rgba(255, 40, 255, 0.6)`;
-        }
-        box11.style.boxShadow = `${shadows}`;
-        box22.style.boxShadow = `${shadows}`;
+        //     shadows += `, ${randomX1}px ${randomY1}px ${randomSize1}px rgba(30, 255, 255, 0.6)`;
+        //     shadows += `, ${randomX2}px ${randomY2}px ${randomSize2}px rgba(255, 40, 255, 0.6)`;
+        // }
+        // box11.style.boxShadow = `${shadows}`;
+        // box22.style.boxShadow = `${shadows}`;
         console.log(box1);
+        let executedDate = new Date();
         document.addEventListener('keydown', (e) => {
-            console.log(e.key);
-            if (e.key === 'ArrowLeft') {
-                this.__angle += 120;
-                this.__direction = (this.__direction + 1) % 3;
-            } if (e.key === 'ArrowRight') {
-                this.__angle -= 120;
-                this.__direction = (this.__direction + 2) % 3;
-            }
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                this.shadowRoot.querySelector('#frontGroundGatesBase').style.transform = `rotate(${-this.__angle}deg)`;
-                setTimeout(() => {
-                    this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
-                    this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
-                    this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
-                    this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
-
-                    if (this.__direction === 1)
+            if (new Date() - executedDate > 1000) {
+                executedDate = new Date();
+                console.log(e.key);
+                if (e.key === 'ArrowLeft') {
+                    this.__angle += 120;
+                    this.__direction = (this.__direction + 1) % 3;
+                } if (e.key === 'ArrowRight') {
+                    this.__angle -= 120;
+                    this.__direction = (this.__direction + 2) % 3;
+                }
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    this.shadowRoot.querySelector('#frontGroundGatesBase').style.transform = `rotate(${-this.__angle}deg)`;
+                    setTimeout(() => {
+                        this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
                         this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
-                    if (this.__direction === 0)
                         this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
-                    if (this.__direction === 2)
                         this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
-                }, 500);
+
+                        if (this.__direction === 1)
+                            this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
+                        if (this.__direction === 0)
+                            this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
+                        if (this.__direction === 2)
+                            this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
+                    }, 500);
+                }
             }
         });
         this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
