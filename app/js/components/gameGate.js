@@ -179,6 +179,9 @@ class PopUpGates extends HTMLElement {
                 position: relative;
                 width: 100%;
                 height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 transform-style: preserve-3d;
                 animation: starGates 5s linear forwards;
                 transform: rotateX(80deg) translateZ(50px) translateY(800px);
@@ -195,10 +198,21 @@ class PopUpGates extends HTMLElement {
                 position: relative;
                 top: 0;
                 left: 0;
-                width: 100%;
-                height: 100%;
+                width: 1500px;
+                height: 1500px;
+                border-radius: 1000px; 
                 transition: 1s;
+                display: flex;
                 background: radial-gradient(ellipse at center, #00f5 0%, #0ff5 20%, #0000 70%);
+                // border: 1px solid #f00;
+                
+            }
+            .gatesFrontGround > svg#land {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(2);
+                // border: 1px solid #ff0;
             }
             #frontGroundGatesBase {
                 transition: 0.5s ease-in-out;
@@ -223,10 +237,10 @@ class PopUpGates extends HTMLElement {
             }
             .gateWorld .gatePath {
                 position: relative;
-                top: 20%;
+                top: 10%;
                 left: 50%;
                 transform-style: preserve-3d;
-                transform: translate(-50%, -50%) rotateX(-100deg) translateZ(-200px) translateY(200px);
+                transform: translate(-50%, -50%) rotateX(-100deg) translateZ(-150px) translateY(180px) scale(1.9);   
             }
             .gatePath img {
                 position: absolute;
@@ -237,8 +251,16 @@ class PopUpGates extends HTMLElement {
                 animation: animateGatePathImg 5s linear infinite;
             }
             .gatePath img:nth-of-type(2) {
-                animation: animateGatePathImg2 15s linear infinite;
+                transform: translate(-50%, calc(-50% - 5px)) rotate(0deg) scaleX(1.8) scaleY(1);
+                animation: none;
             } 
+            .gatePath img:nth-of-type(3) {
+                animation: none;
+                transform: translate(-50%, calc(-50% - 5px)) rotate(0deg);
+                z-index: -10;
+                clip-path: circle(40% at 50% 50%);
+                filter: brightness(.5);
+            }
             @keyframes animateGatePathImg {
                 0% {
                     transform: translate(-50%, calc(-50% - 5px)) rotate(0deg);
@@ -267,23 +289,25 @@ class PopUpGates extends HTMLElement {
                 top: 50px;
                 width: fit-content;
                 height: fit-content;
-                transform: translate(-50%, -50%) translateZ(1px) rotateX(0deg) translateY(125px);
+                transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px);
             }
             .laserHologram#base {
                 background: radial-gradient(ellipse at center, #00f 0%, #0ffa 30%, #0af5 50%, #0000 70%);
             }
             .laserHologram#laser {
+                all: initial;
+                position: absolute;
                 width: 650px;
                 // border: 1px solid #f00;
-                top: 26%;
+                bottom: 50%;
+                left: 50%;
                 display: flex;
-                background-image: url('./assets/images/laser11.gif');
-                background-repeat: repeat;
-                background-position: center;
-                background-size: 50px;
-                filter: hue-rotate(300deg);
+                background: aff3; 
+                border-radius: 100% 20% 20% 100%;
+                box-shadow: 0 0 50px 50px #aff2,
+                            0 0 150px 150px #aff2 inset;
                 z-index: 0;
-                transform: translate(-50%, -50%) translateZ(0px) rotateX(0deg) translateY(0px) rotate(-90deg);
+                transform: translate(-50%, -275%) translateZ(0px) rotateX(0deg) translateY(0px) rotate(-90deg);
             }
             .laserHologram#laser img {
                 position: relative;
@@ -293,6 +317,83 @@ class PopUpGates extends HTMLElement {
                 // border: 1px solid #f00;
                 transform: none;
                 filter: hue-rotate(360deg);
+            }
+            .laserHologram#laser span {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+            .laserHoloWrapper {
+                position: relative;
+                width: 650px;
+                display: flex;
+                background-image: url('./assets/images/laser11.gif');
+                background-repeat: repeat;
+                background-position: center;
+                background-size: 50px;
+                filter: hue-rotate(300deg);
+                // border: 1px solid #f00;
+                transition: 0.5s;
+            }
+            .animated {
+                animation: laserHolo 1.5s linear forwards;
+            }
+            @keyframes laserHolo {
+                20% {
+                    transform: translate(150%, 0);
+                }
+                20.1% {
+                    transform: translate(-150%, 0);
+                }
+                80% {
+                    transform: translate(-150%, 0);
+                }
+                100% {
+                    transform: translate(0%, 0);
+                }
+            }
+            .animated2#laser {
+                animation: laserHolo2 1.6s linear forwards;
+            }
+            @keyframes laserHolo2 {
+                0% {
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+                95% {
+                    overflow: hidden;
+                    box-shadow: none;
+                    height: 0;
+                }
+                100% {
+                    overflow: visible;
+                    box-shadow: 0 0 50px 50px #aff2,
+                                0 0 150px 150px #aff2 inset;
+                }
+            }
+            .animated3 {
+                animation: laserHolo3 2s linear forwards;
+            }
+            @keyframes laserHolo3 {
+                0% {
+                    transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(1);
+                }
+                10% {
+                    transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(1);
+                }
+                15% {
+                    transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(0);
+                }
+                80% {
+                    transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(0);
+                }
+                10% {
+                    transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(1);
+                }
+            }
+            .animated4 {
+                animation: laserHolo4 2s linear forwards;
             }
         </style>
         <div class="gates">
@@ -304,7 +405,7 @@ class PopUpGates extends HTMLElement {
             </div>
             <div class="gates__content">
                 <div class="gatesFrontGround">
-                    <svg width="1217" height="1883" viewBox="0 0 1217 1883" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: scale(2)">
+                    <svg id="land" width="1217" height="1883" viewBox="0 0 1217 1883" fill="none">
                     <g transform="scale(0.5)">    
                         <path d="M246 457.5L259.25 475.5M272.5 493.5L259.25 475.5M259.25 475.5C259.25 475.5 261.387 482.423 262 487C262.804 492.999 262 502.5 262 502.5L260.5 503.5L250.841 491.5M244 483L250.841 491.5M250.841 491.5L245 495.5M245 495.5L226 472M245 495.5L238 501.5M238 501.5L231.5 493.5M238 501.5L248.5 513L244 517L223 493.5V511.5L205.5 490L195.5 499.5L197.469 501.5M227.5 532L197.469 501.5M197.469 501.5V520L186 509L218.5 540.5L215.5 542.5L183 511.5L170.5 523.5L171.5 525L184.5 538.5C186.843 537.328 188.003 536.292 190.5 535.5C192.764 534.782 194.126 534.423 196.5 534.5C198.49 534.564 199.595 534.921 201.5 535.5C204.175 536.313 205.681 536.939 208 538.5C209.951 539.813 212.5 542.5 212.5 542.5L189.5 570.5C189.5 570.5 186.096 567.425 184.5 565C182.963 562.665 182.376 561.155 181.5 558.5C180.564 555.664 179.858 553.984 180 551C180.115 548.587 181.33 547.409 181.5 545C181.569 544.026 181.5 542.5 181.5 542.5L166.5 528.5L153.5 542.5L188.5 570.5L185.5 573.5M185.5 573.5L172.5 562M185.5 573.5L175 585.5L173.5 584.326M140.5 558.5L142 559.674M142 559.674C142 559.674 144.016 557.87 145.5 557C147.314 555.937 148.436 555.402 150.5 555C152.608 554.59 153.876 554.68 156 555C158.442 555.368 159.795 555.888 162 557C164.86 558.442 166.447 559.542 168.5 562C169.96 563.748 170.553 564.929 171.5 567C172.604 569.415 173.015 570.889 173.5 573.5C174.272 577.657 173.5 584.326 173.5 584.326M142 559.674L173.5 584.326M172.5 588.5L170.5 587.007M170.5 587.007L137 562C137 562 136.143 565.629 136 568C135.775 571.724 135.557 574.06 137 577.5C137.609 578.952 139 581 139 581C139 581 140.457 584.058 142 585.5C143.914 587.289 145.627 587.39 148 588.5C149.742 589.315 150.606 590.168 152.5 590.5C153.846 590.736 154.633 590.5 156 590.5C158.343 590.5 159.719 591.034 162 590.5C163.872 590.062 164.718 589.223 166.5 588.5C168.045 587.873 170.5 587.007 170.5 587.007ZM171.5 588.5L162 601L127 576.5L123 579.5L138.343 590.074M160 605L141.5 592.25M141.5 592.25L149 617.5M141.5 592.25L138.343 590.074M138.343 590.074C138.343 590.074 139.222 594.15 138.343 596.5C137.766 598.04 137.308 599.003 136 600C134.111 601.44 132.354 601.316 130 601C127.404 600.652 124 598 124 598L115.5 590.5L108 599L124.176 610M138.343 635.5L145.5 624.5L131 614.64M138.343 635.5L123 625.023M138.343 635.5L131 645.5C131 645.5 127.149 641.803 124 641C121.54 640.373 120.005 640.588 117.5 641C115.063 641.401 113.51 641.564 111.5 643C110.376 643.803 109 645.5 109 645.5L89 633L125.5 656L122 661L84.5 640L86.5 643C86.5 643 89.3767 645.618 91 647.5C91.8166 648.447 92.2872 648.973 93 650C94.4936 652.152 95.1952 653.507 96 656C96.6118 657.895 97.3626 659.042 97 661C96.8085 662.034 96 663.5 96 663.5L115.5 673L111.5 678.5L93 668C93 668 90.6161 669.904 89 671C86.3942 672.767 85.0648 674.279 82 675C79.5291 675.581 78.0384 675 75.5 675C71.9853 675 66.5 675 66.5 675L105 693L102.5 696.5L98 694.449M101 610L116.376 620.5M116.376 620.5L124.176 610M116.376 620.5L123 625.023M124.176 610L131 614.64M131 614.64L123 625.023M63 678.5L98 694.449M98 694.449L78.5 702L94.5 711L93 716.5M93 716.5L54.5 700M93 716.5L91 720.5L74 712.5L79.5 729L86.5 732L83.5 738L66.5 730.808M44.5 721.5L64 729.75L66.5 730.808M66.5 730.808L61.5 742M66.5 730.808C66.5 730.808 70.3128 734.123 72.5 736.5C74.3793 738.542 75.7957 739.5 77 742C78.1305 744.347 78.5 748.5 78.5 748.5L77 755.5M77 755.5L68.5 752.057M77 755.5L66.5 751.247M37.5 739.5L53 745.778M53 745.778L36 755.5M53 745.778L54.5 746.386M54.5 746.386L48 759.5M54.5 746.386L66.5 751.247M68.5 752.057C68.5 752.057 68.5 753.546 68.5 754.5C68.5 756.062 68.0581 757.002 68.5 758.5C69.1651 760.755 72.5 763 72.5 763M68.5 752.057L66.5 751.247M66.5 751.247L63 763M72.5 769V768.5L33 755.5L31.5 757.5V759.5L72.5 772.5C70.5 778.833 66.5 791.4 66.5 791C66.5 790.6 51.8333 785.833 44.5 783.5L59 777.5L29.5 764.5L24 783.5V785L64 796M207.5 505.5L215.5 513.5" stroke="#96AFB8" stroke-width="3"/> 
                         <g id="frontGroundGatesBase">
@@ -426,7 +527,10 @@ class PopUpGates extends HTMLElement {
                     <img src='./assets/images/gate.gif' alt='laserHologram'>
                 </div>
                 <div class='laserHologram' id="laser">
-                    <img src='./assets/images/laser1.gif' alt='laserHologram'>
+                    <span></span>
+                    <div class='laserHoloWrapper'>
+                        <img src='./assets/images/laser1.gif' alt='laserHologram'>
+                    </div>
                 </div>
             </div>
         </div>
@@ -506,9 +610,12 @@ class PopUpGates extends HTMLElement {
                     </linearGradient>
                     </defs>
                     </svg>
-                    <img src="./assets/images/portal.gif" alt="gate">
+                    <img src="./assets/images/portal0.gif" alt="gate">
                     <img src="./assets/images/portal2.gif" alt="gate">
-                </div>
+                    <img src="${
+                        index === 0 ? './assets/images/egypt.png' : index === 1 ? './assets/images/space.png' : './assets/images/factory.png'
+                    }" alt="gate">
+                </div> 
             `;
             gate.innerHTML += gatePath;
         });
@@ -547,18 +654,52 @@ class PopUpGates extends HTMLElement {
                 }
                 if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                     this.shadowRoot.querySelector('#frontGroundGatesBase').style.transform = `rotate(${-this.__angle}deg)`;
+                    this.shadowRoot.querySelector('.laserHoloWrapper').classList.remove('animated');
+                    this.shadowRoot.querySelector('.laserHologram#laser').classList.remove('animated2');
+                    this.shadowRoot.querySelector('.laserHologram#base').classList.remove('animated3');
+                    void this.shadowRoot.querySelector('.laserHoloWrapper').offsetWidth;
+                    void this.shadowRoot.querySelector('.laserHologram#laser').offsetWidth;
+                    void this.shadowRoot.querySelector('.laserHologram#base').offsetWidth;
+                    this.shadowRoot.querySelector('.laserHoloWrapper').classList.add('animated');
+                    this.shadowRoot.querySelector('.laserHologram#laser').classList.add('animated2');
+                    this.shadowRoot.querySelector('.laserHologram#base').classList.add('animated3');
+                    this.shadowRoot.querySelectorAll('.gatePath').forEach((gatePathC, index) => {
+                        gatePathC.querySelectorAll('img').item(0).classList.remove('animatedImg0');
+                        gatePathC.querySelectorAll('img').item(1).classList.remove('animatedImg1');
+                        gatePathC.querySelectorAll('img').item(2).classList.remove('animatedImg2');
+                        gatePathC.querySelectorAll('img').item(0).offsetWidth;
+                        gatePathC.querySelectorAll('img').item(1).offsetWidth;
+                        gatePathC.querySelectorAll('img').item(2).offsetWidth;
+                        gatePathC.querySelectorAll('img').item(0).classList.add('animatedImg00');
+                        gatePathC.querySelectorAll('img').item(1).classList.add('animatedImg11');
+                        gatePathC.querySelectorAll('img').item(2).classList.add('animatedImg22');
+                    });
+
                     setTimeout(() => {
                         this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
                         this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
                         this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
                         this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
 
-                        if (this.__direction === 1)
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).classList.remove('animatedImg00');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).classList.remove('animatedImg11');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).classList.remove('animatedImg22');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).classList.add('animatedImg0');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).classList.add('animatedImg1');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).classList.add('animatedImg2');
+                        
+                        if (this.__direction === 1) {
                             this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
-                        if (this.__direction === 0)
+                        }
+                        if (this.__direction === 0) {
                             this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
-                        if (this.__direction === 2)
+                        }
+                        if (this.__direction === 2) {
                             this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
+                        }
                     }, 500);
                 }
             }
