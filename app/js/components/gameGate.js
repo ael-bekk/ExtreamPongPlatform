@@ -392,8 +392,53 @@ class PopUpGates extends HTMLElement {
                     transform: translate(-50%, -100%) translateZ(1px) rotateX(0deg) translateY(125px) scale(1);
                 }
             }
-            .animated4 {
-                animation: laserHolo4 2s linear forwards;
+            img.animatedImg0 {
+                animation: animatedImgStart_1 1s linear infinite;
+            }
+            img.animatedImg00 {
+                animation: animatedImgStart1 0.5s linear forwards;
+            }
+            @keyframes animatedImgStart1 {
+                0% {
+                    opacity: 1;
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(0deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(360deg);
+                }
+            }
+            @keyframes animatedImgStart_1 {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(360deg);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate(-50%, calc(-50% - 5px)) rotate(0deg);
+                }
+            }
+            img.animatedImg1 {
+                animation: animatedImgStart_2 1s linear infinite;
+            }
+            img.animatedImg11 {
+                animation: animatedImgStart2 0.5s linear forwards;
+            }
+            @keyframes animatedImgStart2 {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(0);
+                }
+            }
+            @keyframes animatedImgStart_2 {
+                0% {
+                    transform: scale(0);
+                }
+                100% {
+                    transform: scale(1);
+                }
             }
         </style>
         <div class="gates">
@@ -610,9 +655,9 @@ class PopUpGates extends HTMLElement {
                     </linearGradient>
                     </defs>
                     </svg>
-                    <img src="./assets/images/portal0.gif" alt="gate">
-                    <img src="./assets/images/portal2.gif" alt="gate">
-                    <img src="${
+                    <img id="a" src="./assets/images/portal0.gif" alt="gate">
+                    <img id="b" src="./assets/images/portal2.gif" alt="gate">
+                    <img id="c" src="${
                         index === 0 ? './assets/images/egypt.png' : index === 1 ? './assets/images/space.png' : './assets/images/factory.png'
                     }" alt="gate">
                 </div> 
@@ -664,15 +709,16 @@ class PopUpGates extends HTMLElement {
                     this.shadowRoot.querySelector('.laserHologram#laser').classList.add('animated2');
                     this.shadowRoot.querySelector('.laserHologram#base').classList.add('animated3');
                     this.shadowRoot.querySelectorAll('.gatePath').forEach((gatePathC, index) => {
-                        gatePathC.querySelectorAll('img').item(0).classList.remove('animatedImg0');
-                        gatePathC.querySelectorAll('img').item(1).classList.remove('animatedImg1');
-                        gatePathC.querySelectorAll('img').item(2).classList.remove('animatedImg2');
-                        gatePathC.querySelectorAll('img').item(0).offsetWidth;
-                        gatePathC.querySelectorAll('img').item(1).offsetWidth;
-                        gatePathC.querySelectorAll('img').item(2).offsetWidth;
-                        gatePathC.querySelectorAll('img').item(0).classList.add('animatedImg00');
-                        gatePathC.querySelectorAll('img').item(1).classList.add('animatedImg11');
-                        gatePathC.querySelectorAll('img').item(2).classList.add('animatedImg22');
+
+                        gatePathC.querySelector('#a').classList.remove('animatedImg0');
+                        gatePathC.querySelector('#a').offsetWidth;
+                        gatePathC.querySelector('#a').classList.add('animatedImg00');
+                        gatePathC.querySelector('#b').classList.remove('animatedImg1');
+                        gatePathC.querySelector('#b').offsetWidth;
+                        gatePathC.querySelector('#b').classList.add('animatedImg11');
+                        gatePathC.querySelector('#c').classList.remove('animatedImg2');
+                        gatePathC.querySelector('#c').offsetWidth;
+                        gatePathC.querySelector('#c').classList.add('animatedImg22');
                     });
 
                     setTimeout(() => {
@@ -681,15 +727,6 @@ class PopUpGates extends HTMLElement {
                         this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
                         this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
 
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).classList.remove('animatedImg00');
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).classList.remove('animatedImg11');
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).classList.remove('animatedImg22');
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).offsetWidth;
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).offsetWidth;
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).offsetWidth;
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(0).classList.add('animatedImg0');
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(1).classList.add('animatedImg1');
-                        this.shadowRoot.querySelectorAll('.gatePath').item(this.__direction - 1).item(2).classList.add('animatedImg2');
                         
                         if (this.__direction === 1) {
                             this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
@@ -701,6 +738,34 @@ class PopUpGates extends HTMLElement {
                             this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
                         }
                     }, 500);
+                    setTimeout(() => {
+                        let indx = this.__direction;
+                        if (indx === 0)
+                            indx = 1;
+                        else if (indx === 1)
+                            indx = 0;
+                    console.log(indx);
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.remove('animatedImg00');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.remove('animatedImg11');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.remove('animatedImg22');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.add('animatedImg0');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.add('animatedImg1');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.add('animatedImg2');
+                    }, 2000);
+                    setTimeout(() => {
+                        let indx = this.__direction;
+                        if (indx === 0)
+                            indx = 1;
+                        else if (indx === 1)
+                            indx = 0;
+                    console.log(indx);
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.remove('animatedImg0');
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').offsetWidth;
+                        this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.add('animatedImg2');
+                    }, 2500);
                 }
             }
         });
