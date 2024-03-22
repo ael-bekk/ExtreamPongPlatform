@@ -137,7 +137,7 @@ class PopUpGates extends HTMLElement {
                 transform-style: preserve-3d;
                 animation: starGates 5s linear forwards;
                 transition: 1s ease-in-out;
-                transform: rotateX(80deg) translateZ(50px) translateY(710px);
+                transform: rotateX(80deg) translateZ(50px) translateY(850px);
             }
             .gates__content {
                 position: relative;
@@ -189,7 +189,7 @@ class PopUpGates extends HTMLElement {
                 width: 100%;
                 height: 100%;
                 // border: 10px solid #00f;
-                background: radial-gradient(ellipse at center, #00f1 0%, #0ff1 20%, #0000 70%);
+                // background: radial-gradient(ellipse at center, #00f1 0%, #0ff1 20%, #0000 70%);
                 transition: 1s;
             }
             .gateWorld#gate2 {
@@ -213,6 +213,9 @@ class PopUpGates extends HTMLElement {
                 z-index: -1;
                 animation: animateGatePathImg 5s linear infinite;
                 opacity: 0.8;
+            }
+            .gatePath img:nth-of-type(1) {
+                opacity: 0.6;
             }
             .gatePath img:nth-of-type(2) {
                 transform: translate(-50%, calc(-50% - 5px)) rotate(0deg) scaleX(1.8) scaleY(1);
