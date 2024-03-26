@@ -5,6 +5,9 @@ class PopUpGates extends HTMLElement {
         this.__angle = 0;
         this.__direction = 1;
         this.__switch = 0;
+        this.__dir = 0;
+        this.__x = 0;
+        this.__y = 0;
     }
     connectedCallback() {
         this.render();
@@ -13,6 +16,30 @@ class PopUpGates extends HTMLElement {
         const id = this.getAttribute('id');
         this.shadowRoot.innerHTML = `
         <style>
+            .bgWrapper2Wrapper {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: -1;
+                background-image: url('./assets/images/stars.jpeg');
+                background-size: 400px 400px;
+                transition: 0.85s ease-in-out;
+            }
+            .bgWrapper2WrapperAnimated {
+                animation: animateStars 5s linear forwards;
+            }
+            @keyframes animateStars {
+                0% {
+                    background-position: 0 0;
+                }
+                30% {
+                    background-position:  0 0;
+                }
+                100% {
+                    background-position: 0 300px;
+                }
+            }
             .gates {
                 display: flex;
                 justify-content: center;
@@ -137,7 +164,7 @@ class PopUpGates extends HTMLElement {
                 transform-style: preserve-3d;
                 animation: starGates 5s linear forwards;
                 transition: 1s ease-in-out;
-                transform: rotateX(80deg) translateZ(50px) translateY(850px);
+                transform: rotateX(80deg) translateZ(50px) translateY(710px);
             }
             .gates__content {
                 position: relative;
@@ -215,7 +242,7 @@ class PopUpGates extends HTMLElement {
                 opacity: 0.8;
             }
             .gatePath img:nth-of-type(1) {
-                opacity: 0.6;
+                opacity: 0.4;
             }
             .gatePath img:nth-of-type(2) {
                 transform: translate(-50%, calc(-50% - 5px)) rotate(0deg) scaleX(1.8) scaleY(1);
@@ -228,6 +255,11 @@ class PopUpGates extends HTMLElement {
                 clip-path: circle(40% at 50% 50%);
                 filter: brightness(.6);
                 opacity: 1;
+            }
+            .gatePath img:nth-of-type(4) {
+                animation: none;
+                width: 200px;
+                transform: translate(0, calc(-20% - 5px)) rotateX(10deg) translateZ(100px); 
             }
             @keyframes animateGatePathImg {
                 0% {
@@ -439,15 +471,15 @@ class PopUpGates extends HTMLElement {
                     clip-path: circle(40% at 50% 50%);
                 }
                 25% {
-                    transform: translate(-70%, calc(-20% - 5px)) scale(1.3);
+                    transform: translate(-74%, calc(-24% - 5px)) scale(1.333);
                     clip-path: circle(30% at 70% 30%);
                 }
                 50% {
-                    transform: translate(-30%, calc(-20% - 5px)) scale(1.3);
+                    transform: translate(-23%, calc(-24% - 5px)) scale(1.333);
                     clip-path: circle(30% at 30% 30%);
                 }
                 75% {
-                    transform: translate(-50%, calc(-80% - 5px)) scale(1.3);
+                    transform: translate(-51%, calc(-77% - 5px)) scale(1.333);
                     clip-path: circle(30% at 50% 70%);
                 }
                 100% {
@@ -455,8 +487,283 @@ class PopUpGates extends HTMLElement {
                     clip-path: circle(40% at 50% 50%);
                 }
             }
+            .index {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5rem;
+                font-weight: bold;
+                color: #fff;
+                // border: 1px solid #f00;
+                z-index: 100;
+                transform: translateZ(-700px);
+                // transform: translateZ(-700px) translateY(50%);
+            }
+            .indexWrapper {
+                position: relative;
+                width: 1000px;
+                height: 1000px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5rem;
+                font-weight: bold;
+                color: #fff;
+                // border: 1px solid #f0f;
+                // overflow: hidden;
+                border-radius: 100%;
+                box-shadow: 0 0 100px 10px #0cf,
+                0 0 100px 100px #007;
+            }
+            .indexWrapper2 {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 5rem;
+                font-weight: bold;
+                color: #fff;
+                // background: rgba(0, 0, 0, 0.5);
+                overflow: hidden;
+                border-radius: 100%;
+            }
+            .indexWrapper2 img {
+                all: initial;
+                position: absolute;
+                height: 100%;
+                object-fit: cover;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 10;
+            }
+            .indexWrapper2 img:nth-of-type(2) {
+                width: calc(100% + 40px);
+                height: calc(100% + 40px);
+                object-fit: cover;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                filter: hue-rotate(80deg);
+            }
+            .indexWrapper > img {
+                
+                all: initial;
+                position: absolute;
+                height: calc(148%);
+                object-fit: cover;
+                z-index: 100;
+                opacity: 0.8;
+            }
+            .indexWrapper > img:nth-of-type(2) {
+                
+                all: initial;
+                position: absolute;
+                height: calc(148%);
+                object-fit: cover;
+                z-index: 1;
+                opacity: 0.1;
+            }
+            .indexWrapper > img:nth-of-type(3) {
+                
+                all: initial;
+                position: absolute;
+                height: calc(148%);
+                object-fit: cover;
+                z-index: 110;
+                opacity: 0.2;
+                filter: sepia(1);
+            }
+            .animatedStars0 {
+                animation: animateStars0 0.7s linear forwards;
+            }
+            @keyframes animateStars0 {
+                100% {
+                    background-position: 0px 0px;
+                }
+            }
+            .animatedStars1 {
+                animation: animateStars1 0.7s linear forwards;
+            }
+            @keyframes animateStars1 {
+                100% {
+                    background-position: 200px 10px;
+                }
+            }
+            .animatedStars2 {
+                animation: animateStars2 0.7s linear forwards;
+            }
+            @keyframes animateStars2 {
+                100% {
+                    background-position: -200px -10px;
+                }
+            }
+            .animatedStars3 {
+                animation: animateStars3 0.7s linear forwards;
+            }
+            @keyframes animateStars3 {
+                100% {
+                    background-position: 100px -10px;
+                }
+            }
+            .animatedStars4 {
+                animation: animateStars4 0.7s linear forwards;
+            }
+            @keyframes animateStars4 {
+                100% {
+                    background-position: -200px -200px;
+                }
+            }
+            .animatedStars5 {
+                animation: animateStars5 0.7s linear forwards;
+            }
+            @keyframes animateStars5 {
+                100% {
+                    background-position: 0px 200px;
+                }
+            }
+            .animatedStarsLeft {
+                animation: animateStarsLeft 0.7s linear forwards;
+            }
+            @keyframes animateStarsLeft {
+                100% {
+                    background-position: 700px 0px;
+                }
+            }
+            .animatedStarsRight {
+                animation: animateStarsRight 0.7s linear forwards;
+            }
+            @keyframes animateStarsRight {
+                100% {
+                    background-position: -700px 0px;
+                }
+            }
+            img.animatedBigGate#a, img.animatedBigGate#b , img.animatedBigGate#c
+            , .animatedBigGate{
+                animation: animateBigGate 0.7s linear forwards;
+            }
+            @keyframes animateBigGate {
+                0% {
+                    transform: scale(0);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+            img.animatedBigGate2#a, img.animatedBigGate2#b , img.animatedBigGate2#c
+            , .animatedBigGate2{
+                animation: animateBigGate2 0.7s linear forwards;
+            }
+            @keyframes animateBigGate2 {
+                0% {
+                    transform: scale(1);
+                }
+                100% {
+                    transform: scale(0);
+                }
+            }
+            img.animatedBigGate#d {
+                animation: animateBigGate3 0.7s linear forwards;
+                
+            }
+            @keyframes animateBigGate3 {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            img.animatedBigGate2#d {
+                animation: animateBigGate4 0s linear forwards;
+            }
+            @keyframes animateBigGate4 {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            .gateDescription {
+                position: absolute;
+                width: 600px;
+                height: fit-content;
+                padding: 2rem 0;
+                bottom: 0;
+                left: 0;
+                // border: 1px solid #f00;
+                z-index: 100;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                font-size: 2rem;
+                font-weight: bold;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 50px;
+                box-shadow: 0 0 50px 10px #0007;
+                // backdrop-filter: blur(10px);
+            }
+            .gateDescription img {
+                position: relative;
+                width: 100%;
+            }
+            .gateDescription > img:nth-of-type(1) {
+                position: absolute;
+                width: 10%;
+                left: 0;
+                top: 10px;
+            }
+            .gateDescription > img:nth-of-type(2) {
+                position: relative;
+                // border: 1px solid #f00; 
+                width: 95%;
+                height: 100%;
+                left: 6px;
+                display: flex;
+                flex-direction: column;
+            }
+            .gateDescriptionText {
+                
+                position: absolute;
+                right: 5px;
+                // border: 1px solid #000; 
+                width: 68%;
+                height: 70%;
+                display: flex;
+                flex-direction: column;
+                margin: 0 23px;
+            }
+            .gateDescriptionTitleWrapper {
+                position: relative;
+                width: 100%;
+                height: 30%;
+                display: flex;
+                border: 1px solid #f0f;
+            }
+            .gateDescriptionTextWrapper {
+                position: re;
+                width: 100%;
+                height: 70%;
+                display: flex;
+                border: 1px solid #f0f;
+            }
         </style>
         <div class="gates">
+            <div class="bgWrapper2Wrapper bgWrapper2WrapperAnimated">
+            </div>
             <div class="gatesWrapper">
                 <div class="gates__content">
                     <div class="gatesFrontGround">
@@ -589,6 +896,17 @@ class PopUpGates extends HTMLElement {
                     </div>
                 </div>
             </div>
+            <div class='gateDescription'>
+                <img src='./assets/images/tenor.gif' alt='gateDescription'>
+                <img src='./assets/images/pastInfo.svg' alt='gateDescription' id="timeLine">
+                <div class='gateDescriptionText'>
+                    <div class='gateDescriptionTitleWrapper'>
+                        <h1 class='gateDescriptionTitle'></h1>
+                    </div>
+                    <div class='gateDescriptionTextWrapper'>
+                    </div>
+                </div>
+            </div>
         </div>
         `;
         const gateWorld = this.shadowRoot.querySelectorAll('.gateWorld');
@@ -671,6 +989,17 @@ class PopUpGates extends HTMLElement {
                     <img id="c" src="${
                         index === 0 ? './assets/images/egypt.png' : index === 1 ? './assets/images/space.png' : './assets/images/factory.png'
                     }" alt="gate">
+                    <div class="index">
+                        <div class="indexWrapper">
+                            <img id="a" src="./assets/images/effect3.gif" alt="index">
+                            <img id="b" src="./assets/images/smoke.gif" alt="index">
+                            <img id="c" src="./assets/images/waves.gif" alt="index">
+                            <div class="indexWrapper2">
+                                <img id="d" src="./assets/images/${index === 0 ? 'past.png' : index === 2 ? 'present.jpeg' : 'future.jpeg'}" alt="index">
+                                <img id="e" src="./assets/images/blackHole1.gif" alt="index">
+                            </div>
+                        </div>
+                    </div>
                 </div> 
             `;
             gate.innerHTML += gatePath;
@@ -711,7 +1040,23 @@ class PopUpGates extends HTMLElement {
                 gatePathC.querySelector('#c').classList.remove('animatedImg2', 'animatedImg222');
                 gatePathC.querySelector('#c').offsetWidth;
                 gatePathC.querySelector('#c').classList.add('animatedImg22');
+                gatePathC.querySelector('.indexWrapper').style.boxShadow = 'none';
+                gatePathC.querySelector('.index').querySelector('#a').classList.remove('animatedBigGate');
+                gatePathC.querySelector('.index').querySelector('#b').classList.remove('animatedBigGate');
+                gatePathC.querySelector('.index').querySelector('#c').classList.remove('animatedBigGate');
+                gatePathC.querySelector('.index').querySelector('#d').classList.remove('animatedBigGate');
+                gatePathC.querySelector('.indexWrapper').classList.remove('animatedBigGate');
+                gatePathC.querySelector('.index').querySelector('#a').classList.add('animatedBigGate2');
+                gatePathC.querySelector('.index').querySelector('#b').classList.add('animatedBigGate2');
+                gatePathC.querySelector('.index').querySelector('#c').classList.add('animatedBigGate2');
+                gatePathC.querySelector('.index').querySelector('#d').classList.add('animatedBigGate2');
+                gatePathC.querySelector('.indexWrapper').classList.add('animatedBigGate2');
             });
+
+
+
+
+
 
             timeOut1 = setTimeout(() => {
                 this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
@@ -719,15 +1064,22 @@ class PopUpGates extends HTMLElement {
                 this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
                 this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
 
-                
+                this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
+                this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
                 if (this.__direction === 1) {
                     this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
+                    this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/pastInfo.svg';
+                    this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Egypt';
                 }
                 if (this.__direction === 0) {
                     this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
+                    this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/futureInfo.svg';
+                    this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Space';
                 }
                 if (this.__direction === 2) {
                     this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
+                    this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/presentInfo.svg';
+                    this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Factory';
                 }
             }, 500);
             let indx = this.__direction;
@@ -741,12 +1093,21 @@ class PopUpGates extends HTMLElement {
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.remove('animatedImg11');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.add('animatedImg1');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').classList.remove('animatedBigGate2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').classList.add('animatedBigGate');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#a').classList.remove('animatedBigGate2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#a').classList.add('animatedBigGate');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#b').classList.remove('animatedBigGate2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#b').classList.add('animatedBigGate');
+
             }, 2000);
             timeOut3 = setTimeout(() => {
                 console.log(indx);
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.remove('animatedImg00');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.add('animatedImg0');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#c').classList.remove('animatedBigGate2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#c').classList.add('animatedBigGate');
             }, 2200);
             timeOut4 = setTimeout(() => {
                 console.log(indx);
@@ -755,6 +1116,9 @@ class PopUpGates extends HTMLElement {
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.remove('animatedImg22', 'animatedImg222');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.add('animatedImg2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').style.boxShadow = ' 0 0 100px 10px #0cf, 0 0 100px 100px #007';
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#d').classList.remove('animatedBigGate2');
+                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#d').classList.add('animatedBigGate');
             }, 2700);
             timeOut5 = setTimeout(() => {
                 console.log(indx);
@@ -765,17 +1129,21 @@ class PopUpGates extends HTMLElement {
         }
         triggerKey.call(this);
         document.addEventListener('keydown', (e) => {
-            if (new Date() - executedDate > 1000) {
+            if (new Date() - executedDate > 1400) {
                 executedDate = new Date();
                 console.log(e.key);
                 if (e.key === 'ArrowLeft') {
                     this.__angle += 120;
                     this.__direction = (this.__direction + 1) % 3;
+                    this.__dir += 1;
                 } if (e.key === 'ArrowRight') {
                     this.__angle -= 120;
                     this.__direction = (this.__direction + 2) % 3;
+                    this.__dir -= 1;
                 }
                 if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    this.shadowRoot.querySelector('.bgWrapper2Wrapper').classList.remove('bgWrapper2WrapperAnimated');
+                    this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
                     triggerKey.call(this);
                 }
                 if (e.key === 'Enter') {
@@ -792,19 +1160,39 @@ class PopUpGates extends HTMLElement {
                     this.__switch = (this.__switch + 5) % 6;
                 }
                 console.log(this.__switch);
-                if (this.__switch === 0)
+                if (this.__switch === 0) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = ``;
-                if (this.__switch === 1)
+                    this.__x = 0;
+                    this.__y = 0;
+                }
+                if (this.__switch === 1) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-500}px) translateZ(${-100}px) translateX(${0}px) rotate(30deg)`;
-                if (this.__switch === 2)
+                    this.__x = 100;
+                    this.__y = 100;
+                }
+                if (this.__switch === 2) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-500}px) translateZ(${0}px) translateX(${-100}px) rotate(-30deg)`;
-                if (this.__switch === 3)
+                    this.__x = -100;
+                    this.__y = 90;
+                }
+                if (this.__switch === 3) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-200}px) translateZ(${0}px) translateX(${100}px) rotate(-30deg)`;
-                if (this.__switch === 4)
+                    this.__x = -50;
+                    this.__y = 0;
+                }
+                if (this.__switch === 4) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-800}px) translateZ(${-500}px) translateX(${0}px) rotateX(320deg)`;
-                if (this.__switch === 5)
+                    this.__x = 0;
+                    this.__y = -400;
+                }
+                if (this.__switch === 5) {
                     this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-1000}px) translateZ(${-100}px) translateX(${0}px) rotateX(350deg)`;
-
+                    this.__x = 0;
+                    this.__y = -300;
+                }
+                this.shadowRoot.querySelector('.bgWrapper2Wrapper').classList.remove('bgWrapper2WrapperAnimated');
+                this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
+                this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
             }
         });
         this.shadowRoot.querySelector('.gatesFrontGround').style.transform = `rotate(${this.__angle}deg)`;
