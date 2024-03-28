@@ -8,6 +8,12 @@ class PopUpGates extends HTMLElement {
         this.__dir = 0;
         this.__x = 0;
         this.__y = 0;
+        this.__t_x = 0;
+        this.__t_y = 0;
+        this.__t_z = 0;
+        this.__r = 0;
+        this.__r_x = 0;
+        this.__r_y = 0;
     }
     connectedCallback() {
         this.render();
@@ -792,7 +798,7 @@ class PopUpGates extends HTMLElement {
                 border: 1px solid #f000;
                 padding: 10px 0;
             }
-            .gateDescriptionTextWrapper .infs span h1#inf {
+            .gateDescriptionTextWrapper .infs span h1 {
                 all: initial;
                 position: relative;
                 width: 90%;
@@ -801,7 +807,7 @@ class PopUpGates extends HTMLElement {
                 color: #0f5;
                 margin: 0 15px;
             }
-            .gateDescriptionTextWrapper .infs .info2 h1#inf {
+            .gateDescriptionTextWrapper .infs .info2 h1 {
                 width: 35%;
                 top: -10px;
                 left: 15px;
@@ -809,7 +815,7 @@ class PopUpGates extends HTMLElement {
                 font-size: 14px;
                 // border: 1px solid #f00;
             }
-            .gateDescriptionTextWrapper .infs span h1#inf:nth-of-type(2) {
+            .gateDescriptionTextWrapper .infs span h1:nth-of-type(2) {
                 text-align: center;
                 transform: translateX(80px);
             }
@@ -822,6 +828,60 @@ class PopUpGates extends HTMLElement {
                 font-size: 3rem;
                 // border: 1px solid #f00;
 
+            }
+            .activateSpecialPower {
+                position: absolute;
+                right: 10px;
+                bottom: 0;
+                width: 55%;
+                height: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                // border: 1px solid #f0f; 
+            }
+            .activateSpecialPower h1 {
+                all: initial;
+                position: relative;
+                font-size: 12px;
+                width: 50%;
+                font-size: 18px;
+                // border: 1px solid #f00; 
+                text-align: center;
+                vertical-align: center;
+            }
+            .activateSpecialPower h1:nth-of-type(1) {
+                color: #0f0;
+                font-style: bolder;
+            }
+            .activateSpecialPower h1:nth-of-type(2) {
+                color: #0fa;
+            }
+            .activateSpecialPower button {
+                position: relative;
+                background: #5fa7;
+                width: 100px;
+                height: 30px;
+                border-radius: 5px;
+                clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                // border: 1px solid #f00;
+            }
+            .activateSpecialPower button div {
+                position: absolute;
+                left: 0;
+                clip-path: polygon(30% 0, 100% 0, 70% 100%, 0 100%);
+                height: 100%;
+                width: 58%;
+                background: #5faa;
+                // border: 1px solid #f00;    
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         </style>
         <div class="gates">
@@ -969,12 +1029,17 @@ class PopUpGates extends HTMLElement {
                     <div class='gateDescriptionTextWrapper'>
                         <div class='infs'>
                             <span class='info1'>
-                                <h1 id="inf"> Set your belt and get ready. The time machine is ready to sand you to the past : </h1>
-                                <h1 id="inf"> 	<em>⇝</em> To 3000 years BC. </h1>
+                                <h1 id="inf1"> Set your belt and get ready. The time machine is ready to sand you to the past : </h1>
+                                <h1 id="inf2"> 	<em>⇝</em> To 3000 years BC. </h1>
                             </span>
                             <span class='info2'>
-                                <h1 id="inf"> Silent guardians, mummies beckon with secrets preserved through millennia. </h1>
+                                <h1 id="inf3"> Silent guardians, mummies beckon with secrets preserved through millennia. </h1>
                             </span>
+                        </div>
+                        <div class='activateSpecialPower'>
+                            <h1> Power : </h1>
+                            <h1 id="inf4"> Mummy catch </h1>
+                            <button id='activateSpecialPower'> <div>off</div> </button>
                         </div>
                     </div>
                 </div>
@@ -1079,6 +1144,7 @@ class PopUpGates extends HTMLElement {
         console.log(box1);
         let executedDate = new Date() - 2000;
         let executedDate2 = new Date() - 2000;
+        let executedDate3 = new Date() - 2000;
         let timeOut1;
         let timeOut2;
         let timeOut3;
@@ -1142,16 +1208,28 @@ class PopUpGates extends HTMLElement {
                     this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
                     this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/pastInfo.svg';
                     this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Egypt';
+                    this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine is ready to sand you to the past :';
+                    this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 3000 years BC. ';
+                    this.shadowRoot.querySelector('#inf3').textContent = ' Silent guardians, mummies beckon with secrets preserved through millennia. ';
+                    this.shadowRoot.querySelector('#inf4').textContent = ' Mummy catch ';
                 }
                 if (this.__direction === 0) {
                     this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
                     this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/futureInfo.svg';
                     this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Space';
+                    this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine is ready to sand you to the future :';
+                    this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 3000 years AD. ';
+                    this.shadowRoot.querySelector('#inf3').textContent = ' Humanity thrives in vast space habitats, forging a cosmic legacy. ';
+                    this.shadowRoot.querySelector('#inf4').textContent = ' black hole ';
                 }
                 if (this.__direction === 2) {
                     this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
                     this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/presentInfo.svg';
                     this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Factory';
+                    this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine is ready to sand you to the present :';
+                    this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 2045. ';
+                    this.shadowRoot.querySelector('#inf3').textContent = ' A world of industry and progress, where the air is thick with promise. ';
+                    this.shadowRoot.querySelector('#inf4').textContent = ' buildings block ';
                 }
             }, 500);
             let indx = this.__direction;
@@ -1222,6 +1300,22 @@ class PopUpGates extends HTMLElement {
                     this.shadowRoot.querySelector('.gates__content').style.transform = 'translateY(1010px) translateZ(70px) rotateX(10deg)';
                 }
             }
+            if (new Date() - executedDate3 > 700) { 
+                executedDate3 = new Date();
+                if (e.key === 'ArrowUp') {
+                    this.__r_x += 20;
+                    this.__y += 700;
+                } if (e.key === 'ArrowDown') {
+                    this.__r_x -= 20;
+                    this.__y -= 700;
+                }
+                if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                    this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
+                    this.shadowRoot.querySelector('.bgWrapper2Wrapper').classList.remove('bgWrapper2WrapperAnimated');
+                    this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
+                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${this.__t_y}px) translateZ(${this.__t_z}px) translateX(${this.__t_x}px) rotate(${this.__r}deg) rotateX(${this.__r_x}deg)`;
+                }
+            }
         });
         document.addEventListener('wheel', (e) => {
             if (new Date() - executedDate2 > 500) {
@@ -1233,35 +1327,60 @@ class PopUpGates extends HTMLElement {
                 }
                 console.log(this.__switch);
                 if (this.__switch === 0) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = ``;
                     this.__x = 0;
                     this.__y = 0;
+                    this.__t_x = 0;
+                    this.__t_y = 0;
+                    this.__t_z = 0;
+                    this.__r = 0;
+                    this.__r_x = 0;
                 }
                 if (this.__switch === 1) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-500}px) translateZ(${-100}px) translateX(${0}px) rotate(30deg)`;
                     this.__x = 100;
                     this.__y = 100;
+                    this.__t_x = 0;
+                    this.__t_y = -500;
+                    this.__t_z = -100;
+                    this.__r = 30;
+                    this.__r_x = 0;
                 }
                 if (this.__switch === 2) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-500}px) translateZ(${0}px) translateX(${-100}px) rotate(-30deg)`;
                     this.__x = -100;
                     this.__y = 90;
+                    this.__t_x = -100;
+                    this.__t_y = -500;
+                    this.__t_z = 0;
+                    this.__r = -30;
+                    this.__r_x = 0;
                 }
                 if (this.__switch === 3) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-200}px) translateZ(${0}px) translateX(${100}px) rotate(-30deg)`;
                     this.__x = -50;
                     this.__y = 0;
+                    this.__t_x = 100;
+                    this.__t_y = -200;
+                    this.__t_z = 0;
+                    this.__r = -30;
+                    this.__r_x = 0;
                 }
                 if (this.__switch === 4) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-800}px) translateZ(${-500}px) translateX(${0}px) rotateX(320deg)`;
                     this.__x = 0;
                     this.__y = -400;
+                    this.__t_x = 0;
+                    this.__t_y = -800;
+                    this.__t_z = -500;
+                    this.__r = 0;
+                    this.__r_x = -60;
                 }
                 if (this.__switch === 5) {
-                    this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${-1000}px) translateZ(${-100}px) translateX(${0}px) rotateX(350deg)`;
                     this.__x = 0;
                     this.__y = -300;
+                    this.__t_x = 0;
+                    this.__t_y = -1000;
+                    this.__t_z = -100;
+                    this.__r = 0;
+                    this.__r_x = -10;
                 }
+                this.shadowRoot.querySelector('.gates__content').style.transform = `translateY(${this.__t_y}px) translateZ(${this.__t_z}px) translateX(${this.__t_x}px) rotate(${this.__r}deg) rotateX(${this.__r_x}deg)`;
                 this.shadowRoot.querySelector('.bgWrapper2Wrapper').classList.remove('bgWrapper2WrapperAnimated');
                 this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
                 this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
