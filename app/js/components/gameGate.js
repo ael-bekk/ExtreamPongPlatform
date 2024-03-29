@@ -967,13 +967,10 @@ class PopUpGates extends HTMLElement {
             this.shadowRoot.querySelectorAll('.gatePath').forEach((gatePathC, index) => {
 
                 gatePathC.querySelector('#a').classList.remove('animatedImg0');
-                gatePathC.querySelector('#a').offsetWidth;
                 gatePathC.querySelector('#a').classList.add('animatedImg00');
                 gatePathC.querySelector('#b').classList.remove('animatedImg1');
-                gatePathC.querySelector('#b').offsetWidth;
                 gatePathC.querySelector('#b').classList.add('animatedImg11');
                 gatePathC.querySelector('#c').classList.remove('animatedImg2', 'animatedImg222');
-                gatePathC.querySelector('#c').offsetWidth;
                 gatePathC.querySelector('#c').classList.add('animatedImg22');
                 gatePathC.querySelector('.indexWrapper').style.boxShadow = 'none';
                 gatePathC.querySelector('.index').querySelector('#a').classList.remove('animatedBigGate');
@@ -995,7 +992,6 @@ class PopUpGates extends HTMLElement {
                 this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
 
                 this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
-                this.shadowRoot.querySelector('.bgWrapper2Wrapper').offsetWidth;
                 if (this.__direction === 1) {
                     this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
                     this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/pastInfo.svg';
@@ -1033,7 +1029,6 @@ class PopUpGates extends HTMLElement {
                 console.log(indx);
             
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.remove('animatedImg11');
-                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#b').classList.add('animatedImg1');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').classList.remove('animatedBigGate2');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').classList.add('animatedBigGate');
@@ -1046,7 +1041,6 @@ class PopUpGates extends HTMLElement {
             timeOut3 = setTimeout(() => {
                 console.log(indx);
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.remove('animatedImg00');
-                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.add('animatedImg0');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#c').classList.remove('animatedBigGate2');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#c').classList.add('animatedBigGate');
@@ -1054,9 +1048,7 @@ class PopUpGates extends HTMLElement {
             timeOut4 = setTimeout(() => {
                 console.log(indx);
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').classList.remove('animatedImg0');
-                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#a').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.remove('animatedImg22', 'animatedImg222');
-                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.add('animatedImg2');
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.indexWrapper').style.boxShadow = ' 0 0 100px 10px #0cf, 0 0 100px 100px #007';
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('.index').querySelector('#d').classList.remove('animatedBigGate2');
@@ -1065,7 +1057,6 @@ class PopUpGates extends HTMLElement {
             timeOut5 = setTimeout(() => {
                 console.log(indx);
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.remove('animatedImg2', 'animatedImg22');
-                this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').offsetWidth;
                 this.shadowRoot.querySelectorAll('.gatePath').item(indx).querySelector('#c').classList.add('animatedImg222');
             }, 3500);
         }
