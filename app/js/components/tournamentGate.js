@@ -21,7 +21,20 @@ class TournamentGate extends HTMLElement {
                 height: 100vh;
                 background-color: #000;
                 color: #fff;
+                background-image: url('./assets/images/tournamentGate/bg.jpeg');
+                background-size: cover;
                 perspective: 1000px;
+                animation: start 1s linear forwards;
+            }
+            @keyframes start {
+                0% {
+                    background-size: 100% 150%;
+                    background-position: 50% 50%;
+                }
+                100% {
+                    background-size: 100% 100%;
+                    background-position: 50% 50%;
+                }
             }
             .tournamentGate__content {
                 position: relative;
@@ -179,6 +192,18 @@ class TournamentGate extends HTMLElement {
                 transform: translateZ(800px);
                 background-image: url('./assets/images/tournamentGate/ground.svg');
                 background-size: 100px 100px;
+                transform-style: preserve-3d;
+            }
+            .upBg .osgardBg {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                transform: translateY(50%) rotateX(-90deg) translateY(-30%);
+                // transform: translateY(50%) rotateX(90deg) translateY(-50%);
             }
             .frontBg {
                 position: absolute;
@@ -193,6 +218,17 @@ class TournamentGate extends HTMLElement {
                 background-image: url('./assets/images/tournamentGate/ground.svg');
                 background-size: 100px 100px;
                 clip-path: path('M0,0 L600,0 L600,500 L1400,500 L1400,0 L2000,0 L2000,2000 L0,2000 Z');
+                transform-style: preserve-3d;
+            }
+            .frontBg .osgardBg {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                transform: rotateX(180deg) translateY(121%);
             }
             .gateBg {
                 position: absolute;
@@ -200,13 +236,26 @@ class TournamentGate extends HTMLElement {
                 top: 0;
                 width: 40%;
                 height: 2000px;
-                display: flex;
-                justify-content: center;
-                align-items: end;
+                background-color: #0009;
                 transform: translateZ(300px) translateY(100%) translateX(-50%);
                 background-image: url('./assets/images/tournamentGate/ground.svg');
                 background-size: 100px 100px;
+                transform-style: preserve-3d;
             }
+            .gateBg span {
+                position: absolute;
+                width: 100px;
+                height: 100%;
+                left: 0;
+                background-color: #0006;
+                transform: translateX(-50%) rotateY(90deg) translateX(-50%);
+                border: 5px solid #44FFFF;
+            }
+            .gateBg span:last-child {
+                left: 100%;
+                transform: translateX(-50%) rotateY(90deg) translateX(-50%);
+            }
+
         </style>
         <div class="tournamentGate">
             <div class="tournamentGate__content">
@@ -232,10 +281,18 @@ class TournamentGate extends HTMLElement {
                     <div class="rightBg">
                     </div>
                     <div class="upBg">
+                        <div class="osgardBg">
+                            <img src="assets/images/tournamentGate/osgard.svg" alt="Pong">
+                        </div>
                     </div>
-                    <div class="frontBg">
+                    <div class="frontBg"> 
+                        <div class="osgardBg">
+                            <img src="assets/images/tournamentGate/osgard.svg" alt="Pong">
+                        </div>
                     </div>
                     <div class="gateBg">
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
             </div>
