@@ -1,4 +1,4 @@
-class PopUpGates extends HTMLElement {
+class GameGates extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -51,6 +51,9 @@ class PopUpGates extends HTMLElement {
                 }
             }
             .gates {
+                position: relative;
+                width: 100%;
+                height: 100vh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -1147,10 +1150,10 @@ class PopUpGates extends HTMLElement {
     }
 }
 
-customElements.define('pop-up-gates', PopUpGates);
+customElements.define('game-gates', GameGates);
 
 function createGates() {
-    const gates = document.createElement('pop-up-gates');
+    const gates = document.createElement('game-gates');
     const home = document.querySelector('.home');
     const bg = document.querySelector('background-component');
 
