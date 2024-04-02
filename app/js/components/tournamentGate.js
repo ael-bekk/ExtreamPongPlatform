@@ -4,7 +4,9 @@ class TournamentGate extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.__game1Winner = 0;
         this.__game2Winner = 0;
-        this.__game3Winner = 0;
+        this.__game3Winner = -1;
+        this.__game3Start = false;
+        this.__game3End = false;
     }
     connectedCallback() {
         this.render();
@@ -344,7 +346,33 @@ class TournamentGate extends HTMLElement {
                 bottom: 550px;
                 // background-color: #0aa;
             }
-
+            .space8 {
+                width: 200px;
+                height: 200px;
+                right: 900px;
+                top: 900px;
+                // background-color: #0aa;
+            }
+            .space9 {
+                width: 20px;
+                height: 100px;
+                right: 50%;
+                top: 1100px;
+                transform: translateZ(20px) translateX(50%);
+                background: linear-gradient( #FFD700aa, #0aa);
+            }
+            .space8::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #FFD700aa;
+                box-shadow: 0 -10px 50px #FFD700aa,
+                            0 10px 50px #fff inset,
+                            0 0 50px #FFD700aa inset;
+                top: 0;
+                left: 0;
+            }
             .corner {
                 position: absolute;
                 background-color: #aaa9;
@@ -441,25 +469,35 @@ class TournamentGate extends HTMLElement {
                 right: 150px;
             }
             .turnLeft {
-                animation: turnLeft 4s linear forwards;
+                animation: turnLeft 1.5s linear forwards;
             }
             .turnRight {
-                animation: turnRight 4s linear forwards;
+                animation: turnRight 1.5s linear forwards;
+            }
+            .turnLeftH {
+                animation: turnLeftH 1.5s linear forwards;
+            }
+            .turnRightH {
+                animation: turnRightH 1.5s linear forwards;
             }
             @keyframes turnLeft {
-                0% {
-                    transform: rotate(0deg);
-                }
                 100% {
                     transform: rotate(-90deg);
                 }
             }
             @keyframes turnRight {
-                0% {
-                    transform: rotate(0deg);
-                }
                 100% {
                     transform: rotate(90deg);
+                }
+            }
+            @keyframes turnLeftH {
+                100% {
+                    transform: rotate(0deg);
+                }
+            }
+            @keyframes turnRightH {
+                100% {
+                    transform: rotate(0deg);
                 }
             }
             .space3  .chairLeft .seat {
@@ -469,110 +507,148 @@ class TournamentGate extends HTMLElement {
                 transform: rotate(-90deg);
             }
             .semiFinaleLeft {
-                animation: semiFinaleLeftA 10s linear forwards;
+                animation: semiFinaleLeftA 5s linear forwards;
             }
             .semiFinaleLeft2 {
-                animation: semiFinaleLeftA2 10s linear forwards;
+                animation: semiFinaleLeftA2 5s linear forwards;
             }
             .semiFinaleRight {
-                animation: semiFinaleRightA 10s linear forwards;
+                animation: semiFinaleRightA 5s linear forwards;
             }
             .semiFinaleRight2 {
-                animation: semiFinaleRightA2 10s linear forwards;
+                animation: semiFinaleRightA2 5s linear forwards;
             }
             @keyframes semiFinaleLeftA {
                 0% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
                 }
-                40% {
+                30% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg);
                 }
                 50% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg);
                 }
-                60% {
+                70% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px);
                 }
-                70% {
+                80% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg);
                 }
-                80% {
-                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
-                }
                 100% {
-                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px) rotateY(180deg);
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
                 }
             }
             @keyframes semiFinaleLeftA2 {
                 0% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
                 }
-                40% {
+                30% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg);
                 }
                 50% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg);
                 }
-                60% {
+                70% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px);
                 }
-                70% {
+                80% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg);
                 }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px);
+                }
+            }
+            @keyframes semiFinaleRightA {
+                0% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
+                }
+                30% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg);
+                }
+                50% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg);
+                }
+                70% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px);
+                }
                 80% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(90deg);
+                }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
+                }
+            }
+            @keyframes semiFinaleRightA2 {
+                0% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
+                }
+                30% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg);
+                }
+                50% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg);
+                }
+                70% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px);
+                }
+                80% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(-90deg);
+                }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(-90deg) translateZ(400px);
+                }
+            }
+            .filterWin {
+                filter: drop-shadow(0 0 100px #00FFD1) hue-rotate(300deg) saturate(1000%);
+            }
+            .filterLost {
+                filter: drop-shadow(0 0 50px #00FFD1) hue-rotate(200deg) saturate(1000%);
+            }
+            .avatarTrun1 {
+                animation: avatarTrunA1 1.5s linear forwards;
+            }
+            .avatarTrun2 {
+                animation: avatarTrunA2 1.5s linear forwards;
+            }
+            .avatarTrun3 {
+                animation: avatarTrunA3 1.5s linear forwards;
+            }
+            .avatarTrun4 {
+                animation: avatarTrunA4 1.5s linear forwards;
+            }
+            @keyframes avatarTrunA1 {
+                0% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
+                }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px) rotateY(90deg);
+                }
+            }
+            @keyframes avatarTrunA2 {
+                0% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
+                }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(90deg) translateZ(400px) rotateY(90deg);
+                }
+            }
+            @keyframes avatarTrunA3 {
+                0% {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px);
                 }
                 100% {
-                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px) rotateY(-180deg);
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px) rotateY(-90deg);
                 }
             }
-        //     @keyframes semiFinaleRightA {
-        //         0% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
-        //         }
-        //         40% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg);
-        //         }
-        //         50% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg);
-        //         }
-        //         60% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px);
-        //         }
-        //         70% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg);
-        //         }
-        //         80% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px);
-        //         }
-        //         100% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(90deg) translateZ(400px) rotateY(180deg);
-        //         }
-        //     }
-        //     @keyframes semiFinaleRightA2 {
-        //         0% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(0deg);
-        //         }
-        //         40% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg);
-        //         }
-        //         50% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg);
-        //         }
-        //         60% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px);
-        //         }
-        //         70% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg);
-        //         }
-        //         80% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px);
-        //         }
-        //         100% {
-        //             transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(-90deg) translateZ(800px) rotateY(-90deg) translateZ(400px) rotateY(-180deg);
-        //         }
-        //     }
-        // </style>
+            @keyframes avatarTrunA4 {
+                0% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(-90deg) translateZ(400px);
+                }
+                100% {
+                    transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(-90deg) translateZ(400px) rotateY(-90deg);
+                }
+            }
+        </style>
         <div class="tournamentGate">
             <img src="assets/images/tournamentGate/frontGround1.gif" alt="Pong">
             <div class="tournamentGate__content">
@@ -616,7 +692,7 @@ class TournamentGate extends HTMLElement {
         `;
         this.shadowRoot.querySelector('.tournamentGate__content__wrapper').innerHTML += `
             ${
-                [1, 2, 3, 4, 5, 6, 7].map((el, indx) => `
+                [1, 2, 3, 4, 5, 6, 7, 8, 9].map((el, indx) => `
                     <div class="space space${el}">
                         <div class="corner cornerBottom"></div>
                         <div class="corner cornerRight"></div>
@@ -644,37 +720,57 @@ class TournamentGate extends HTMLElement {
                 `).join('')
             }
         `;
-        this.game1();
-        this.game2();
+        setTimeout(() => {
+            this.game1();
+        }, 4000);
+        setTimeout(() => {
+            this.game2();
+        }, 8000);
+        this.__game3Start = true;
+        setTimeout(() => {
+            this.game3();
+        }, 13000);
     }
     game1() {
         if (this.__game1Winner === 0) {
             this.shadowRoot.querySelector('.space1 .chairLeft .seat').classList.add('turnLeft');
+            this.shadowRoot.querySelectorAll('.space1 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
+            this.shadowRoot.querySelectorAll('.space1 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
             this.shadowRoot.querySelector('.avatar1').classList.add('semiFinaleLeft');
         }
         else if (this.__game1Winner === 1) {
             this.shadowRoot.querySelector('.space1 .chairRight .seat').classList.add('turnRight');
+            this.shadowRoot.querySelectorAll('.space1 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
+            this.shadowRoot.querySelectorAll('.space1 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
             this.shadowRoot.querySelector('.avatar2').classList.add('semiFinaleRight');
         }
-
     }
     game2() {
         if (this.__game2Winner === 0) {
             this.shadowRoot.querySelector('.space2 .chairLeft .seat').classList.add('turnLeft');
+            this.shadowRoot.querySelectorAll('.space2 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
+            this.shadowRoot.querySelectorAll('.space2 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
             this.shadowRoot.querySelector('.avatar3').classList.add('semiFinaleLeft2');
         }
-        else if (this.__game1Winner === 1) {
+        else if (this.__game2Winner === 1) {
             this.shadowRoot.querySelector('.space2 .chairRight .seat').classList.add('turnRight');
+            this.shadowRoot.querySelectorAll('.space2 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
+            this.shadowRoot.querySelectorAll('.space2 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
             this.shadowRoot.querySelector('.avatar4').classList.add('semiFinaleRight2');
         }
     }
     game3() {
-        if (this.__game2Winner === 0)
-            this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.add('turnLeft');
-        else if (this.__game2Winner === 1)
-            this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.add('turnRight');
+        if (this.__game3Start === true) {
+            this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.add('turnLeftH');
+            this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.add('turnRightH');
+            this.shadowRoot.querySelector('.avatar' + (this.__game1Winner + 1)).classList.add('avatarTrun' + (this.__game1Winner + 1));
+            this.shadowRoot.querySelector('.avatar' + (this.__game2Winner + 3)).classList.add('avatarTrun' + (this.__game2Winner + 3));
+        }
+        if (this.__game3End === true) {
+            this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.remove('turnLeftH');
+            this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.remove('turnRightH');
+        }
     }
-
 }
 
 customElements.define('tournament-gate', TournamentGate);
