@@ -4,7 +4,7 @@ class TournamentGate extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.__game1Winner = 0;
         this.__game2Winner = 0;
-        this.__game3Winner = -1;
+        this.__game3Winner = 0;
         this.__game3Start = false;
         this.__game3End = false;
     }
@@ -139,7 +139,8 @@ class TournamentGate extends HTMLElement {
                 position: relative;
                 width: calc(90% - 10px);
                 height: 70%;
-                background-color: #000;
+                display: flex;
+                background-color: #035;
                 transform: translateY(-30px);
                 border: 5px solid #44FFFF;
             }
@@ -175,7 +176,7 @@ class TournamentGate extends HTMLElement {
                 width: 100%;
                 height: 20%;
                 top: 0;
-                background: linear-gradient(rgba(0,0,0,0) 0%, #000 100%);
+                background: linear-gradient(rgba(0,0,0,0) 0%, #035 100%);
                 z-index: -1;
             }
             .screenBottomBg2 {
@@ -183,7 +184,7 @@ class TournamentGate extends HTMLElement {
                 width: 100%;
                 height: 20%;
                 bottom: 0;
-                background: linear-gradient(#000 0%, rgba(0,0,0,0) 100%); 
+                background: linear-gradient(#035 0%, rgba(0,0,0,0) 100%); 
                 z-index: -1;
             }
             .screenTopBg3 {
@@ -191,7 +192,7 @@ class TournamentGate extends HTMLElement {
                 width: 100%;
                 height: 20%;
                 top: 0;
-                background: linear-gradient(#00f, #0af, #0ff, #0f0, rgba(0,0,0,0));
+                background: linear-gradient(#0354, #0af4, #0ff4, #0f04, rgba(0,0,0,0));
                 background-size: 100% 6px;
                 z-index: -2;
                 animation: animateBg3 3s linear infinite;
@@ -201,7 +202,7 @@ class TournamentGate extends HTMLElement {
                 width: 100%;
                 height: 20%;
                 bottom: 0;
-                background-image: linear-gradient(rgba(0,0,0,0), #0af, #0ff, #0f0, #00f); 
+                background-image: linear-gradient(rgba(0,0,0,0), #0af4, #0ff4, #0f04, #0354); 
                 background-size: 100% 6px;
                 z-index: -2;
                 animation: animateBg3 3s linear infinite reverse;
@@ -353,14 +354,6 @@ class TournamentGate extends HTMLElement {
                 top: 900px;
                 // background-color: #0aa;
             }
-            .space9 {
-                width: 20px;
-                height: 100px;
-                right: 50%;
-                top: 1100px;
-                transform: translateZ(20px) translateX(50%);
-                background: linear-gradient( #FFD700aa, #0aa);
-            }
             .space8::before {
                 content: '';
                 position: absolute;
@@ -372,6 +365,14 @@ class TournamentGate extends HTMLElement {
                             0 0 50px #FFD700aa inset;
                 top: 0;
                 left: 0;
+            }
+            .space9 {
+                width: 20px;
+                height: 100px;
+                right: 50%;
+                bottom: 800px;
+                transform: translateZ(20px) translateX(50%);
+                background: linear-gradient( #FFD700aa, #0aa);
             }
             .corner {
                 position: absolute;
@@ -480,6 +481,12 @@ class TournamentGate extends HTMLElement {
             .turnRightH {
                 animation: turnRightH 1.5s linear forwards;
             }
+            .turnLeftH2 {
+                animation: turnLeftH2 1.5s linear forwards;
+            }
+            .turnRightH2 {
+                animation: turnRightH2 1.5s linear forwards;
+            }
             @keyframes turnLeft {
                 100% {
                     transform: rotate(-90deg);
@@ -498,6 +505,22 @@ class TournamentGate extends HTMLElement {
             @keyframes turnRightH {
                 100% {
                     transform: rotate(0deg);
+                }
+            }
+            @keyframes turnLeftH2 {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(-90deg);
+                } 
+            }
+            @keyframes turnRightH2 {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(90deg);
                 }
             }
             .space3  .chairLeft .seat {
@@ -648,6 +671,218 @@ class TournamentGate extends HTMLElement {
                     transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(90deg) translateZ(800px) rotateY(-90deg) translateZ(400px) rotateY(-90deg);
                 }
             }
+            .FinalWinnerLeft {
+                top: 1400px;
+                left: 800px;
+                animation: FinalWinnerLeft 4.5s linear forwards;
+            }
+            .FinalWinnerRight {
+                top: 1400px;
+                right: 800px;
+                animation: FinalWinnerRight 4.5s linear forwards;
+            }
+            @keyframes FinalWinnerLeft {
+                0% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px));
+                }
+                33.33% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg);
+                }
+                40% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(90deg);
+                }
+                55% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(90deg) translateZ(400px);
+                }
+                66.66% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(90deg) translateZ(400px) rotateY(180deg);
+                }
+                100% {
+                    transform:  translate(-50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(90deg) translateZ(200px) rotateY(90deg) translateZ(400px) rotateY(180deg) translateY(-100%);
+                }
+            }
+            @keyframes FinalWinnerRight {
+                0% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px));
+                }
+                33.33% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg);
+                }
+                40% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(-90deg);
+                }
+                55% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(-90deg) translateZ(400px);
+                }
+                66.66% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(-90deg) translateZ(400px) rotateY(-180deg);
+                }
+                100% {
+                    transform:  translate(50%, -50%) rotateX(-90deg) translateY(calc(-50% - 20px)) rotateY(-90deg) translateZ(200px) rotateY(-90deg) translateZ(400px) rotateY(-180deg) translateY(-100%);
+                }
+            }
+            .FinalWinner {
+                transition: 2s;
+                transform: translateZ(100px);
+                transition-delay: 3s;
+            }
+            .FinalWinner .corner {
+                transition: 2s;
+                transition-delay: 2.95s;
+            }
+            .FinalWinner .cornerBottom {
+                height: 100px;
+            }
+            .FinalWinner .cornerTop {
+                height: 100px;
+            }
+            .FinalWinner .cornerRight {
+                width: 100px;
+            }
+            .FinalWinner .cornerLeft {
+                width: 100px;
+            }
+            .FinalWinner9 {
+                transition: 1.5s;
+                height: 0;
+                transition-delay: 3s;
+            }
+            .Standings {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 50%;
+                top: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(-50%) translateX(-50%);
+                background-color: #fff1;
+                box-shadow: 0 0 200px #fff5 inset,
+                            0 0 50px #fffa;
+                z-index: -1;
+            }
+            .StandingsFinal {
+                position: relative;
+                height: 0%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+            }
+            .StandingsSemiFinale {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // border: 1px solid #fff;
+            }
+            .StandingsSemiFinaleLeft, .StandingsSemiFinaleRight {
+                position: relative;
+                height: 100%;
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #fff;
+            }
+            .standing {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .standing > img {
+                transform: translateY(-15%);
+            }
+            .player {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // border: 1px solid #fff;
+            }
+            .player:first-child {
+                justify-content: flex-end;
+            }
+            .player:last-child {
+                justify-content: flex-start;
+            }
+            .player > img {
+                position: absolute;
+                object-fit: cover;
+            }
+            .playerAvatar {
+                position: relative;
+                width: 100%;
+                height: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // border: 1px solid #fff;
+            }
+            .playerAvatar img {
+                position: absolute;
+                height: 100%;
+                object-fit: cover;
+            }
+            .plAvatar {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                clip-path: path('M0,53 L76,10 L150,53 L150,148  L76,190 L0,148 Z');
+                z-index: -1;
+            }
+            .score {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 80px;
+                font-weight: bold;
+                color: #fffa;
+                // background-color: #0005;
+                // border: 1px solid #fff;
+            }
+            .infs {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .nakeName {
+                font-size: 30px;
+                font-weight: bold;
+                color: #fff;
+                text-align: center;
+            }
+            .Fname {
+                font-size: 20px;
+                font-weight: bold;
+                color: #fff;
+                text-align: center;
+            }
+            #vs {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                filter: drop-shadow(0 0 10px #fffa) hue-rotate(150deg) saturate(1000%);
+                transform: translateY(-20%);
+            }
         </style>
         <div class="tournamentGate">
             <img src="assets/images/tournamentGate/frontGround1.gif" alt="Pong">
@@ -662,6 +897,19 @@ class TournamentGate extends HTMLElement {
                             <div class="screenBottomBg2"></div>
                             <div class="screenTopBg3"></div>
                             <div class="screenBottomBg3"></div>
+                            <div class="Standings">
+                                <div class="StandingsFinal">
+                                    <div class="standing"></div>
+                                </div>
+                                <div class="StandingsSemiFinale">
+                                    <div class="StandingsSemiFinaleLeft">
+                                        <div class="standing"></div>
+                                    </div>
+                                    <div class="StandingsSemiFinaleRight">
+                                        <div class="standing"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="rightBg"></div>
@@ -720,6 +968,36 @@ class TournamentGate extends HTMLElement {
                 `).join('')
             }
         `;
+        this.shadowRoot.querySelectorAll('.standing').forEach(el => {
+            el.innerHTML = `
+                <div class="player player1">
+                    <img>
+                    <div class"infs">
+                        <div class="playerAvatar">
+                            <div class="score">0</div>
+                            <img class="plAvatar" src="assets/images/anonimous.jpeg" alt="Pong">
+                            <img src="assets/images/tournamentGate/avatarFrame.svg" alt="Pong">
+                        </div>
+                        <div class="nakeName">@ael-bekk</div>
+                        <div class="Fname">Abdellah El bekkali</div>
+                    </div>
+                </div>
+                <img src="assets/images/tournamentGate/vsBg.gif">
+                <img src="assets/images/tournamentGate/vs.gif" id="vs">
+                <div class="player player2">
+                    <div class"infs">
+                        <div class="playerAvatar">
+                            <div class="score">0</div>
+                            <img class="plAvatar">
+                            <img src="assets/images/tournamentGate/avatarFrame.svg" alt="Pong">
+                        </div>
+                        <div class="nakeName">@ael-bekk</div>
+                        <div class="Fname">Abdellah El bekkali</div>
+                    </div>
+                    <img>
+                </div>
+                `;
+        });
         setTimeout(() => {
             this.game1();
         }, 4000);
@@ -729,6 +1007,10 @@ class TournamentGate extends HTMLElement {
         this.__game3Start = true;
         setTimeout(() => {
             this.game3();
+            setTimeout(() => {
+                this.__game3End = true;
+                this.game3();
+            }, 2000);
         }, 13000);
     }
     game1() {
@@ -767,8 +1049,23 @@ class TournamentGate extends HTMLElement {
             this.shadowRoot.querySelector('.avatar' + (this.__game2Winner + 3)).classList.add('avatarTrun' + (this.__game2Winner + 3));
         }
         if (this.__game3End === true) {
-            this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.remove('turnLeftH');
-            this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.remove('turnRightH');
+            if (this.__game3Winner === 0) {
+                this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.add('turnLeftH2');
+                this.shadowRoot.querySelectorAll('.space3 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
+                this.shadowRoot.querySelectorAll('.space3 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
+                this.shadowRoot.querySelector('.avatar' + (this.__game1Winner + 1)).classList.add('FinalWinnerLeft');
+                this.shadowRoot.querySelector('.space9').classList.add('FinalWinner9');
+                this.shadowRoot.querySelector('.space8').classList.add('FinalWinner');
+
+            }
+            else if (this.__game3Winner === 1) {
+                this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.add('turnRightH2');
+                this.shadowRoot.querySelectorAll('.space3 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
+                this.shadowRoot.querySelectorAll('.space3 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
+                this.shadowRoot.querySelector('.avatar' + (this.__game2Winner + 3)).classList.add('FinalWinnerRight');
+                this.shadowRoot.querySelector('.space9').classList.add('FinalWinner9');
+                this.shadowRoot.querySelector('.space8').classList.add('FinalWinner');
+            }
         }
     }
 }
