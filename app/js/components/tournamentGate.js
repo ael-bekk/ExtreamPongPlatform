@@ -2,9 +2,15 @@ class TournamentGate extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.__game1Winner = 0;
-        this.__game2Winner = 0;
-        this.__game3Winner = 0;
+        this.__game1p1 = 0;
+        this.__game1p2 = 0;
+        this.__game2p1 = 0;
+        this.__game2p2 = 0;
+        this.__game3p1 = 0;
+        this.__game3p2 = 0;
+        this.__game1Winner = -1;
+        this.__game2Winner = -1;
+        this.__game3Winner = -1;
         this.__game3Start = false;
         this.__game3End = false;
     }
@@ -147,28 +153,25 @@ class TournamentGate extends HTMLElement {
             .screenTopBg {
                 position: absolute;
                 width: 100%;
-                height: 0%;
+                height: 50%;
                 top: 0;
                 background-image: url('./assets/images/tournamentGate/ground.svg');
                 background-size: 100px 100px;
                 background-position: bottom left;
-                animation: bgOpen 9s linear forwards;
+                animation: bgOpen 1s linear forwards 4s;
             }
             .screenBottomBg {
                 position: absolute;
                 width: 100%;
-                height: 0%;
+                height: 50%;
                 bottom: 0;
                 background-image: url('./assets/images/tournamentGate/ground.svg');
                 background-size: 100px 100px;
-                animation: bgOpen 9s linear forwards;
+                animation: bgOpen 1s linear forwards 4s;
             }
             @keyframes bgOpen {
-                0% {
-                    height: 50%;
-                }
-                45% {
-                    height: 50%;
+                100% {
+                    height: 0;
                 }
             }
             .screenTopBg2 {
@@ -453,9 +456,13 @@ class TournamentGate extends HTMLElement {
                 position: absolute;
                 top: 600px;
                 height: 100px;
-                width: 100px;
+                width: 76px;
                 transform: translateY(-50%) rotateX(-90deg) translateY(calc(-50% - 20px));
-                border: 1px solid #fff;
+                // border: 1px solid #fff;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .avatar1 {
                 left: 150px;
@@ -469,6 +476,20 @@ class TournamentGate extends HTMLElement {
             .avatar4 {
                 right: 150px;
             }
+            .avatar img {
+                position: absolute;
+                height: 100%;
+                object-fit: cover;
+                // top: 100%;
+                transition: 1s;
+            }
+            .avatar img:nth-child(1) {
+                clip-path: path('M0,26.5 L38,5 L75,26.5 L75,74  L38,95 L0,74 Z');
+            }
+            .avatar img:nth-child(2) {
+                position: relative;
+            }
+
             .turnLeft {
                 animation: turnLeft 1.5s linear forwards;
             }
@@ -762,6 +783,7 @@ class TournamentGate extends HTMLElement {
                 box-shadow: 0 0 200px #fff5 inset,
                             0 0 50px #fffa;
                 z-index: -1;
+                overflow: hidden;
             }
             .StandingsFinal {
                 position: relative;
@@ -771,6 +793,19 @@ class TournamentGate extends HTMLElement {
                 justify-content: center;
                 align-items: center;
                 display: none;
+                animation: scaleY 1s linear forwards;
+                border: 1px solid #999;
+                box-shadow: 0 0 50px #fffa inset,
+                            0 0 50px #fffa;
+            }
+            @keyframes scaleY {
+                0% {
+                    scale: 0;
+                }
+                100% {
+                    height: 100%;
+                    scale: 1;
+                }
             }
             .StandingsSemiFinale {
                 position: relative;
@@ -788,7 +823,17 @@ class TournamentGate extends HTMLElement {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px solid #fff;
+                border: 1px solid #999;
+                box-shadow: 0 0 50px #fffa inset,
+                            0 0 50px #fffa;
+                animation: scale 1s linear forwards 5s;
+                scale: 0;
+            }
+            @keyframes scale {
+                100% {
+                    height: 100%;
+                    scale: 1;
+                }
             }
             .standing {
                 position: relative;
@@ -930,10 +975,22 @@ class TournamentGate extends HTMLElement {
                         <span></span>
                         <span></span>
                     </div>
-                    <div class="avatar avatar1"></div>
-                    <div class="avatar avatar2"></div>
-                    <div class="avatar avatar3"></div>
-                    <div class="avatar avatar4"></div>
+                    <div class="avatar avatar1">
+                        <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                        <img src="assets/images/tournamentGate/avatarFrame.svg">
+                    </div>
+                    <div class="avatar avatar2">
+                        <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                        <img src="assets/images/tournamentGate/avatarFrame.svg">
+                    </div>
+                    <div class="avatar avatar3">
+                        <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                        <img src="assets/images/tournamentGate/avatarFrame.svg">
+                    </div>
+                    <div class="avatar avatar4">
+                        <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                        <img src="assets/images/tournamentGate/avatarFrame.svg">
+                    </div>
                 </div>
             </div>
         </div>
@@ -975,8 +1032,8 @@ class TournamentGate extends HTMLElement {
                     <div class"infs">
                         <div class="playerAvatar">
                             <div class="score">0</div>
-                            <img class="plAvatar" src="assets/images/anonimous.jpeg" alt="Pong">
-                            <img src="assets/images/tournamentGate/avatarFrame.svg" alt="Pong">
+                            <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                            <img src="assets/images/tournamentGate/avatarFrame.svg">
                         </div>
                         <div class="nakeName">@ael-bekk</div>
                         <div class="Fname">Abdellah El bekkali</div>
@@ -988,8 +1045,8 @@ class TournamentGate extends HTMLElement {
                     <div class"infs">
                         <div class="playerAvatar">
                             <div class="score">0</div>
-                            <img class="plAvatar">
-                            <img src="assets/images/tournamentGate/avatarFrame.svg" alt="Pong">
+                            <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                            <img src="assets/images/tournamentGate/avatarFrame.svg">
                         </div>
                         <div class="nakeName">@ael-bekk</div>
                         <div class="Fname">Abdellah El bekkali</div>
@@ -998,55 +1055,108 @@ class TournamentGate extends HTMLElement {
                 </div>
                 `;
         });
+        let intervalEnds = 0;
         setTimeout(() => {
-            this.game1();
-        }, 4000);
-        setTimeout(() => {
-            this.game2();
-        }, 8000);
-        this.__game3Start = true;
-        setTimeout(() => {
-            this.game3();
-            setTimeout(() => {
-                this.__game3End = true;
-                this.game3();
-            }, 2000);
-        }, 13000);
+            const interval = setInterval(() => {
+                if (this.__game1Winner === -1) {
+                    if (this.__game1p1 > 10)
+                        this.__game1Winner = 0;
+                    else if (this.__game1p2 > 10)
+                        this.__game1Winner = 1;
+                    else {
+                        Math.floor(Math.random() * 2) === 0 ? this.__game1p1++ : this.__game1p2++;
+                    }
+                    this.game1();
+                }
+                if (this.__game2Winner === -1) {
+                    if (this.__game2p1 > 10)
+                        this.__game2Winner = 0;
+                    else if (this.__game2p2 > 10)
+                        this.__game2Winner = 1;
+                    else {
+                        Math.floor(Math.random() * 2) === 0 ? this.__game2p1++ : this.__game2p2++;
+                    }
+                    this.game2();
+                }
+                if (this.__game1Winner !== -1 && this.__game2Winner !== -1) {
+                    setTimeout(() => {
+                        if (this.__game3Start !== true)
+                            this.__game3Start = true,
+                            this.game3();
+                        if (this.__game3Winner === -1 && intervalEnds === 0) {
+                            intervalEnds++;
+                            console.log('game3');
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                interval = setInterval(() => {
+                                    if (this.__game3p1 > 10)
+                                        this.__game3Winner = 0;
+                                    else if (this.__game3p2 > 10)
+                                        this.__game3Winner = 1;
+                                    else {
+                                        Math.floor(Math.random() * 2) === 0 ? this.__game3p1++ : this.__game3p2++;
+                                    }
+                                    if (this.__game3Winner !== -1)
+                                        this.__game3End = true;
+                                    this.game3();
+                                }, 500);
+                            }, 1500);
+                        }
+                    }, 5000);
+                }
+            }, 500);
+        }, 6000);
     }
+    
     game1() {
+        this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player1 .score').textContent = this.__game1p1;
+        this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player2 .score').textContent = this.__game1p2;
         if (this.__game1Winner === 0) {
             this.shadowRoot.querySelector('.space1 .chairLeft .seat').classList.add('turnLeft');
             this.shadowRoot.querySelectorAll('.space1 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
             this.shadowRoot.querySelectorAll('.space1 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
+            this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player1 .score').style.color = '#0f0c';
+            this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player2 .score').style.color = '#f00c';
             this.shadowRoot.querySelector('.avatar1').classList.add('semiFinaleLeft');
         }
         else if (this.__game1Winner === 1) {
             this.shadowRoot.querySelector('.space1 .chairRight .seat').classList.add('turnRight');
             this.shadowRoot.querySelectorAll('.space1 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
             this.shadowRoot.querySelectorAll('.space1 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
+            this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player2 .score').style.color = '#0f0c';
+            this.shadowRoot.querySelector('.StandingsSemiFinaleLeft .player1 .score').style.color = '#f00c';
             this.shadowRoot.querySelector('.avatar2').classList.add('semiFinaleRight');
         }
     }
     game2() {
+        this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player1 .score').textContent = this.__game2p1;
+        this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player2 .score').textContent = this.__game2p2;
         if (this.__game2Winner === 0) {
             this.shadowRoot.querySelector('.space2 .chairLeft .seat').classList.add('turnLeft');
             this.shadowRoot.querySelectorAll('.space2 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
             this.shadowRoot.querySelectorAll('.space2 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
+            this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player1 .score').style.color = '#0f0c';
+            this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player2 .score').style.color = '#f00c';
             this.shadowRoot.querySelector('.avatar3').classList.add('semiFinaleLeft2');
         }
         else if (this.__game2Winner === 1) {
             this.shadowRoot.querySelector('.space2 .chairRight .seat').classList.add('turnRight');
             this.shadowRoot.querySelectorAll('.space2 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
             this.shadowRoot.querySelectorAll('.space2 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
+            this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player2 .score').style.color = '#0f0c';
+            this.shadowRoot.querySelector('.StandingsSemiFinaleRight .player1 .score').style.color = '#f00c';
             this.shadowRoot.querySelector('.avatar4').classList.add('semiFinaleRight2');
         }
     }
     game3() {
+        this.shadowRoot.querySelector('.StandingsFinal .player1 .score').textContent = this.__game3p1;
+        this.shadowRoot.querySelector('.StandingsFinal .player2 .score').textContent = this.__game3p2;
         if (this.__game3Start === true) {
             this.shadowRoot.querySelector('.space3 .chairLeft .seat').classList.add('turnLeftH');
             this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.add('turnRightH');
             this.shadowRoot.querySelector('.avatar' + (this.__game1Winner + 1)).classList.add('avatarTrun' + (this.__game1Winner + 1));
             this.shadowRoot.querySelector('.avatar' + (this.__game2Winner + 3)).classList.add('avatarTrun' + (this.__game2Winner + 3));
+            this.shadowRoot.querySelector('.StandingsFinal').style.display = 'flex';
         }
         if (this.__game3End === true) {
             if (this.__game3Winner === 0) {
@@ -1054,15 +1164,18 @@ class TournamentGate extends HTMLElement {
                 this.shadowRoot.querySelectorAll('.space3 .chairLeft .seat img').forEach(el => el.classList.add('filterWin'));
                 this.shadowRoot.querySelectorAll('.space3 .chairRight .seat img').forEach(el => el.classList.add('filterLost'));
                 this.shadowRoot.querySelector('.avatar' + (this.__game1Winner + 1)).classList.add('FinalWinnerLeft');
+                this.shadowRoot.querySelector('.StandingsFinal .player1 .score').style.color = '#0f0c';
+                this.shadowRoot.querySelector('.StandingsFinal .player2 .score').style.color = '#f00c';
                 this.shadowRoot.querySelector('.space9').classList.add('FinalWinner9');
                 this.shadowRoot.querySelector('.space8').classList.add('FinalWinner');
-
             }
             else if (this.__game3Winner === 1) {
                 this.shadowRoot.querySelector('.space3 .chairRight .seat').classList.add('turnRightH2');
                 this.shadowRoot.querySelectorAll('.space3 .chairRight .seat img').forEach(el => el.classList.add('filterWin'));
                 this.shadowRoot.querySelectorAll('.space3 .chairLeft .seat img').forEach(el => el.classList.add('filterLost'));
                 this.shadowRoot.querySelector('.avatar' + (this.__game2Winner + 3)).classList.add('FinalWinnerRight');
+                this.shadowRoot.querySelector('.StandingsFinal .player2 .score').style.color = '#0f0c';
+                this.shadowRoot.querySelector('.StandingsFinal .player1 .score').style.color = '#f00c';
                 this.shadowRoot.querySelector('.space9').classList.add('FinalWinner9');
                 this.shadowRoot.querySelector('.space8').classList.add('FinalWinner');
             }
