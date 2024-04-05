@@ -32,8 +32,9 @@ class GameGates extends HTMLElement {
                 height: 100%;
                 overflow: hidden;
                 z-index: -1;
-                background-image: url('./assets/images/gameGate/stars.jpeg');
-                background-size: 400px 400px;
+                background-color: #000;
+                background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+                // background-size: 400px 400px;
                 transition: 0.85s ease-in-out;
             }
             .bgWrapper2WrapperAnimated {

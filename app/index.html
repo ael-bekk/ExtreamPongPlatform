@@ -19,6 +19,7 @@
             width:  100vw;
             position: relative;
             user-select: none;
+            background: #000;
         }
         ::-webkit-scrollbar {
             display: none;
@@ -615,6 +616,7 @@
     <script src="js/components/profile.js"></script>
     <script src="js/components/gameGate.js"></script>
     <script src="js/components/tournamentGate.js"></script>
+    <script src="js/components/dashboard.js"></script>
     <script>
         document.querySelectorAll('.base').forEach(bs => {
             bs.appendChild(createBase());
@@ -762,8 +764,9 @@
         );
         // openProfilePopup(0);
         // createGates();
-        createtouranmentGate();
-
+        // createtouranmentGate();
+        createDashboard(0);
+        
         // document.body.style.background = '#000';
         // document.body.style.display = 'none';
         // window.onload = () => {
