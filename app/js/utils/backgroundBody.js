@@ -56,39 +56,39 @@ backgroundBody.innerHTML = `<div  class="svgsContainer">
                             <svg>
                                 <defs>
                                     <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(187, 0, 255, 0.354);stop-opacity:0" />
-                                        <stop offset="10%" style="stop-color:rgba(187, 0, 255, 0.149);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgb(93, 45, 110);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 0, 255, 0.354);stop-opacity:0" />
+                                        <stop offset="10%" style="stop-color:rgba(0, 0, 255, 0.149);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgb(0, 45, 110);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient01" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(187, 0, 255, 0.354);stop-opacity:0" />
-                                        <stop offset="10%" style="stop-color:rgba(187, 0, 255, 0.149);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgb(93, 45, 110);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 0, 255, 0.354);stop-opacity:0" />
+                                        <stop offset="10%" style="stop-color:rgba(0, 0, 255, 0.149);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgb(0, 45, 110);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="10%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgb(89, 3, 181);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="10%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgb(0, 3, 181);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="10%" style="stop-color:rgba(187, 0, 255, 0.291);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgba(187, 0, 255, 0.17);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="10%" style="stop-color:rgba(0, 0, 255, 0.291);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgba(0, 0, 255, 0.17);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(224, 139, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="20%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgba(222, 132, 255, 0.263);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 139, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="20%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgba(0, 132, 255, 0.263);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(224, 139, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="20%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgba(222, 132, 255, 0.233);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgba(0, 139, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="20%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgba(0, 132, 255, 0.233);stop-opacity:1" />
                                     </linearGradient>
                                     <linearGradient id="gradient6" x1="100%" y1="0%" x2="0%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgb(93, 45, 110);stop-opacity:0" />
-                                        <stop offset="10%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:0" />
-                                        <stop offset="100%" style="stop-color:rgba(187, 0, 255, 0.537);stop-opacity:1" />
+                                        <stop offset="0%" style="stop-color:rgb(0, 45, 110);stop-opacity:0" />
+                                        <stop offset="10%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:0" />
+                                        <stop offset="100%" style="stop-color:rgba(0, 0, 255, 0.537);stop-opacity:1" />
                                     </linearGradient>
                                 </defs>
                             </svg>

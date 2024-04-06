@@ -17,6 +17,7 @@ class DashboardPage extends HTMLElement {
                 width: 100vw;
                 overfloW-x: hidden;
                 scrollbar-width: 0;
+                background-image: linear-gradient(to bottom, #0af3, #00f3);
             }
             .dashboard::-webkit-scrollbar {
                 display: none;
@@ -139,7 +140,7 @@ class DashboardPage extends HTMLElement {
                             0 0 100px 5px #0af inset;
                 border-radius: 20px;
                 background-image: linear-gradient(to top, #0af7, #00f0);
-                transition: all 0.4s ease-in-out;
+                transition: all .8s cubic-bezier(0.1, 0.2, 0.3, 3.5);
                 cursor: pointer;
                 z-index: 1;
             }
@@ -164,8 +165,9 @@ class DashboardPage extends HTMLElement {
             }
             .listOfGames > span {
                 position: absolute;
-                width: 100%;    
-                height: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -216,16 +218,6 @@ class DashboardPage extends HTMLElement {
             }
             .listOfGames > div:nth-of-type(4) > img {
                 bottom: 45px;
-            }
-            .framesList {
-                position: absolute;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: -1;
-                opacity: 1;
-                transition: all 1s ease-in-out;
             }
             .profile {
                 position: relative;
@@ -285,13 +277,14 @@ class DashboardPage extends HTMLElement {
                 width: 30%;
                 height: 42px;
                 border: 1px solid #0ee;
-                border-radius: 0 20px 20px 0;
+                border-radius: 0 10px 10px 0;
                 background-color: #0af;
                 color: #fff;
                 font-size: 20px;
                 cursor: pointer;
                 box-shadow: 0 0 10px 5px #0af,
                             0 0 100px 5px #0af inset;
+                z-index: 3;
             }
             .logout {
                 position: absolute;
@@ -312,6 +305,75 @@ class DashboardPage extends HTMLElement {
                 align-items: center;
                 color: #0ff;
                 text-decoration: none;
+                font-family: 'Games', sans-serif;
+                font-size: 17px;
+                line-height: 100%;
+            }
+            .searchResults {
+                position: absolute;
+                width: 400px;
+                height: 200px;
+                top: 20px;
+                left: 0;
+                background-color: #0ff4;
+                backdrop-filter: saturate(300%) blur(20px) invert(100%) hue-rotate(200deg);
+                box-shadow: 0 0 10px 5px #0af,
+                            0 0 10px 5px #0af inset;
+                border-radius: 0px 0px 10px 10px;
+                display: none;
+                z-index: -1;
+                padding: 20px 0 0 0;
+                overflow-y: auto;
+
+                scrollbar-color: #0af #0ff;
+            }
+            .searchResults::-webkit-scrollbar {
+                width: 10px;
+            }
+            
+            .searchResults::-webkit-scrollbar-track {
+                background: #0af;
+                border-radius: 20px;
+            }
+            
+            .searchResults::-webkit-scrollbar-thumb {
+                background: #0ff5;
+                border-radius: 20px;
+            }
+            
+            .searchResults::-webkit-scrollbar-thumb:hover {
+                background: #0005;
+            }
+            .searchResults > h1 {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                color: #0ff;
+                text-align: center;
+                line-height: 50px;
+                font-size: 20px;
+            }
+            .searchResults > div {
+                position: relative;
+                width: 100%;
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: -1;
+                // border-bottom: 1px solid #000;
+                background-image: linear-gradient(to bottom, #0af3, #fff0 10%, #fff0 90%, #0af3);
+            }
+            .searchResults > div:hover {
+                background-color: #0556;
+            }
+            .bob {
+                transition: all 1s ease-in-out;
+                z-index: 1;
+                width: 100px;
+                height: 100px;
+                // border: 1px solid #0ff;
             }
         </style>
         <div class="dashboard">
@@ -334,6 +396,7 @@ class DashboardPage extends HTMLElement {
                             </svg>
                         </div>
                         <div class="search">
+                            <div class="searchResults"></div>
                             <input type="text" placeholder="Search">
                             <button>Search</button>
                         </div>
@@ -377,24 +440,58 @@ class DashboardPage extends HTMLElement {
                             </span>
                             </div>
                          </main>
-                <img class="framesList" src="./assets/images/gameGate/present.jpeg">
         </div>
         `;
-        this.framesListChange();
+        this.search();
+        this.tenor();
     }
-    framesListChange() {
-        const framesList = this.shadowRoot.querySelectorAll('.framesList');
-        const frames = ['./assets/images/gameGate/past.png', './assets/images/gameGate/present.jpeg', './assets/images/gameGate/future.jpeg'];
-        let i = 0;
-        setInterval(() => {
-            console.log(i);
-            this.shadowRoot.querySelector('.framesList').style.opacity = 0.7;
-            setTimeout(() => {
-                this.shadowRoot.querySelector('.framesList').src = frames[i % frames.length];
-                this.shadowRoot.querySelector('.framesList').style.opacity = 1;
-            }, 1000);
-            i = (i + 1) % frames.length;
-        }, 6000);
+    search() {
+        const search = this.shadowRoot.querySelector('.search');
+        const searchResults = this.shadowRoot.querySelector('.searchResults');
+
+        search.addEventListener('click', () => {
+            searchResults.style.display = 'block';
+            searchResults.innerHTML = `
+                <div>
+                    <h1> Search Results </h1>
+                </div>
+                <div>
+                    <h1> Search Results </h1>
+                </div>
+                <div>
+                    <h1> Search Results </h1>
+                </div>
+                <div>
+                    <h1> Search Results </h1>
+                </div>
+                <div>
+                    <h1> Search Results </h1>
+                </div>
+            `;
+        });
+        this.shadowRoot.addEventListener('click', (event) => {
+            if (!search.contains(event.target) && !searchResults.contains(event.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    }
+    tenor() {
+        const tenor = this.shadowRoot.querySelector('.bob');
+        const listOfGames = this.shadowRoot.querySelectorAll('.listOfGames > div');
+
+        listOfGames.forEach((div, index) => {
+            const offsetX = index % 2 === 0 ? -100 : 0;
+            const offsetY = Math.floor(index / 2) % 2 === 0 ? -100 : 0;
+
+            div.addEventListener('mouseenter', () => {
+                tenor.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(1.5)`;
+            });
+
+            div.addEventListener('mouseleave', () => {
+                tenor.style.transform = 'translate(-50%, -50%)';
+            });
+        });
+        
     }
 }
 
@@ -408,5 +505,5 @@ function createDashboard(id) {
   popup.setAttribute('id', id);
   document.body.appendChild(popup);
   document.body.removeChild(home);
-  document.body.removeChild(bg);
+//   document.body.removeChild(bg);
 }
