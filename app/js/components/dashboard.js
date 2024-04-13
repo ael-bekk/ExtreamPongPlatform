@@ -159,7 +159,7 @@ class DashboardPage extends HTMLElement {
                 transform: translate(0, 50px) scale(1.5);
                 transition: all 1s ease-in-out;
             }
-            .listOfGames > div:hover:nth-of-type(3) h1 {
+            .listOfGames > a:nth-of-type(3) > div:hover h1 {
                 transform: translate(0, 50px) ;
                 transition: all 1s ease-in-out;
             }
@@ -240,11 +240,31 @@ class DashboardPage extends HTMLElement {
             .profile svg {
                 transform: translate(24.5%, 22.3%);
             }
-            .profile a {
+            .profile div {
                 position: absolute;
-                top: 0;
+                width: fit-content;
+                height: fit-content;
+                top: 50%;
                 right: 0;
-                transform: translate(100%, 44%);
+                transform: translate(50%, -0%);
+                color: #0ff;
+                // background-color: #0af;
+            }
+            .profile h1 {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                color: #0ff;
+                text-align: center;
+                line-height: 50px;
+                font-size: 20px;
+            }
+            .profile  a {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                // background-color: #0af;
             }
             .plAvatar {
                 position: relative;
@@ -375,13 +395,22 @@ class DashboardPage extends HTMLElement {
                 height: 100px;
                 // border: 1px solid #0ff;
             }
+            a.pages {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                z-index: 100;
+            }
+            a.pages > * {
+                z-index: -100;
+            }
         </style>
         <div class="dashboard">
                     <nav>
                         <div class="profile">
-                            <a href="#/home">@abdellah</a>
-                            <img src="./assets/images/dashboardGate/avatar.svg" alt="avatar">
-                            <img class="plAvatar" src="assets/images/anonimous.jpeg">
+                            <a href="/profile" id="pages" class="profilePage"></a>
+                            <img src="../../app/assets/images/dashboardGate/avatar.svg" alt="avatar">
+                            <img class="plAvatar" src="../../app/assets/images/anonimous.jpeg">
                             <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M99.1936 22.7831L67.5 4.48483C60.3838 0.376274 51.6162 0.376274 44.5 4.48483L12.8064 22.7831C5.6902 26.8917 1.30642 34.4846 1.30642 42.7017V79.2983C1.30642 87.5154 5.6902 95.1083 12.8064 99.2169L44.5 117.515C51.6162 121.624 60.3838 121.624 67.5 117.515L99.1936 99.2169C106.31 95.1083 110.694 87.5154 110.694 79.2983V42.7017C110.694 34.4846 106.31 26.8917 99.1936 22.7831Z" fill="url(#pattern0)" stroke="url(#paint0_linear_255_519)" stroke-width="2"/>
                                 <defs>
@@ -394,6 +423,11 @@ class DashboardPage extends HTMLElement {
                                     </linearGradient>
                                 </defs>
                             </svg>
+                            <div class="Pcdr">
+                                <a href="/profile" id="pages" class="profilePage"></a>
+                                <h1>@abdellah</h1>
+                            </div>
+                            
                         </div>
                         <div class="search">
                             <div class="searchResults"></div>
@@ -402,44 +436,48 @@ class DashboardPage extends HTMLElement {
                         </div>
                         <div class="logout">
                             <a href="#/home">Logout</a>
-                            <img src="./assets/images/dashboardGate/Exit_Sign.svg" alt="logout">
+                            <img src="../../app/assets/images/dashboardGate/Exit_Sign.svg" alt="logout">
                         </div>
                     </nav>
                     <main>
                         <div class="WatchLive">
                             <h1> No Live Stream Available </h1>
-                            <img src="./assets/images/dashboardGate/r.png" alt="r" class="robot">
+                            <img src="../../app/assets/images/dashboardGate/r.png" alt="r" class="robot">
                         </div>
                         <div class="listOfGames">
                             <div class="1v1">
+                                <a href="/game/1v1" id="pages" class="game1v1page pages"></a>
                                 <h1> 1 Vs 1 </h1>
-                                <img src="./assets/images/dashboardGate/1v1_1.png" alt="1v1">
+                                <img src="../../app/assets/images/dashboardGate/1v1_1.png" alt="1v1">
                                 <button onclick="createDashboard('1v1')">Play</button>
                                 <h1> 1 Vs 1 </h1>
                             </div>
                             <div class="2v2">
+                                <a href="/game/2v2" id="pages" class="game2v2page pages"></a>
                                 <h1> 2 Vs 2 </h1>
-                                <img src="./assets/images/dashboardGate/2v2.png" alt="2v2">
+                                <img src="../../app/assets/images/dashboardGate/2v2.png" alt="2v2">
                                 <button onclick="createDashboard('2v2')">Play</button>
                                 <h1> 2 Vs 2 </h1>
                             </div>
                             <div class="tournament">
+                                <a href="/tournament" id="pages" class="tournamentpage pages"></a>
                                 <h1> Tournament </h1>
-                                <img src="./assets/images/dashboardGate/tournament.png" alt="tournament">
+                                <img src="../../app/assets/images/dashboardGate/tournament.png" alt="tournament">
                                 <button onclick="createDashboard('tournament')">Enter</button>
                                 <h1> Tournament </h1>
                             </div>
                             <div class="1vbot">
+                                <a href="/game/aiBot" id="pages" class="aiBotPage pages"></a>
                                 <h1> Vs Bot </h1>
-                                <img src="./assets/images/dashboardGate/r2.png" alt="1vbot">
+                                <img src="../../app/assets/images/dashboardGate/r2.png" alt="1vbot">
                                 <button onclick="createDashboard('1vbot')">Train</button>
                                 <h1> Vs Bot </h1>
                             </div>
                             <span class="bob">
-                                <img src="./assets/images/gameGate/tenor.gif" alt="bob">
+                                <img src="../../app/assets/images/gameGate/tenor.gif" alt="bob">
                             </span>
-                            </div>
-                         </main>
+                        </div>
+                    </main>
         </div>
         `;
         this.search();
@@ -497,13 +535,14 @@ class DashboardPage extends HTMLElement {
 
 customElements.define('popup-dashboard', DashboardPage);
 
-function createDashboard(id) {
+function createDashboard() {
 
-  const popup = document.createElement('popup-dashboard');
-  const home = document.querySelector('.home');
-  const bg = document.querySelector('background-component');
-  popup.setAttribute('id', id);
-  document.body.appendChild(popup);
-  document.body.removeChild(home);
-//   document.body.removeChild(bg);
+    const div = document.createElement('div');
+    const popup = document.createElement('popup-dashboard');
+
+    popup.setAttribute('id', 0);
+
+    div.appendChild(popup);
+    div.setAttribute('class', 'page homePage');
+    document.body.appendChild(div);
 }

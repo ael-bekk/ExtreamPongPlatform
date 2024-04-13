@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Robot';
-    src: url("../assets/fonts/fobot/Sdglitchrobotdemo-GOPdO.ttf");
+    src: url("../../app/assets/fonts/fobot/Sdglitchrobotdemo-GOPdO.ttf");
 }
 
 @font-face {
     font-family: 'Robot2';
-    src: url("../assets/fonts/fbot2/SdglitchdemoRegular-YzROj.ttf");
+    src: url("../../app/assets/fonts/fbot2/SdglitchdemoRegular-YzROj.ttf");
 }
 
 

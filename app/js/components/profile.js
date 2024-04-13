@@ -1105,7 +1105,7 @@ class PopUpProfile extends HTMLElement {
         }
         </style>
         <div class="popup">
-            <img src="./assets/images/tenor.gif">
+            <img src="../../app/assets/images/tenor.gif">
             <div class="popup-inner">
                 <svg viewBox="0 0 672 439" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#drop-shadow)">    
@@ -1312,8 +1312,8 @@ class PopUpProfile extends HTMLElement {
                     <path d="M302.492 31.0042C302.492 31.0042 302.492 31.0081 302.492 26.5042C302.492 22.0003 301.902 18.7617 299.992 15.0042C299.035 13.1214 298.399 12.0795 296.992 10.5042C295.327 8.63908 294.219 7.6415 291.992 6.50419C290.342 5.66145 289.298 5.41514 287.492 5.00028C286.335 4.73441 284.492 4.51361 282.492 4.50419C280.492 4.49476 280.492 4.50419 280.492 4.50419" stroke="#00FFE0" stroke-width="3"/>
                 </svg>
                 <div class="avatar">
-                    <img src="./assets/images/bg3.gif">
-                    <img src="./assets/images/devCard/avatar3.svg">
+                    <img src="../../app/assets/images/bg3.gif">
+                    <img src="../../app/assets/images/devCard/avatar3.svg">
                     <h2>@7maad</h2>
                     <span id="gradient"></span>
                 </div>
@@ -1485,9 +1485,9 @@ class PopUpProfile extends HTMLElement {
             friendWrapper.innerHTML += `
                 <div class="profile" id="profile${i}">
                     <div class="avatar">
-                        <img src="assets/images/profileScreen.svg" alt="profile">
+                        <img src="../../app/assets/images/profileScreen.svg" alt="profile">
                         <div class="avatarInfo">
-                            <img src="assets/images/devCard/amajan.png" alt="profile">
+                            <img src="../../app/assets/images/devCard/amajan.png" alt="profile">
                             <h3>Username</h3>
                             <svg viewBox="0 0 277 363" fill="none">
                                 <clipPath id="userMask" x="0" y="0" transform="scale(0.36) translate(-22, -15)">
@@ -1497,7 +1497,7 @@ class PopUpProfile extends HTMLElement {
                         </div>
                     </div>
                     <div class="info" onclick="openProfilePopup(${i})">
-                        <img src="assets/images/nameScreen.svg" alt="profile">
+                        <img src="../../app/assets/images/nameScreen.svg" alt="profile">
                         <div class="infoWrapper">
                             <h3>show</h3>
                         </div>
@@ -1561,7 +1561,7 @@ class PopUpProfile extends HTMLElement {
                 </div>
             </div>
             <div class="rankIcon">
-                <img src="./assets/images/leagues/1.png" alt="rank">
+                <img src="../../app/assets/images/leagues/1.png" alt="rank">
             </div>
         `;
     }
@@ -1593,103 +1593,105 @@ function changeHistory(choice) {
 
 customElements.define('popup-profile', PopUpProfile);
 
-function openProfilePopup(id) {
+function openProfilePopup() {
 
-  const popup = document.createElement('popup-profile');
-  const home = document.querySelector('.home');
-
-  popup.setAttribute('id', id);
-  document.body.appendChild(popup);
-  document.body.removeChild(home);
+    const div = document.createElement('div');
+    const popup = document.createElement('popup-profile');
+    
+    popup.setAttribute('id', 0);
+    
+    div.appendChild(popup);
+    div.setAttribute('class', 'page profilePage');
+    document.body.appendChild(div);
 }
 
 function showGame1Vs1HistoryProfile(data) {
     const game1vs1Data = [
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 1',
             score1: 20,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 2',
             score2: 15
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 3',
             score1: 10,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 4',
             score2: 5
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 5',
             score1: 30,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 6',
             score2: 25
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 7',
             score1: 20,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 8',
             score2: 15
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 9',
             score1: 10,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 10',
             score2: 5
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 11',
             score1: 30,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 12',
             score2: 25
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 13',
             score1: 20,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 14',
             score2: 15
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 15',
             score1: 10,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 16',
             score2: 5
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 17',
             score1: 30,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 18',
             score2: 25
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 19',
             score1: 20,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 20',
             score2: 15
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 21',
             score1: 10,
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 22',
             score2: 5
         }
@@ -1744,10 +1746,10 @@ function showGame1Vs1HistoryProfile(data) {
                         </svg>
                     </div>
                     <div class="win">
-                        <img src="./assets/images/win.jpeg" alt="win">
+                        <img src="../../app/assets/images/win.jpeg" alt="win">
                     </div>
                     <div class="lose">
-                        <img src="./assets/images/lose.jpeg" alt="lose">
+                        <img src="../../app/assets/images/lose.jpeg" alt="lose">
                     </div>
                 </div>
             `).join('')}
@@ -1757,50 +1759,50 @@ function showGame1Vs1HistoryProfile(data) {
 function showGame2Vs2HistoryProfile(data) {
     const game2vs2Data = [
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 1',
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 2',
             score1: 15,
-            avatar3: './assets/images/devCard/avatar1.svg',
+            avatar3: '../app/assets/images/devCard/avatar1.svg',
             player3: 'Player 3',
-            avatar4: './assets/images/devCard/avatar3.svg',
+            avatar4: '../app/assets/images/devCard/avatar3.svg',
             player4: 'Player 4',
             score2: 5
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 5',
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 6',
             score1: 25,
-            avatar3: './assets/images/devCard/avatar1.svg',
+            avatar3: '../app/assets/images/devCard/avatar1.svg',
             player3: 'Player 7',
-            avatar4: './assets/images/devCard/avatar3.svg',
+            avatar4: '../app/assets/images/devCard/avatar3.svg',
             player4: 'Player 8',
             score2: 10
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 9',
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 10',
             score1: 35,
-            avatar3: './assets/images/devCard/avatar1.svg',
+            avatar3: '../app/assets/images/devCard/avatar1.svg',
             player3: 'Player 11',
-            avatar4: './assets/images/devCard/avatar3.svg',
+            avatar4: '../app/assets/images/devCard/avatar3.svg',
             player4: 'Player 12',
             score2: 15
         },
         {
-            avatar1: './assets/images/devCard/avatar1.svg',
+            avatar1: '../app/assets/images/devCard/avatar1.svg',
             player1: 'Player 13',
-            avatar2: './assets/images/devCard/avatar3.svg',
+            avatar2: '../app/assets/images/devCard/avatar3.svg',
             player2: 'Player 14',
             score1: 45,
-            avatar3: './assets/images/devCard/avatar1.svg',
+            avatar3: '../app/assets/images/devCard/avatar1.svg',
             player3: 'Player 15',
-            avatar4: './assets/images/devCard/avatar3.svg',
+            avatar4: '../app/assets/images/devCard/avatar3.svg',
             player4: 'Player 16',
             score2: 20
         }
@@ -1894,10 +1896,10 @@ function showGame2Vs2HistoryProfile(data) {
                         </div>
                     </div>
                     <div class="win">
-                        <img src="./assets/images/win.jpeg" alt="win">
+                        <img src="../../app/assets/images/win.jpeg" alt="win">
                     </div>
                     <div class="lose">
-                        <img src="./assets/images/lose.jpeg" alt="lose">
+                        <img src="../../app/assets/images/lose.jpeg" alt="lose">
                     </div>
                 </div>
             `).join('')}
@@ -1908,110 +1910,110 @@ function showTournamentHistoryProfile(data) {
     const tournamentData = [
         [
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 1',
                 score: 20,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 2',
                 score: 15
             },
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 3',
                 score: 10,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 4',
                 score: 5
             }
         ],
         [
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 5',
                 score: 30,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 6',
                 score: 25
             },
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 7',
                 score: 20,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 8',
                 score: 15
             }
         ],
         [
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 9',
                 score: 10,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 10',
                 score: 5
             },
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 11',
                 score: 30,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 12',
                 score: 25
             }
         ],
         [
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 13',
                 score: 20,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 14',
                 score: 15
             },
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 15',
                 score: 10,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 16',
                 score: 5
             }
         ],
         [
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 17',
                 score: 30,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 18',
                 score: 25
             },
             {
-                avatar: './assets/images/devCard/avatar1.svg',
+                avatar: '../app/assets/images/devCard/avatar1.svg',
                 player: 'Player 19',
                 score: 20,
             },
             {
-                avatar: './assets/images/devCard/avatar3.svg',
+                avatar: '../app/assets/images/devCard/avatar3.svg',
                 player: 'Player 20',
                 score: 15
             }

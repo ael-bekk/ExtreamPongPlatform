@@ -245,7 +245,7 @@ class GameGates extends HTMLElement {
                 position: relative;
                 width: 650px;
                 display: flex;
-                background-image: url('./assets/images/gameGate/laser11.gif');
+                background-image: url('../../app/assets/images/gameGate/laser11.gif');
                 background-repeat: repeat;
                 background-position: center;
                 background-size: 50px;
@@ -406,8 +406,8 @@ class GameGates extends HTMLElement {
             .index {
                 position: absolute;
                 top: 0;
-                left: 0;
-                width: 100%;
+                left: 50%;
+                width: 1000px;
                 height: 100%;
                 display: flex;
                 justify-content: center;
@@ -416,7 +416,7 @@ class GameGates extends HTMLElement {
                 font-weight: bold;
                 color: #fff;
                 z-index: 100;
-                transform: translateZ(-700px);
+                transform: translateX(-50%) translateZ(-700px);
             }
             .indexWrapper {
                 position: relative;
@@ -837,6 +837,16 @@ class GameGates extends HTMLElement {
             .gatePath .gatePort img {
                 all: initial;
             }
+            @media screen and (max-width: 768px) {
+                .gateDescription {
+                    transform: scale(0.7) translateY(20%) translateX(-20%);
+                }
+            }
+            @media screen and (max-width: 400px) {
+                .gateDescription {
+                    transform: scale(0.5) translateY(50%) translateX(-50%);
+                }
+            }
         </style>
         <div class="gates">
             <div class="bgWrapper2Wrapper bgWrapper2WrapperAnimated">
@@ -845,27 +855,27 @@ class GameGates extends HTMLElement {
                 <div class="gates__content">
                     <div class="gatesFrontGround">
                         <div class="base00">
-                            <img src="./assets/images/gameGate/baseGate1.svg" class="frontGroundGatesBase" id="land">
+                            <img src="../../app/assets/images/gameGate/baseGate1.svg" class="frontGroundGatesBase" id="land">
                         </div>   
-                        <img src="./assets/images/gameGate/baseGate2.svg" class="frontGroundGatesBase" id="land">
+                        <img src="../../app/assets/images/gameGate/baseGate2.svg" class="frontGroundGatesBase" id="land">
                     </div>
                     <div class='gateWorld' id='gate1'></div>
                     <div class='gateWorld' id='gate2'></div>
                     <div class='gateWorld' id='gate3'></div>
                     <div class='laserHologram' id="base">
-                        <img src='./assets/images/gameGate/gate.gif' alt='laserHologram'>
+                        <img src='../../app/assets/images/gameGate/gate.gif' alt='laserHologram'>
                     </div>
                     <div class='laserHologram' id="laser">
                         <span></span>
                         <div class='laserHoloWrapper'>
-                            <img src='./assets/images/gameGate/laser1.gif' alt='laserHologram'>
+                            <img src='../../app/assets/images/gameGate/laser1.gif' alt='laserHologram'>
                         </div>
                     </div>
                 </div>
             </div>
             <div class='gateDescription'>
-                <img src='./assets/images/gameGate/tenor.gif' alt='gateDescription'>
-                <img src='./assets/images/gameGate/pastInfo.svg' alt='gateDescription' id="timeLine">
+                <img src='../../app/assets/images/gameGate/tenor.gif' alt='gateDescription'>
+                <img src='../../app/assets/images/gameGate/pastInfo.svg' alt='gateDescription' id="timeLine">
                 <div class='gateDescriptionText'>
                     <div class='gateDescriptionTitleWrapper'>
                         <h1 class='gateDescriptionTitle'></h1>
@@ -895,21 +905,21 @@ class GameGates extends HTMLElement {
             const gatePath = `
                 <div class='gatePath' id='gatePath${index + 1}'>
                     <div class='gatePort'>
-                        <img src="./assets/images/gameGate/gatePort.svg" alt="gatePort">
+                        <img src="../../app/assets/images/gameGate/gatePort.svg" alt="gatePort">
                     </div>
-                    <img id="a" src="./assets/images/gameGate/portal0.gif" alt="gate">
-                    <img id="b" src="./assets/images/gameGate/portal2.gif" alt="gate">
+                    <img id="a" src="../../app/assets/images/gameGate/portal0.gif" alt="gate">
+                    <img id="b" src="../../app/assets/images/gameGate/portal2.gif" alt="gate">
                     <img id="c" src="${
-                        index === 0 ? './assets/images/gameGate/egypt.png' : index === 1 ? './assets/images/gameGate/space.png' : './assets/images/gameGate/factory.png'
+                        index === 0 ? '../../app/assets/images/gameGate/egypt.png' : index === 1 ? '../../app/assets/images/gameGate/space.png' : '../../app/assets/images/gameGate/factory.png'
                     }" alt="gate">
                     <div class="index">
                         <div class="indexWrapper">
-                            <img id="a" src="./assets/images/gameGate/effect3.gif" alt="index">
-                            <img id="b" src="./assets/images/gameGate/smoke.gif" alt="index">
-                            <img id="c" src="./assets/images/gameGate/waves.gif" alt="index">
+                            <img id="a" src="../../app/assets/images/gameGate/effect3.gif" alt="index">
+                            <img id="b" src="../../app/assets/images/gameGate/smoke.gif" alt="index">
+                            <img id="c" src="../../app/assets/images/gameGate/waves.gif" alt="index">
                             <div class="indexWrapper2">
-                                <img id="d" src="./assets/images/gameGate/${index === 0 ? 'past.png' : index === 2 ? 'present.jpeg' : 'future.jpeg'}" alt="index">
-                                <img id="e" src="./assets/images/gameGate/blackHole1.gif" alt="index">
+                                <img id="d" src="../../app/assets/images/gameGate/${index === 0 ? 'past.png' : index === 2 ? 'present.jpeg' : 'future.jpeg'}" alt="index">
+                                <img id="e" src="../../app/assets/images/gameGate/blackHole1.gif" alt="index">
                             </div>
                         </div>
                     </div>
@@ -1067,7 +1077,7 @@ class GameGates extends HTMLElement {
         this.shadowRoot.querySelector('.bgWrapper2Wrapper').style.backgroundPosition = `${this.__dir * 400 + this.__x}px ${this.__y}px`;
         if (this.__direction === 1) {
             this.shadowRoot.querySelector('#gate1').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${this.__angle}deg)`;
-            this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/gameGate/pastInfo.svg';
+            this.shadowRoot.querySelector('.gateDescription #timeLine').src = '../../app/assets/images/gameGate/pastInfo.svg';
             this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Egypt';
             this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine will sand you to the past :';
             this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 3000 years BC. ';
@@ -1076,7 +1086,7 @@ class GameGates extends HTMLElement {
         }
         if (this.__direction === 0) {
             this.shadowRoot.querySelector('#gate2').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${120 + this.__angle}deg)`;
-            this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/gameGate/futureInfo.svg';
+            this.shadowRoot.querySelector('.gateDescription #timeLine').src = '../../app/assets/images/gameGate/futureInfo.svg';
             this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Space';
             this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine will sand you to the future :';
             this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 3000 years AD. ';
@@ -1085,7 +1095,7 @@ class GameGates extends HTMLElement {
         }
         if (this.__direction === 2) {
             this.shadowRoot.querySelector('#gate3').style.transform = `translate(-50%, -50%) translateZ(300px) rotate(${240 + this.__angle}deg)`;
-            this.shadowRoot.querySelector('.gateDescription #timeLine').src = './assets/images/gameGate/presentInfo.svg';
+            this.shadowRoot.querySelector('.gateDescription #timeLine').src = '../../app/assets/images/gameGate/presentInfo.svg';
             this.shadowRoot.querySelector('.gateDescriptionTitle').textContent = 'Factory';
             this.shadowRoot.querySelector('#inf1').textContent = 'Set your belt and get ready. The time machine will sand you to the present :';
             this.shadowRoot.querySelector('#inf2').innerHTML = '<em>⇝</em> To 2045. ';
@@ -1154,13 +1164,12 @@ class GameGates extends HTMLElement {
 customElements.define('game-gates', GameGates);
 
 function createGates() {
+    const div = document.createElement('div');
     const gates = document.createElement('game-gates');
-    const home = document.querySelector('.home');
-    const bg = document.querySelector('background-component');
 
     gates.setAttribute('id', 'gates');
-    
-    document.body.appendChild(gates);
-    document.body.removeChild(home);
-    document.body.removeChild(bg);
+
+    div.appendChild(gates);
+    div.setAttribute('class', 'page gamePage');
+    document.body.appendChild(div);
 }
